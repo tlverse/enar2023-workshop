@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Optimal Individualized Treatment Regimes | [Workshop] Targeted Learning in the tlverse</title>
+<title>Chapter 5 Optimal Individualized Treatment Regimes | [Short Course] Targeted Learning in the tlverse</title>
 <meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
-<meta name="description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-02  5.1 Learning Objectives By the end of this lesson you will be able...">
+<meta name="description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-05  5.1 Learning Objectives By the end of this lesson you will be able...">
 <meta name="generator" content="bookdown 0.26.3 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Optimal Individualized Treatment Regimes | [Workshop] Targeted Learning in the tlverse">
+<meta property="og:title" content="Chapter 5 Optimal Individualized Treatment Regimes | [Short Course] Targeted Learning in the tlverse">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tlverse.org/tlverse-workshops/optimal-individualized-treatment-regimes.html">
-<meta property="og:description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-02  5.1 Learning Objectives By the end of this lesson you will be able...">
+<meta property="og:url" content="https://tlverse.org/enar2023-workshop/optimal-individualized-treatment-regimes.html">
+<meta property="og:description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-05  5.1 Learning Objectives By the end of this lesson you will be able...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Optimal Individualized Treatment Regimes | [Workshop] Targeted Learning in the tlverse">
-<meta name="twitter:description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-02  5.1 Learning Objectives By the end of this lesson you will be able...">
+<meta name="twitter:title" content="Chapter 5 Optimal Individualized Treatment Regimes | [Short Course] Targeted Learning in the tlverse">
+<meta name="twitter:description" content="Ivana Malenica Based on the tmle3mopttx R package by Ivana Malenica, Jeremy Coyle, and Mark van der Laan. Updated: 2023-03-05  5.1 Learning Objectives By the end of this lesson you will be able...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,8 +45,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Causal Inference Meets Machine Learning">[Workshop] Targeted Learning in the <code>tlverse</code></a>:
-        <small class="text-muted">Causal Inference Meets Machine Learning</small>
+        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[Short Course] Targeted Learning in the <code>tlverse</code></a>:
+        <small class="text-muted">Advanced Methods for Causal Machine Learning</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -92,7 +92,7 @@
 <p><em>Ivana Malenica</em></p>
 <p>Based on the <a href="https://github.com/tlverse/tmle3mopttx"><code>tmle3mopttx</code> <code>R</code> package</a>
 by <em>Ivana Malenica, Jeremy Coyle, and Mark van der Laan</em>.</p>
-<p>Updated: 2023-03-02</p>
+<p>Updated: 2023-03-05</p>
 <div id="learning-objectives-3" class="section level2">
 <h2>
 <span class="header-section-number">5.1</span> Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives-3"><i class="fas fa-link"></i></a>
@@ -1432,7 +1432,7 @@ and the corresponding value of the realistic ITR:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 02, 2023.</p>
+    <p>"<strong>[Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 05, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

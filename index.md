@@ -1,10 +1,10 @@
 ---
 knit: "bookdown::render_book"
-title: "[Workshop] Targeted Learning in the `tlverse`"
-subtitle: "Causal Inference Meets Machine Learning"
+title: "[Short Course] Targeted Learning in the `tlverse`"
+subtitle: "Advanced Methods for Causal Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
-date: "updated: March 02, 2023"
+date: "updated: March 05, 2023"
 documentclass: book
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
@@ -16,11 +16,11 @@ colorlinks: yes
 lot: yes
 lof: yes
 always_allow_html: yes
-url: 'https\://tlverse.org/tlverse-workshops/'
-github-repo: tlverse/tlverse-workshops
+url: 'https\://tlverse.org/enar2023-workshop/'
+github-repo: tlverse/enar2023-workshop
 graphics: yes
 description: "Open source, reproducible teaching materials accompanying a
-  workshop or short course on Targeted Learning with the [`tlverse` software
+  short course on Targeted Learning with the [`tlverse` software
   ecosystem](https://github.com/tlverse)."
 ---
 
@@ -48,10 +48,10 @@ useful reference to accompany these workshop materials.
 ## Important links {-}
 
 * __Load R environment__: Please set up the `R` virtual environment using the
-  [instructions](https://github.com/tlverse/tlverse-workshops/blob/master/install.md).
+  [instructions](https://github.com/tlverse/enar2023-workshop/blob/master/install.md).
   If you experiencing issues with the `R` environment, you may install the 
   relevant software packages before the workshop using the [installation
-  script](https://github.com/tlverse/tlverse-workshops/blob/master/install.R).
+  script](https://github.com/tlverse/enar2023-workshop/blob/master/install.R).
 
 * You will probably exceed the GitHub API rate limit during this installation,
   which will throw an error. This issue and the solution are addressed
@@ -59,7 +59,7 @@ useful reference to accompany these workshop materials.
 
 * __Code__: `R` script files for each section of the workshop are available via
   the GitHub repository for the workshop at
-  https://github.com/tlverse/tlverse-workshops/tree/master/R_code
+  https://github.com/tlverse/enar2023-workshop/tree/master/R_code
 
 ## About this workshop {-}
 
@@ -84,35 +84,27 @@ probability distributions, confidence intervals, hypothesis testing, and
 regression. Advanced knowledge of mathematical statistics is useful but not
 necessary. Familiarity with the `R` programming language will be essential.
 
-## Outline {-}
+## Tentative Outline {-}
 
-* _Warm-up_: The Roadmap of Targeted Learning and [Why We Need A Statistical
+* _Optional pre-workshop reading_: The Roadmap of Targeted Learning and [Why We Need A Statistical
   Revolution](https://senseaboutscienceusa.org/super-learning-and-the-revolution-in-knowledge/)
-  with an *[introductory video lecture by Mark van der Laan and Alan
-  Hubbard](https://www.dropbox.com/s/7b6ru2ahycqq80v/ENAR2021-lecture.mp4?dl=0)*
-  (__Please watch this hour-long lecture before the workshop.__)
-* 09:00-09:30A: [Introduction to the `tlverse` Software
-  Ecosystem](https://tlverse.org) and the [WASH Benefits
-  data](http://www.washbenefits.net/)
-* 09:30-10:00A: Super learning with the [`sl3` `R`
+* 08:00-10:00: Introduction to Targeted Learning
+* 10:00-10:30: Coffee break
+* 10:30-11:00: Introduction to the `tlverse`
+* 11:30-12:00: Super learning with the [`sl3` `R`
   package](https://github.com/tlverse/sl3)
-* 10:00-11:00A: Programming exercises with `sl3`
-* 11:00-11:15A: Morning Coffee Break and Q&A
-* 11:15-12:00P: Targeted Learning for causal inference with the [`tmle3` `R`
-  package](https://github.com/tlverse/tmle3)
-* 12:00-12:45P: Programming exercises with `tmle3`
-* 12:45-01:30P: Lunch Break
-* 01:30-02:15P: Optimal treatment regimes with the [`tmle3mopttx` `R`
+* 12:00-01:00: Lunch break
+* 01:00-01:30: Brief intro to the [`tmle3` `R`
+  package](https://github.com/tlverse/tmle3) 
+* 01:30-03:00: Optimal treatment regimes with the [`tmle3mopttx` `R`
   package](https://github.com/tlverse/tmle3mopttx)
-* 02:15-03:00P: Programming exercises with `tmle3mopttx`
-* 03:00-03:15P: Afternoon Coffee Break
-* 03:15-04:00P: Stochastic treatment regimes with the [`tmle3shift` `R`
+* 03:00-03:30: Coffee break
+* 03:30-05:00: Stochastic treatment regimes with the [`tmle3shift` `R`
   package](https://github.com/tlverse/tmle3shift)
-* 04:00-04:30P: Programming exercises with `tmle3shift`
-* 04:30-05:00P: Concluding remarks and discussion
 
 <!--
-__NOTE: All listings are in Pacific Time.__
+* 04:00-05:00: Causal mediation analysis with the [`tmle3mediate` `R`
+  package](https://github.com/tlverse/tmle3mediate)
 -->
 
 ## About the instructors {-}

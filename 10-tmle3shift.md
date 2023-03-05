@@ -4,7 +4,7 @@ _Nima Hejazi_
 
 Based on the [`tmle3shift` `R` package](https://github.com/tlverse/tmle3shift).
 
-Updated: 2023-03-02
+Updated: 2023-03-05
 
 ## Learning Objectives
 
@@ -333,8 +333,8 @@ sequel.
 ```r
 tmle_fit <- tmle3(tmle_spec, data, node_list, learner_list)
 
-Iter: 1 fn: 1342.0479	 Pars:  0.56750948 0.00000282 0.43248770
-Iter: 2 fn: 1342.0479	 Pars:  0.5675094989 0.0000005883 0.4324899128
+Iter: 1 fn: 1342.0479	 Pars:  0.56750949 0.00000282 0.43248769
+Iter: 2 fn: 1342.0479	 Pars:  0.5675095172 0.0000005883 0.4324898945
 solnp--> Completed in 2 iterations
 tmle_fit
 A tmle3_Fit that took 1 step(s)
@@ -419,7 +419,7 @@ For convenience, we choose the latter:
 tmle_fit <- tmle3(tmle_spec, data, node_list, learner_list)
 
 Iter: 1 fn: 1340.1739	 Pars:  0.59196 0.12956 0.27849
-Iter: 2 fn: 1340.1739	 Pars:  0.59196 0.12956 0.27848
+Iter: 2 fn: 1340.1739	 Pars:  0.59196 0.12956 0.27849
 solnp--> Completed in 2 iterations
 tmle_fit
 A tmle3_Fit that took 1 step(s)
@@ -507,8 +507,8 @@ tmle_msm_spec <- tmle_vimshift_msm(
 # fit the TML estimator and examine the results
 tmle_msm_fit <- tmle3(tmle_msm_spec, data, node_list, learner_list)
 
-Iter: 1 fn: 1338.2186	 Pars:  0.62111541 0.00000916 0.37887543
-Iter: 2 fn: 1338.2186	 Pars:  0.6211155398 0.0000003732 0.3788840870
+Iter: 1 fn: 1338.2186	 Pars:  0.62111536 0.00000916 0.37887548
+Iter: 2 fn: 1338.2186	 Pars:  0.6211155235 0.0000003736 0.3788841029
 solnp--> Completed in 2 iterations
 tmle_msm_fit
 A tmle3_Fit that took 100 step(s)

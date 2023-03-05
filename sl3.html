@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 Super Learning | [Workshop] Targeted Learning in the tlverse</title>
+<title>Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse</title>
 <meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
 <meta name="description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
 <meta name="generator" content="bookdown 0.26.3 with bs4_book()">
-<meta property="og:title" content="Chapter 3 Super Learning | [Workshop] Targeted Learning in the tlverse">
+<meta property="og:title" content="Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tlverse.org/tlverse-workshops/sl3.html">
+<meta property="og:url" content="https://tlverse.org/enar2023-workshop/sl3.html">
 <meta property="og:description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 Super Learning | [Workshop] Targeted Learning in the tlverse">
+<meta name="twitter:title" content="Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse">
 <meta name="twitter:description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -45,8 +45,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Causal Inference Meets Machine Learning">[Workshop] Targeted Learning in the <code>tlverse</code></a>:
-        <small class="text-muted">Causal Inference Meets Machine Learning</small>
+        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[Short Course] Targeted Learning in the <code>tlverse</code></a>:
+        <small class="text-muted">Advanced Methods for Causal Machine Learning</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -1047,9 +1047,9 @@ so the results are reproducible, and we will also time it.</p>
 <span id="cb39-6"><a href="sl3.html#cb39-6"></a>runtime_sl_fit &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time <span class="co"># end time - start time = run time</span></span>
 <span id="cb39-7"><a href="sl3.html#cb39-7"></a>runtime_sl_fit</span>
 <span id="cb39-8"><a href="sl3.html#cb39-8"></a>   user  system elapsed </span>
-<span id="cb39-9"><a href="sl3.html#cb39-9"></a><span class="fl">286.708</span>   <span class="fl">5.965</span> <span class="fl">283.441</span> </span></code></pre></div>
-<p>It took 283.4 seconds
-(4.7 minutes) to fit the SL.</p>
+<span id="cb39-9"><a href="sl3.html#cb39-9"></a><span class="fl">249.592</span>   <span class="fl">5.056</span> <span class="fl">247.138</span> </span></code></pre></div>
+<p>It took 247.1 seconds
+(4.1 minutes) to fit the SL.</p>
 <div id="summary" class="section level4 unnumbered">
 <h4>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h4>
@@ -3146,7 +3146,7 @@ below.</p>
 <span id="cb76-15"><a href="sl3.html#cb76-15"></a>runtime_sl_fit_parallel &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time</span>
 <span id="cb76-16"><a href="sl3.html#cb76-16"></a>runtime_sl_fit_parallel</span>
 <span id="cb76-17"><a href="sl3.html#cb76-17"></a>   user  system elapsed </span>
-<span id="cb76-18"><a href="sl3.html#cb76-18"></a><span class="fl">280.039</span>   <span class="fl">5.395</span> <span class="fl">276.452</span> </span></code></pre></div>
+<span id="cb76-18"><a href="sl3.html#cb76-18"></a><span class="fl">243.802</span>   <span class="fl">4.881</span> <span class="fl">241.209</span> </span></code></pre></div>
 </div>
 <div id="default-data-pre-processing" class="section level2">
 <h2>
@@ -6061,7 +6061,7 @@ Infarction with
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 02, 2023.</p>
+    <p>"<strong>[Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 05, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

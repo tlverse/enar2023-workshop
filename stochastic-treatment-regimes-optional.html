@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 Stochastic Treatment Regimes (optional) | [Workshop] Targeted Learning in the tlverse</title>
+<title>Chapter 6 Stochastic Treatment Regimes (optional) | [Short Course] Targeted Learning in the tlverse</title>
 <meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
-<meta name="description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-02  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
+<meta name="description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-05  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
 <meta name="generator" content="bookdown 0.26.3 with bs4_book()">
-<meta property="og:title" content="Chapter 6 Stochastic Treatment Regimes (optional) | [Workshop] Targeted Learning in the tlverse">
+<meta property="og:title" content="Chapter 6 Stochastic Treatment Regimes (optional) | [Short Course] Targeted Learning in the tlverse">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tlverse.org/tlverse-workshops/stochastic-treatment-regimes-optional.html">
-<meta property="og:description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-02  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
+<meta property="og:url" content="https://tlverse.org/enar2023-workshop/stochastic-treatment-regimes-optional.html">
+<meta property="og:description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-05  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 Stochastic Treatment Regimes (optional) | [Workshop] Targeted Learning in the tlverse">
-<meta name="twitter:description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-02  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
+<meta name="twitter:title" content="Chapter 6 Stochastic Treatment Regimes (optional) | [Short Course] Targeted Learning in the tlverse">
+<meta name="twitter:description" content="Nima Hejazi Based on the tmle3shift R package. Updated: 2023-03-05  6.1 Learning Objectives Differentiate stochastic treatment regimes from static, dynamic, and optimal treatment regimes. Describe...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,8 +45,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Causal Inference Meets Machine Learning">[Workshop] Targeted Learning in the <code>tlverse</code></a>:
-        <small class="text-muted">Causal Inference Meets Machine Learning</small>
+        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[Short Course] Targeted Learning in the <code>tlverse</code></a>:
+        <small class="text-muted">Advanced Methods for Causal Machine Learning</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -91,7 +91,7 @@
 </h1>
 <p><em>Nima Hejazi</em></p>
 <p>Based on the <a href="https://github.com/tlverse/tmle3shift"><code>tmle3shift</code> <code>R</code> package</a>.</p>
-<p>Updated: 2023-03-02</p>
+<p>Updated: 2023-03-05</p>
 <div id="learning-objectives-4" class="section level2">
 <h2>
 <span class="header-section-number">6.1</span> Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives-4"><i class="fas fa-link"></i></a>
@@ -402,8 +402,8 @@ sequel.
 </h3>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="stochastic-treatment-regimes-optional.html#cb181-1"></a>tmle_fit &lt;-<span class="st"> </span><span class="kw">tmle3</span>(tmle_spec, data, node_list, learner_list)</span>
 <span id="cb181-2"><a href="stochastic-treatment-regimes-optional.html#cb181-2"></a></span>
-<span id="cb181-3"><a href="stochastic-treatment-regimes-optional.html#cb181-3"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">1</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1342.0479</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.56750948</span> <span class="fl">0.00000282</span> <span class="fl">0.43248770</span></span>
-<span id="cb181-4"><a href="stochastic-treatment-regimes-optional.html#cb181-4"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1342.0479</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.5675094989</span> <span class="fl">0.0000005883</span> <span class="fl">0.4324899128</span></span>
+<span id="cb181-3"><a href="stochastic-treatment-regimes-optional.html#cb181-3"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">1</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1342.0479</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.56750949</span> <span class="fl">0.00000282</span> <span class="fl">0.43248769</span></span>
+<span id="cb181-4"><a href="stochastic-treatment-regimes-optional.html#cb181-4"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1342.0479</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.5675095172</span> <span class="fl">0.0000005883</span> <span class="fl">0.4324898945</span></span>
 <span id="cb181-5"><a href="stochastic-treatment-regimes-optional.html#cb181-5"></a>solnp<span class="op">-</span>-&gt;<span class="st"> </span>Completed <span class="cf">in</span> <span class="dv">2</span> iterations</span>
 <span id="cb181-6"><a href="stochastic-treatment-regimes-optional.html#cb181-6"></a>tmle_fit</span>
 <span id="cb181-7"><a href="stochastic-treatment-regimes-optional.html#cb181-7"></a>A tmle3_Fit that took <span class="dv">1</span> <span class="kw">step</span>(s)</span>
@@ -484,7 +484,7 @@ For convenience, we choose the latter:</p>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="stochastic-treatment-regimes-optional.html#cb183-1"></a>tmle_fit &lt;-<span class="st"> </span><span class="kw">tmle3</span>(tmle_spec, data, node_list, learner_list)</span>
 <span id="cb183-2"><a href="stochastic-treatment-regimes-optional.html#cb183-2"></a></span>
 <span id="cb183-3"><a href="stochastic-treatment-regimes-optional.html#cb183-3"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">1</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1340.1739</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.59196</span> <span class="fl">0.12956</span> <span class="fl">0.27849</span></span>
-<span id="cb183-4"><a href="stochastic-treatment-regimes-optional.html#cb183-4"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1340.1739</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.59196</span> <span class="fl">0.12956</span> <span class="fl">0.27848</span></span>
+<span id="cb183-4"><a href="stochastic-treatment-regimes-optional.html#cb183-4"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1340.1739</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.59196</span> <span class="fl">0.12956</span> <span class="fl">0.27849</span></span>
 <span id="cb183-5"><a href="stochastic-treatment-regimes-optional.html#cb183-5"></a>solnp<span class="op">-</span>-&gt;<span class="st"> </span>Completed <span class="cf">in</span> <span class="dv">2</span> iterations</span>
 <span id="cb183-6"><a href="stochastic-treatment-regimes-optional.html#cb183-6"></a>tmle_fit</span>
 <span id="cb183-7"><a href="stochastic-treatment-regimes-optional.html#cb183-7"></a>A tmle3_Fit that took <span class="dv">1</span> <span class="kw">step</span>(s)</span>
@@ -564,8 +564,8 @@ appears above):</p>
 <span id="cb185-7"><a href="stochastic-treatment-regimes-optional.html#cb185-7"></a><span class="co"># fit the TML estimator and examine the results</span></span>
 <span id="cb185-8"><a href="stochastic-treatment-regimes-optional.html#cb185-8"></a>tmle_msm_fit &lt;-<span class="st"> </span><span class="kw">tmle3</span>(tmle_msm_spec, data, node_list, learner_list)</span>
 <span id="cb185-9"><a href="stochastic-treatment-regimes-optional.html#cb185-9"></a></span>
-<span id="cb185-10"><a href="stochastic-treatment-regimes-optional.html#cb185-10"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">1</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1338.2186</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.62111541</span> <span class="fl">0.00000916</span> <span class="fl">0.37887543</span></span>
-<span id="cb185-11"><a href="stochastic-treatment-regimes-optional.html#cb185-11"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1338.2186</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.6211155398</span> <span class="fl">0.0000003732</span> <span class="fl">0.3788840870</span></span>
+<span id="cb185-10"><a href="stochastic-treatment-regimes-optional.html#cb185-10"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">1</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1338.2186</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.62111536</span> <span class="fl">0.00000916</span> <span class="fl">0.37887548</span></span>
+<span id="cb185-11"><a href="stochastic-treatment-regimes-optional.html#cb185-11"></a>Iter<span class="op">:</span><span class="st"> </span><span class="dv">2</span> fn<span class="op">:</span><span class="st"> </span><span class="fl">1338.2186</span>    Pars<span class="op">:</span><span class="st">  </span><span class="fl">0.6211155235</span> <span class="fl">0.0000003736</span> <span class="fl">0.3788841029</span></span>
 <span id="cb185-12"><a href="stochastic-treatment-regimes-optional.html#cb185-12"></a>solnp<span class="op">-</span>-&gt;<span class="st"> </span>Completed <span class="cf">in</span> <span class="dv">2</span> iterations</span>
 <span id="cb185-13"><a href="stochastic-treatment-regimes-optional.html#cb185-13"></a>tmle_msm_fit</span>
 <span id="cb185-14"><a href="stochastic-treatment-regimes-optional.html#cb185-14"></a>A tmle3_Fit that took <span class="dv">100</span> <span class="kw">step</span>(s)</span>
@@ -792,7 +792,7 @@ findings?</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 02, 2023.</p>
+    <p>"<strong>[Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 05, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
