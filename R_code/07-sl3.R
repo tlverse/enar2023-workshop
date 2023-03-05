@@ -44,12 +44,14 @@ library(sl3)
 task <- make_sl3_Task(
   data = washb_data,
   outcome = "whz",
-  covariates = c("tr", "fracode", "month", "aged", "sex", "momage", "momedu", 
-                 "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec", 
-                 "floor", "walls", "roof", "asset_wardrobe", "asset_table", 
-                 "asset_chair", "asset_khat", "asset_chouki", "asset_tv", 
-                 "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach", 
-                 "asset_mobile")
+  covariates = c(
+    "tr", "fracode", "month", "aged", "sex", "momage", "momedu",
+    "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
+    "floor", "walls", "roof", "asset_wardrobe", "asset_table",
+    "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
+    "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
+    "asset_mobile"
+  )
 )
 
 # let's examine the task
@@ -81,7 +83,7 @@ lrn_polspline <- Lrnr_polspline$new()
 lrn_earth <- Lrnr_earth$new()
 
 # fast highly adaptive lasso (HAL) implementation
-lrn_hal <- Lrnr_hal9001$new(max_degree = 2, num_knots = c(3,2), nfolds = 5)
+lrn_hal <- Lrnr_hal9001$new(max_degree = 2, num_knots = c(3, 2), nfolds = 5)
 
 # tree-based methods
 lrn_ranger <- Lrnr_ranger$new()
@@ -95,7 +97,7 @@ lrn_bayesglm <- Lrnr_bayesglm$new()
 
 ## ----stack--------------------------------------------------------------------
 stack <- Stack$new(
-  lrn_glm, lrn_mean, lrn_ridge, lrn_lasso, lrn_polspline, lrn_earth, lrn_hal, 
+  lrn_glm, lrn_mean, lrn_ridge, lrn_lasso, lrn_polspline, lrn_earth, lrn_hal,
   lrn_ranger, lrn_xgb, lrn_gam, lrn_bayesglm
 )
 stack
@@ -127,7 +129,7 @@ head(glm_preds)
 
 ## ----glm-predictions-fullfit--------------------------------------------------
 # we can also access the candidate learner full fits directly and obtain
-# the same "full fit" candidate predictions from there 
+# the same "full fit" candidate predictions from there
 # (we split this into two lines to avoid overflow)
 stack_full_fits <- sl_fit$fit_object$full_fit$learner_fits$Stack$learner_fits
 glm_preds_full_fit <- stack_full_fits$Lrnr_glm_TRUE$predict(task)
@@ -142,7 +144,7 @@ df_plot <- data.table(
   Obs = washb_data[["whz"]], SL_Pred = sl_preds, GLM_Pred = glm_preds,
   Mean_Pred = sl_fit$learner_fits$Lrnr_mean$predict(task)
 )
-df_plot <- df_plot[order(df_plot$Obs), ] 
+df_plot <- df_plot[order(df_plot$Obs), ]
 
 ## ----predvobs-head, eval = FALSE----------------------------------------------
 ## head(df_plot)
@@ -162,17 +164,22 @@ if (knitr::is_latex_output()) {
 # melt the table so we can plot observed and predicted values
 df_plot$id <- seq(1:nrow(df_plot))
 df_plot_melted <- melt(
-  df_plot, id.vars = "id",
-  measure.vars = c("Observed", "SL_Pred", "GLM_Pred", "Mean_Pred")
+  df_plot,
+  id.vars = "id",
+  measure.vars = c("Obs", "SL_Pred", "GLM_Pred", "Mean_Pred")
 )
 
 library(ggplot2)
-ggplot(df_plot_melted, aes(id, value, color = variable)) + 
-  geom_point(size = 0.1) + 
-  labs(x = "Subjects (ordered by increasing whz)", 
-       y = "whz") +
-  theme(legend.position = "bottom", legend.title = element_blank(),
-        axis.text.x = element_blank(), axis.ticks.x = element_blank()) + 
+ggplot(df_plot_melted, aes(id, value, color = variable)) +
+  geom_point(size = 0.1) +
+  labs(
+    x = "Subjects (ordered by increasing whz)",
+    y = "whz"
+  ) +
+  theme(
+    legend.position = "bottom", legend.title = element_blank(),
+    axis.text.x = element_blank(), axis.ticks.x = element_blank()
+  ) +
   guides(color = guide_legend(override.aes = list(size = 1)))
 
 
@@ -216,36 +223,36 @@ identical(glm_preds, glm_full_fit_preds)
 ## ----cv-predictions-long------------------------------------------------------
 ##### CV predictions "by hand" #####
 # for each fold, i, we obtain validation set predictions:
-cv_preds_list <- lapply(seq_along(task$folds), function(i){
-  
+cv_preds_list <- lapply(seq_along(task$folds), function(i) {
+
   # get validation dataset for fold i:
   v_data <- task$data[task$folds[[i]]$validation_set, ]
-  
+
   # get observed outcomes in fold i's validation dataset:
   v_outcomes <- v_data[["whz"]]
 
-  # make task (for prediction) using fold i's validation dataset as data, 
+  # make task (for prediction) using fold i's validation dataset as data,
   # and keeping all else the same:
   v_task <- make_sl3_Task(covariates = task$nodes$covariates, data = v_data)
-  
-  # get predicted outcomes for fold i's validation dataset, using candidates 
+
+  # get predicted outcomes for fold i's validation dataset, using candidates
   # trained to fold i's training dataset
   v_preds <- sl_fit$fit_object$cv_fit$predict_fold(
     task = v_task, fold_number = i
   )
-  # note: v_preds is a matrix of candidate learner predictions, where the 
-  # number of rows is the number of observations in fold i's validation dataset 
-  # and the number of columns is the number of candidate learners (excluding 
+  # note: v_preds is a matrix of candidate learner predictions, where the
+  # number of rows is the number of observations in fold i's validation dataset
+  # and the number of columns is the number of candidate learners (excluding
   # any that might have failed)
-  
-  # an identical way to get v_preds, which is used when we calculate the 
+
+  # an identical way to get v_preds, which is used when we calculate the
   # cv risk by hand in a later part of this chapter:
   # v_preds <- sl_fit$fit_object$cv_fit$fit_object$fold_fits[[i]]$predict(
   #   task = v_task
   # )
-  
-  # we will also return the row indices for fold i's validation set, so we 
-  # can later reorder the CV predictions and make sure they are equal to what 
+
+  # we will also return the row indices for fold i's validation set, so we
+  # can later reorder the CV predictions and make sure they are equal to what
   # we obtained above
   return(list("v_preds" = v_preds, "v_index" = task$folds[[i]]$validation_set))
 })
@@ -262,16 +269,82 @@ identical(cv_preds_option1, cv_preds_byhand_ordered)
 
 
 ## ----predictions-new-task, eval = FALSE---------------------------------------
+## # we do not evaluate this code chunk, as `washb_data_new` does not exist
 ## prediction_task <- make_sl3_Task(
 ##   data = washb_data_new, # assuming we have some new data for predictions
-##   covariates = c("tr", "fracode", "month", "aged", "sex", "momage", "momedu",
-##                  "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
-##                  "floor", "walls", "roof", "asset_wardrobe", "asset_table",
-##                  "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
-##                  "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
-##                  "asset_mobile")
+##   covariates = c(
+##     "tr", "fracode", "month", "aged", "sex", "momage", "momedu",
+##     "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
+##     "floor", "walls", "roof", "asset_wardrobe", "asset_table",
+##     "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
+##     "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
+##     "asset_mobile"
+##   )
 ## )
 ## sl_preds_new_task <- sl_fit$predict(task = prediction_task)
+
+
+## ----cf-predictions-static----------------------------------------------------
+### 1. Copy data
+tr_intervention_data <- data.table::copy(washb_data)
+
+### 2. Define intervention in copied dataset
+tr_intervention <- rep("Nutrition + WSH", nrow(washb_data))
+# NOTE: When we intervene on a categorical variable (such as "tr"), we need to
+#       define the intervention as a categorical variable (ie a factor).
+#       Also, even though not all levels of the factor will be represented in
+#       the intervention, we still need this factor to reflect all of the
+#       levels that are present in the observed data
+tr_levels <- levels(washb_data[["tr"]])
+tr_levels
+tr_intervention <- factor(tr_intervention, levels = tr_levels)
+tr_intervention_data[, "tr" := tr_intervention, ]
+
+### 3. Create a new sl3_Task
+# note that we do not need to specify the outcome in this new task since we are
+# only using it to obtain predictions
+tr_intervention_task <- make_sl3_Task(
+  data = tr_intervention_data,
+  covariates = c(
+    "tr", "fracode", "month", "aged", "sex", "momage", "momedu",
+    "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
+    "floor", "walls", "roof", "asset_wardrobe", "asset_table",
+    "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
+    "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
+    "asset_mobile"
+  )
+)
+### 4. Get predicted values under intervention of interest
+# SL predictions of what "whz" would have been had everyone received "tr"
+# equal to "Nutrition + WSH"
+counterfactual_pred <- sl_fit$predict(tr_intervention_task)
+
+
+## ----cf-predictions-dynamic---------------------------------------------------
+dynamic_tr_intervention_data <- data.table::copy(washb_data)
+
+dynamic_tr_intervention <- ifelse(
+  washb_data[["asset_refrig"]] == 1, "Nutrition + WSH", "WSH"
+)
+dynamic_tr_intervention <- factor(dynamic_tr_intervention, levels = tr_levels)
+dynamic_tr_intervention_data[, "tr" := dynamic_tr_intervention, ]
+
+dynamic_tr_intervention_task <- make_sl3_Task(
+  data = dynamic_tr_intervention_data,
+  covariates = c(
+    "tr", "fracode", "month", "aged", "sex", "momage", "momedu",
+    "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
+    "floor", "walls", "roof", "asset_wardrobe", "asset_table",
+    "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
+    "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
+    "asset_mobile"
+  )
+)
+### 4. Get predicted values under intervention of interest
+# SL predictions of what "whz" would have been had every subject received "tr"
+# equal to "Nutrition + WSH" if they had a fridge and "WSH" if they didn't have
+# a fridge
+counterfactual_pred <- sl_fit$predict(dynamic_tr_intervention_task)
 
 
 ## ----sl-coefs-simple----------------------------------------------------------
@@ -287,14 +360,14 @@ round(metalrnr_fit$coefficients, 3)
 cv_risk_table <- sl_fit$cv_risk(eval_fun = loss_squared_error)
 
 ## ----cv-risk-summary, eval = FALSE--------------------------------------------
-## cv_risk_table[,c(1:3)]
+## cv_risk_table[, c(1:3)]
 
 ## ----cv-risk-summary-handbook, echo = FALSE-----------------------------------
 if (knitr::is_latex_output()) {
-  cv_risk_table[,c(1:3)] %>%
+  cv_risk_table[, c(1:3)] %>%
     kable(format = "latex")
 } else if (knitr::is_html_output()) {
-  cv_risk_table[,c(1:3)] %>%
+  cv_risk_table[, c(1:3)] %>%
     kable() %>%
     kableExtra:::kable_styling(fixed_thead = TRUE) %>%
     scroll_box(width = "100%", height = "300px")
@@ -304,26 +377,26 @@ if (knitr::is_latex_output()) {
 ## ----cv-risk-byhand-----------------------------------------------------------
 ##### CV risk "by hand" #####
 # for each fold, i, we obtain predictive performance/risk for each candidate:
-cv_risks_list <- lapply(seq_along(task$folds), function(i){
-  
+cv_risks_list <- lapply(seq_along(task$folds), function(i) {
+
   # get validation dataset for fold i:
   v_data <- task$data[task$folds[[i]]$validation_set, ]
-  
+
   # get observed outcomes in fold i's validation dataset:
   v_outcomes <- v_data[["whz"]]
 
-  # make task (for prediction) using fold i's validation dataset as data, 
+  # make task (for prediction) using fold i's validation dataset as data,
   # and keeping all else the same:
   v_task <- make_sl3_Task(covariates = task$nodes$covariates, data = v_data)
-  
-  # get predicted outcomes for fold i's validation dataset, using candidates 
+
+  # get predicted outcomes for fold i's validation dataset, using candidates
   # trained to fold i's training dataset
   v_preds <- sl_fit$fit_object$cv_fit$fit_object$fold_fits[[i]]$predict(v_task)
-  # note: v_preds is a matrix of candidate learner predictions, where the 
-  # number of rows is the number of observations in fold i's validation dataset 
-  # and the number of columns is the number of candidate learners (excluding 
+  # note: v_preds is a matrix of candidate learner predictions, where the
+  # number of rows is the number of observations in fold i's validation dataset
+  # and the number of columns is the number of candidate learners (excluding
   # any that might have failed)
-  
+
   # calculate predictive performance for fold i for each candidate
   eval_function <- loss_squared_error # valid for estimation of conditional mean
   v_losses <- apply(v_preds, 2, eval_function, v_outcomes)
@@ -338,7 +411,7 @@ cv_risk_table_byhand <- data.table(
 # check that the CV risks are identical when calculated by hand and function
 # (ignoring small differences by rounding to the fourth decimal place)
 identical(
-  round(cv_risk_table_byhand$MSE,4), round(as.numeric(cv_risk_table$MSE),4)
+  round(cv_risk_table_byhand$MSE, 4), round(as.numeric(cv_risk_table$MSE), 4)
 )
 
 
@@ -348,11 +421,13 @@ identical(
 ## # a learner, i.e., se = sd(loss)/sqrt(n), where loss is an n length vector of
 ## # validation set predictions across all folds, and n is the number of
 ## # validation set observations across all folds. We can use this to
-## cv_risk_table[, "lower" := MSE - qnorm(.975)*se]
-## cv_risk_table[, "upper" := MSE + qnorm(.975)*se]
+## cv_risk_table[, "lower" := MSE - qnorm(.975) * se]
+## cv_risk_table[, "upper" := MSE + qnorm(.975) * se]
 ## 
-## ggplot(cv_risk_table,
-##        aes_string(x = "learner", y = "MSE", ymin = "lower", ymax = "upper")) +
+## ggplot(
+##   cv_risk_table,
+##   aes_string(x = "learner", y = "MSE", ymin = "lower", ymax = "upper")
+## ) +
 ##   geom_pointrange() +
 ##   coord_flip() +
 ##   ylab("V-fold CV Risk Estimate") +
@@ -371,8 +446,8 @@ identical(
 
 ## ----cvsl-save, eval = FALSE, echo = FALSE------------------------------------
 ## library(here)
-## save(cv_sl_fit, file=here("data", "fit_objects", "cv_sl_fit.Rdata"), compress=T)
-## save(runtime_cv_sl_fit, file=here("data", "fit_objects", "runtime_cv_sl_fit.Rdata"))
+## save(cv_sl_fit, file = here("data", "fit_objects", "cv_sl_fit.Rdata"), compress = T)
+## save(runtime_cv_sl_fit, file = here("data", "fit_objects", "runtime_cv_sl_fit.Rdata"))
 
 
 ## ----cvsl-load, eval = TRUE, echo = FALSE-------------------------------------
@@ -383,15 +458,15 @@ runtime_cv_sl_fit
 
 
 ## ----cvsl-risk-summary, eval = FALSE------------------------------------------
-## cv_sl_fit$cv_risk[,c(1:3)]
+## cv_sl_fit$cv_risk[, c(1:3)]
 
 
 ## ----cvsl-risk-summary-handbook, echo = FALSE---------------------------------
 if (knitr::is_latex_output()) {
-  cv_sl_fit$cv_risk[,c(1:3)] %>%
+  cv_sl_fit$cv_risk[, c(1:3)] %>%
     kable(format = "latex")
 } else if (knitr::is_html_output()) {
-  cv_sl_fit$cv_risk[,c(1:3)] %>%
+  cv_sl_fit$cv_risk[, c(1:3)] %>%
     kable() %>%
     kableExtra:::kable_styling(fixed_thead = TRUE) %>%
     scroll_box(width = "100%", height = "300px")
@@ -420,15 +495,15 @@ cv_risk_w_sl_revere <- sl_fit$cv_risk(
 
 
 ## ----sl-revere-risk-summary, eval = FALSE-------------------------------------
-## cv_risk_w_sl_revere[,c(1:3)]
+## cv_risk_w_sl_revere[, c(1:3)]
 
 
 ## ----sl-revere-risk-handbook, echo = FALSE------------------------------------
 if (knitr::is_latex_output()) {
-  cv_risk_w_sl_revere[,c(1:3)] %>%
+  cv_risk_w_sl_revere[, c(1:3)] %>%
     kable(format = "latex")
 } else if (knitr::is_html_output()) {
-  cv_risk_w_sl_revere[,c(1:3)] %>%
+  cv_risk_w_sl_revere[, c(1:3)] %>%
     kable() %>%
     kableExtra:::kable_styling(fixed_thead = TRUE) %>%
     scroll_box(width = "100%", height = "300px")
@@ -438,20 +513,20 @@ if (knitr::is_latex_output()) {
 ## ----sl-revere-risk-byhand----------------------------------------------------
 ##### revere-based risk "by hand" #####
 # for each fold, i, we obtain predictive performance/risk for the SL
-sl_revere_risk_list <- lapply(seq_along(task$folds), function(i){
+sl_revere_risk_list <- lapply(seq_along(task$folds), function(i) {
   # get validation dataset for fold i:
   v_data <- task$data[task$folds[[i]]$validation_set, ]
-  
+
   # get observed outcomes in fold i's validation dataset:
   v_outcomes <- v_data[["whz"]]
-  
-  # make task (for prediction) using fold i's validation dataset as data, 
+
+  # make task (for prediction) using fold i's validation dataset as data,
   # and keeping all else the same:
   v_task <- make_sl3_Task(
     covariates = task$nodes$covariates, data = v_data
   )
-  
-  # get predicted outcomes for fold i's validation dataset, using candidates 
+
+  # get predicted outcomes for fold i's validation dataset, using candidates
   # trained to fold i's training dataset
   v_preds <- sl_fit$fit_object$cv_fit$fit_object$fold_fits[[i]]$predict(v_task)
 
@@ -460,19 +535,19 @@ sl_revere_risk_list <- lapply(seq_along(task$folds), function(i){
     covariates = sl_fit$fit_object$cv_meta_task$nodes$covariates,
     data = v_preds
   )
-  
+
   # get predicted outcomes for fold i's metalevel dataset, using the fitted
-  # metalearner, cv_meta_fit 
-  sl_revere_v_preds <- sl_fit$fit_object$cv_meta_fit$predict(task=v_meta_task)
+  # metalearner, cv_meta_fit
+  sl_revere_v_preds <- sl_fit$fit_object$cv_meta_fit$predict(task = v_meta_task)
   # note: cv_meta_fit was trained on the metalevel dataset, which contains the
-  # candidates' cv predictions and validation dataset outcomes across ALL folds, 
+  # candidates' cv predictions and validation dataset outcomes across ALL folds,
   # so cv_meta_fit has already seen fold i's validation dataset outcomes.
-  
+
   # calculate predictive performance for fold i for the SL
   eval_function <- loss_squared_error # valid for estimation of conditional mean
-  # note: by evaluating the predictive performance of the SL using outcomes 
-  # that were already seen by the metalearner, this is not a cross-validated 
-  # measure of predictive performance for the SL. 
+  # note: by evaluating the predictive performance of the SL using outcomes
+  # that were already seen by the metalearner, this is not a cross-validated
+  # measure of predictive performance for the SL.
   sl_revere_v_loss <- eval_function(
     pred = sl_revere_v_preds, observed = v_outcomes
   )
@@ -484,7 +559,7 @@ sl_revere_risk_byhand <- mean(unlist(sl_revere_risk_list))
 sl_revere_risk_byhand
 
 # check that our calculation by hand equals what is output in cv_risk_table_revere
-sl_revere_risk <- as.numeric(cv_risk_w_sl_revere[learner=="SuperLearner","MSE"])
+sl_revere_risk <- as.numeric(cv_risk_w_sl_revere[learner == "SuperLearner", "MSE"])
 sl_revere_risk
 
 
@@ -506,14 +581,14 @@ round(dSL_fit$coefficients, 3)
 dSL_cv_risk_table <- dSL_fit$cv_risk(eval_fun = loss_squared_error)
 
 ## ----summarize-dSL-cv-risk-tbl, eval = FALSE----------------------------------
-## dSL_cv_risk_table[,c(1:3)]
+## dSL_cv_risk_table[, c(1:3)]
 
 ## ----summarize-dSL-cv-risk-tbl-handbook, echo = FALSE-------------------------
 if (knitr::is_latex_output()) {
-  dSL_cv_risk_table[,c(1:3)] %>%
+  dSL_cv_risk_table[, c(1:3)] %>%
     kable(format = "latex")
 } else if (knitr::is_html_output()) {
-  dSL_cv_risk_table[,c(1:3)] %>%
+  dSL_cv_risk_table[, c(1:3)] %>%
     kable() %>%
     kableExtra:::kable_styling(fixed_thead = TRUE) %>%
     scroll_box(width = "100%", height = "300px")
@@ -527,7 +602,7 @@ identical(dSL_pred, earth_pred)
 
 
 ## ----recall-eSL---------------------------------------------------------------
-# in the section 3.2 we defined Lrnr_sl as
+# in the section 2 we defined Lrnr_sl as
 # sl <- Lrnr_sl$new(learners = stack, metalearner = Lrnr_nnls$new())
 
 
@@ -556,7 +631,7 @@ eSL_metaRanger <- Lrnr_sl$new(learners = stack, metalearner = lrn_ranger)
 eSL_metaHAL <- Lrnr_sl$new(learners = stack, metalearner = lrn_hal)
 # adding the eSLs to the stack that defined them
 stack_with_eSLs <- Stack$new(
-  stack, eSL_metaNNLS, eSL_metaNNLSconvex, eSL_metaLasso, eSL_metaEarth, 
+  stack, eSL_metaNNLS, eSL_metaNNLSconvex, eSL_metaLasso, eSL_metaEarth,
   eSL_metaRanger, eSL_metaHAL
 )
 # specify dSL
@@ -566,7 +641,7 @@ dSL <- Lrnr_sl$new(learners = stack_with_eSLs, metalearner = cv_selector)
 ## ----fit-sl-parallel----------------------------------------------------------
 # let's load the future package and set n-1 cores for parallel processing
 library(future)
-ncores <- availableCores()-1
+ncores <- availableCores() - 1
 ncores
 plan(multicore, workers = ncores)
 # now, let's re-train sl in parallel for demonstrative purposes
@@ -585,12 +660,14 @@ runtime_sl_fit_parallel
 task <- make_sl3_Task(
   data = washb_data,
   outcome = "whz",
-  covariates = c("tr", "fracode", "month", "aged", "sex", "momage", "momedu", 
-                 "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec", 
-                 "floor", "walls", "roof", "asset_wardrobe", "asset_table", 
-                 "asset_chair", "asset_khat", "asset_chouki", "asset_tv", 
-                 "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach", 
-                 "asset_mobile")
+  covariates = c(
+    "tr", "fracode", "month", "aged", "sex", "momage", "momedu",
+    "momheight", "hfiacat", "Nlt18", "Ncomp", "watmin", "elec",
+    "floor", "walls", "roof", "asset_wardrobe", "asset_table",
+    "asset_chair", "asset_khat", "asset_chouki", "asset_tv",
+    "asset_refrig", "asset_bike", "asset_moto", "asset_sewmach",
+    "asset_mobile"
+  )
 )
 
 
@@ -606,8 +683,10 @@ washb_data[some_rows_with_missingness, c("momage", "momheight")]
 
 
 ## ----task-data-imputed--------------------------------------------------------
-task$data[some_rows_with_missingness,
-          c("momage", "momheight", "delta_momage", "delta_momheight")]
+task$data[
+  some_rows_with_missingness,
+  c("momage", "momheight", "delta_momage", "delta_momheight")
+]
 colSums(is.na(task$data))
 
 
@@ -644,9 +723,9 @@ stack
 
 ## ----stack-pretty-------------------------------------------------------------
 learners_pretty_names <- c(
-  "GLM" = lrn_glm, "Mean" = lrn_mean, "Ridge" = lrn_ridge, 
-  "Lasso" = lrn_lasso, "Polspline" = lrn_polspline, "Earth" = lrn_earth, 
-  "HAL" = lrn_hal, "RF" = lrn_ranger, "XGBoost" = lrn_xgb, "GAM" = lrn_gam, 
+  "GLM" = lrn_glm, "Mean" = lrn_mean, "Ridge" = lrn_ridge,
+  "Lasso" = lrn_lasso, "Polspline" = lrn_polspline, "Earth" = lrn_earth,
+  "HAL" = lrn_hal, "RF" = lrn_ranger, "XGBoost" = lrn_xgb, "GAM" = lrn_gam,
   "BayesGLM" = lrn_bayesglm
 )
 stack_pretty_names <- Stack$new(learners_pretty_names)
@@ -669,8 +748,8 @@ xgb_learners
 
 ## ----lrnr-grid-diy-names------------------------------------------------------
 names(xgb_learners) <- c(
-  "XGBoost_depth3_eta.001", "XGBoost_depth5_eta.001", "XGBoost_depth8_eta.001", 
-  "XGBoost_depth3_eta.1", "XGBoost_depth5_eta.1", "XGBoost_depth8_eta.1", 
+  "XGBoost_depth3_eta.001", "XGBoost_depth5_eta.001", "XGBoost_depth8_eta.001",
+  "XGBoost_depth3_eta.1", "XGBoost_depth5_eta.1", "XGBoost_depth8_eta.1",
   "XGBoost_depth3_eta.3", "XGBoost_depth5_eta.3", "XGBoost_depth8_eta.3"
 )
 
@@ -724,7 +803,7 @@ corP_screen_stack <- Pipeline$new(corP_screen, stack)
 
 ## ----screener-augment---------------------------------------------------------
 keepme <- c("aged", "momage")
-# using corRank_screen as an example, but any instantiated screener can be 
+# using corRank_screen as an example, but any instantiated screener can be
 # supplied as screener.
 corRank_screen_augmented <- Lrnr_screener_augment$new(
   screener = corRank_screen, default_covariates = keepme
@@ -733,18 +812,22 @@ corRank_screen_augmented_glm <- Pipeline$new(corRank_screen_augmented, lrn_glm)
 
 
 ## ----screeners-stack----------------------------------------------------------
-screeners_stack <- Stack$new(stack, corP_screen_stack, corRank_screen_stack, 
-                             lasso_screen_stack, RFscreen_top10_stack)
+screeners_stack <- Stack$new(
+  stack, corP_screen_stack, corRank_screen_stack,
+  lasso_screen_stack, RFscreen_top10_stack
+)
 
 
 ## ----varimp-------------------------------------------------------------------
-assets <- c("asset_wardrobe", "asset_table", "asset_chair", "asset_khat",
-            "asset_chouki", "asset_tv", "asset_refrig", "asset_bike", 
-            "asset_moto", "asset_sewmach", "asset_mobile", "Nlt18", "Ncomp", 
-            "watmin", "elec", "floor", "walls", "roof")
+assets <- c(
+  "asset_wardrobe", "asset_table", "asset_chair", "asset_khat",
+  "asset_chouki", "asset_tv", "asset_refrig", "asset_bike",
+  "asset_moto", "asset_sewmach", "asset_mobile", "Nlt18", "Ncomp",
+  "watmin", "elec", "floor", "walls", "roof"
+)
 set.seed(983)
 washb_varimp <- importance(
-  fit = sl_fit, eval_fun = loss_squared_error, type = "permute", 
+  fit = sl_fit, eval_fun = loss_squared_error, type = "permute",
   covariate_groups = list("assets" = assets)
 )
 
@@ -776,7 +859,7 @@ importance_plot(x = washb_varimp)
 ## )
 ## # semiparametric density estimator with heteroscedastic errors (HESE)
 ## hese_rf_glm_lrnr <- Lrnr_density_semiparametric$new(
-##   mean_learner = Lrnr_ranger$new()
+##   mean_learner = Lrnr_ranger$new(),
 ##   var_learner = Lrnr_glm$new()
 ## )
 ## 
