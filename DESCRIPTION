@@ -1,4 +1,4 @@
-Package: tlverseworkshops
+Package: enar2023
 Title: Targeted Learning Workshops
 Version: 1.0.0
 Depends: R (>= 4.0.0)
@@ -63,6 +63,6 @@ Remotes:
   github::tlverse/hal9001@devel,
   github::nhejazi/haldensify@master
 URL:
-  https://github.com/tlverse/tlverse-workshops,
-  https://tlverse.org/tlverse-workshops
+  https://github.com/tlverse/enar2023-workshop,
+  https://tlverse.org/enar2023-workshop
 BugReports: https://github.com/tlverse/tlverse-workshops/issues
