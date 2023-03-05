@@ -97,7 +97,7 @@ tlverse packages or specific packages:
 ```r
 install.packages("devtools")
 
-# install all tlverse packages 
+# install all tlverse packages
 devtools::install_github("tlverse/tlverse")
 
 # install a specific package (example is sl3)
@@ -106,7 +106,6 @@ devtools::install_github("tlverse/sl3")
 # install a specific branch of package (example is devel branch of sl3)
 # (first clear workspace and restart R)
 devtools::install_github("tlverse/sl3@devel")
-
 ```
 
 The `tlverse` packages depend on other packages that are also hosted on GitHub. 
@@ -151,8 +150,7 @@ user (you'll need a GitHub user account). Follow these two steps:
 
   
   ```r
-  GITHUB_PAT=yourPAT
-  
+  GITHUB_PAT <- yourPAT
   ```
 
 8. Restart R. You can restart `R` via the drop-down menu on RStudio's "Session"
