@@ -1,5 +1,5 @@
-Package: enar2023
-Title: Targeted Learning Workshops
+Package: enar2023-workship
+Title: ENAR 2023 Workshops
 Version: 1.0.0
 Depends: R (>= 4.0.0)
 Imports:
