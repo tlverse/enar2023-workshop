@@ -1,10 +1,10 @@
 ---
 knit: "bookdown::render_book"
-title: "[Short Course] Targeted Learning in the `tlverse`"
+title: "[ENAR 2023 Short Course] Targeted Learning in the `tlverse`"
 subtitle: "Advanced Methods for Causal Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
-date: "updated: March 05, 2023"
+date: "updated: March 07, 2023"
 documentclass: book
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]

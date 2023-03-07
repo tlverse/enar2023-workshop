@@ -4,21 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse</title>
+<title>Chapter 3 Super Learning | [ENAR 2023 Short Course] Targeted Learning in the tlverse</title>
 <meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
 <meta name="description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
-<meta name="generator" content="bookdown 0.26.3 with bs4_book()">
-<meta property="og:title" content="Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse">
+<meta name="generator" content="bookdown 0.32.2 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Super Learning | [ENAR 2023 Short Course] Targeted Learning in the tlverse">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tlverse.org/enar2023-workshop/sl3.html">
 <meta property="og:description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 Super Learning | [Short Course] Targeted Learning in the tlverse">
+<meta name="twitter:title" content="Chapter 3 Super Learning | [ENAR 2023 Short Course] Targeted Learning in the tlverse">
 <meta name="twitter:description" content="Rachael Phillips Based on the sl3 R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Oleg Sofrygin. Learning Objectives By the end of this chapter you will be able to:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
 <script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +45,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[Short Course] Targeted Learning in the <code>tlverse</code></a>:
+        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[ENAR 2023 Short Course] Targeted Learning in the <code>tlverse</code></a>:
         <small class="text-muted">Advanced Methods for Causal Machine Learning</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -76,7 +76,6 @@
 <li class="book-part">Part 4: Advanced Topics</li>
 <li><a class="" href="optimal-individualized-treatment-regimes.html"><span class="header-section-number">5</span> Optimal Individualized Treatment Regimes</a></li>
 <li><a class="" href="stochastic-treatment-regimes-optional.html"><span class="header-section-number">6</span> Stochastic Treatment Regimes (optional)</a></li>
-<li><a class="" href="causal-mediation-analysis.html"><span class="header-section-number">7</span> Causal Mediation Analysis</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -194,17 +193,17 @@ the Data”</a> chapter of the
 <p>We will use the <code>fread</code> function in the <code>data.table</code> R package to load the
 WASH Benefits example dataset:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span>
-<span class="va">washb_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
-    <span class="st">"https://raw.githubusercontent.com/tlverse/tlverse-data/master/"</span>,
-    <span class="st">"wash-benefits/washb_data.csv"</span>
-  <span class="op">)</span>,
-  stringsAsFactors <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
+<span><span class="va">washb_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://raw.githubusercontent.com/tlverse/tlverse-data/master/"</span>,</span>
+<span>    <span class="st">"wash-benefits/washb_data.csv"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  stringsAsFactors <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Next, we will take a peek at the first few rows of our dataset:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">washb_data</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">washb_data</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -825,8 +824,8 @@ tab “Session” then “Clear Workspace”, and then clicking “Session” ag
 <code>devtools</code> R package. We are using the development (“devel”) version of <code>sl3</code>
 in these materials, so we show how to install that version below.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"tlverse/sl3@devel"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"tlverse/sl3@devel"</span><span class="op">)</span></span></code></pre></div>
 <p>Once the R package is installed, we recommend restarting the R session again.</p>
 <!--
 If you would like to use newer `sl3` functionality that is available in the
@@ -840,7 +839,7 @@ your `R` session, and then re-load the `sl3` package.
 </h5>
 <p>Once <code>sl3</code> is installed, we can load it like any other <code>R</code> package:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tlverse.org/sl3">sl3</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tlverse.org/sl3">sl3</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="define-the-prediction-task-with-make_sl3_task" class="section level3 unnumbered">
@@ -943,27 +942,27 @@ this outcome type with <code><a href="https://tlverse.org/sl3/reference/list_lea
 <span id="cb32-8"><a href="sl3.html#cb32-8"></a>[<span class="dv">13</span>] <span class="st">"Lrnr_gbm"</span>                       <span class="st">"Lrnr_glm"</span>                      </span>
 <span id="cb32-9"><a href="sl3.html#cb32-9"></a>[<span class="dv">15</span>] <span class="st">"Lrnr_glm_fast"</span>                  <span class="st">"Lrnr_glm_semiparametric"</span>       </span>
 <span id="cb32-10"><a href="sl3.html#cb32-10"></a>[<span class="dv">17</span>] <span class="st">"Lrnr_glmnet"</span>                    <span class="st">"Lrnr_glmtree"</span>                  </span>
-<span id="cb32-11"><a href="sl3.html#cb32-11"></a>[<span class="dv">19</span>] <span class="st">"Lrnr_grf"</span>                       <span class="st">"Lrnr_gru_keras"</span>                </span>
-<span id="cb32-12"><a href="sl3.html#cb32-12"></a>[<span class="dv">21</span>] <span class="st">"Lrnr_gts"</span>                       <span class="st">"Lrnr_h2o_glm"</span>                  </span>
-<span id="cb32-13"><a href="sl3.html#cb32-13"></a>[<span class="dv">23</span>] <span class="st">"Lrnr_h2o_grid"</span>                  <span class="st">"Lrnr_hal9001"</span>                  </span>
-<span id="cb32-14"><a href="sl3.html#cb32-14"></a>[<span class="dv">25</span>] <span class="st">"Lrnr_HarmonicReg"</span>               <span class="st">"Lrnr_hts"</span>                      </span>
-<span id="cb32-15"><a href="sl3.html#cb32-15"></a>[<span class="dv">27</span>] <span class="st">"Lrnr_lightgbm"</span>                  <span class="st">"Lrnr_lstm_keras"</span>               </span>
-<span id="cb32-16"><a href="sl3.html#cb32-16"></a>[<span class="dv">29</span>] <span class="st">"Lrnr_mean"</span>                      <span class="st">"Lrnr_multiple_ts"</span>              </span>
-<span id="cb32-17"><a href="sl3.html#cb32-17"></a>[<span class="dv">31</span>] <span class="st">"Lrnr_nnet"</span>                      <span class="st">"Lrnr_nnls"</span>                     </span>
-<span id="cb32-18"><a href="sl3.html#cb32-18"></a>[<span class="dv">33</span>] <span class="st">"Lrnr_optim"</span>                     <span class="st">"Lrnr_pkg_SuperLearner"</span>         </span>
-<span id="cb32-19"><a href="sl3.html#cb32-19"></a>[<span class="dv">35</span>] <span class="st">"Lrnr_pkg_SuperLearner_method"</span>   <span class="st">"Lrnr_pkg_SuperLearner_screener"</span></span>
-<span id="cb32-20"><a href="sl3.html#cb32-20"></a>[<span class="dv">37</span>] <span class="st">"Lrnr_polspline"</span>                 <span class="st">"Lrnr_randomForest"</span>             </span>
-<span id="cb32-21"><a href="sl3.html#cb32-21"></a>[<span class="dv">39</span>] <span class="st">"Lrnr_ranger"</span>                    <span class="st">"Lrnr_rpart"</span>                    </span>
-<span id="cb32-22"><a href="sl3.html#cb32-22"></a>[<span class="dv">41</span>] <span class="st">"Lrnr_rugarch"</span>                   <span class="st">"Lrnr_screener_correlation"</span>     </span>
-<span id="cb32-23"><a href="sl3.html#cb32-23"></a>[<span class="dv">43</span>] <span class="st">"Lrnr_solnp"</span>                     <span class="st">"Lrnr_stratified"</span>               </span>
-<span id="cb32-24"><a href="sl3.html#cb32-24"></a>[<span class="dv">45</span>] <span class="st">"Lrnr_svm"</span>                       <span class="st">"Lrnr_tsDyn"</span>                    </span>
-<span id="cb32-25"><a href="sl3.html#cb32-25"></a>[<span class="dv">47</span>] <span class="st">"Lrnr_xgboost"</span>                  </span></code></pre></div>
+<span id="cb32-11"><a href="sl3.html#cb32-11"></a>[<span class="dv">19</span>] <span class="st">"Lrnr_grf"</span>                       <span class="st">"Lrnr_grfcate"</span>                  </span>
+<span id="cb32-12"><a href="sl3.html#cb32-12"></a>[<span class="dv">21</span>] <span class="st">"Lrnr_gru_keras"</span>                 <span class="st">"Lrnr_gts"</span>                      </span>
+<span id="cb32-13"><a href="sl3.html#cb32-13"></a>[<span class="dv">23</span>] <span class="st">"Lrnr_h2o_glm"</span>                   <span class="st">"Lrnr_h2o_grid"</span>                 </span>
+<span id="cb32-14"><a href="sl3.html#cb32-14"></a>[<span class="dv">25</span>] <span class="st">"Lrnr_hal9001"</span>                   <span class="st">"Lrnr_HarmonicReg"</span>              </span>
+<span id="cb32-15"><a href="sl3.html#cb32-15"></a>[<span class="dv">27</span>] <span class="st">"Lrnr_hts"</span>                       <span class="st">"Lrnr_lightgbm"</span>                 </span>
+<span id="cb32-16"><a href="sl3.html#cb32-16"></a>[<span class="dv">29</span>] <span class="st">"Lrnr_lstm_keras"</span>                <span class="st">"Lrnr_mean"</span>                     </span>
+<span id="cb32-17"><a href="sl3.html#cb32-17"></a>[<span class="dv">31</span>] <span class="st">"Lrnr_multiple_ts"</span>               <span class="st">"Lrnr_nnet"</span>                     </span>
+<span id="cb32-18"><a href="sl3.html#cb32-18"></a>[<span class="dv">33</span>] <span class="st">"Lrnr_nnls"</span>                      <span class="st">"Lrnr_optim"</span>                    </span>
+<span id="cb32-19"><a href="sl3.html#cb32-19"></a>[<span class="dv">35</span>] <span class="st">"Lrnr_pkg_SuperLearner"</span>          <span class="st">"Lrnr_pkg_SuperLearner_method"</span>  </span>
+<span id="cb32-20"><a href="sl3.html#cb32-20"></a>[<span class="dv">37</span>] <span class="st">"Lrnr_pkg_SuperLearner_screener"</span> <span class="st">"Lrnr_polspline"</span>                </span>
+<span id="cb32-21"><a href="sl3.html#cb32-21"></a>[<span class="dv">39</span>] <span class="st">"Lrnr_randomForest"</span>              <span class="st">"Lrnr_ranger"</span>                   </span>
+<span id="cb32-22"><a href="sl3.html#cb32-22"></a>[<span class="dv">41</span>] <span class="st">"Lrnr_rpart"</span>                     <span class="st">"Lrnr_rugarch"</span>                  </span>
+<span id="cb32-23"><a href="sl3.html#cb32-23"></a>[<span class="dv">43</span>] <span class="st">"Lrnr_screener_correlation"</span>      <span class="st">"Lrnr_solnp"</span>                    </span>
+<span id="cb32-24"><a href="sl3.html#cb32-24"></a>[<span class="dv">45</span>] <span class="st">"Lrnr_stratified"</span>                <span class="st">"Lrnr_svm"</span>                      </span>
+<span id="cb32-25"><a href="sl3.html#cb32-25"></a>[<span class="dv">47</span>] <span class="st">"Lrnr_tsDyn"</span>                     <span class="st">"Lrnr_xgboost"</span>                  </span></code></pre></div>
 <p>Now that we have an idea of some learners, let’s instantiate a few of them.
 Below we instantiate <code>Lrnr_glm</code> and <code>Lrnr_mean</code>, a main terms generalized
 linear model (GLM) and a mean model, respectively.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrn_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">lrn_mean</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_mean.html">Lrnr_mean</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrn_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">lrn_mean</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_mean.html">Lrnr_mean</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For both of the learners created above, we just used the default tuning
 parameters. We can also customize a learner’s tuning parameters to incorporate
 a diversity of different settings, and consider the same learner with different
@@ -972,9 +971,9 @@ tuning parameter specifications.</p>
 with elastic net regression), and create two different candidates from it:
 an L2-penalized/ridge regression and an L1-penalized/lasso regression.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># penalized regressions:</span>
-<span class="va">lrn_ridge</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-<span class="va">lrn_lasso</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># penalized regressions:</span></span>
+<span><span class="va">lrn_ridge</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">lrn_lasso</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>By setting <code>alpha</code> in <code>Lrnr_glmnet</code> above, we customized this learner’s tuning
 parameter. When we instantiate <code>Lrnr_hal9001</code> below we show how multiple tuning
 parameters (specifically, <code>max_degree</code>and <code>num_knots</code>) can be modified at the
@@ -984,21 +983,21 @@ be linear or monotonic, and to further diversify the set of candidates to
 include nonparametric learners, since up to this point all of the learners we’ve
 instantiated have been parametric.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># spline regressions:</span>
-<span class="va">lrn_polspline</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_polspline.html">Lrnr_polspline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">lrn_earth</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_earth.html">Lrnr_earth</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># fast highly adaptive lasso (HAL) implementation</span>
-<span class="va">lrn_hal</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_hal9001.html">Lrnr_hal9001</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>max_degree <span class="op">=</span> <span class="fl">2</span>, num_knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, nfolds <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-
-<span class="co"># tree-based methods</span>
-<span class="va">lrn_ranger</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">lrn_xgb</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_xgboost.html">Lrnr_xgboost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># spline regressions:</span></span>
+<span><span class="va">lrn_polspline</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_polspline.html">Lrnr_polspline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">lrn_earth</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_earth.html">Lrnr_earth</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fast highly adaptive lasso (HAL) implementation</span></span>
+<span><span class="va">lrn_hal</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_hal9001.html">Lrnr_hal9001</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>max_degree <span class="op">=</span> <span class="fl">2</span>, num_knots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, nfolds <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># tree-based methods</span></span>
+<span><span class="va">lrn_ranger</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">lrn_xgb</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_xgboost.html">Lrnr_xgboost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s also include a generalized additive model (GAM) and Bayesian GLM to
 further diversify the pool that we will consider as candidates in the SL.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrn_gam</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_gam.html">Lrnr_gam</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">lrn_bayesglm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_bayesglm.html">Lrnr_bayesglm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrn_gam</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_gam.html">Lrnr_gam</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">lrn_bayesglm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_bayesglm.html">Lrnr_bayesglm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now that we’ve instantiated a set of learners, we need to put them together so
 the SL can consider them as candidates. In <code>sl3</code>, we do this by creating a
 so-called <code>Stack</code> of learners. A <code>Stack</code> is created in the same way we
@@ -1033,7 +1032,7 @@ are ready to instantiate the SL. We will use the default meta-learner, which is
 non-negative least squares (NNLS) regression (<code>Lrnr_nnls</code>) for continuous
 outcomes, and we will still go ahead and specify it for illustrative purposes.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sl</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_nnls.html">Lrnr_nnls</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sl</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_nnls.html">Lrnr_nnls</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="fit-the-super-learner-to-the-prediction-task-with-train" class="section level3 unnumbered">
 <h3>3. Fit the Super Learner to the prediction task with <code>train</code><a class="anchor" aria-label="anchor" href="#fit-the-super-learner-to-the-prediction-task-with-train"><i class="fas fa-link"></i></a>
@@ -1049,9 +1048,9 @@ so the results are reproducible, and we will also time it.</p>
 <span id="cb39-6"><a href="sl3.html#cb39-6"></a>runtime_sl_fit &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time <span class="co"># end time - start time = run time</span></span>
 <span id="cb39-7"><a href="sl3.html#cb39-7"></a>runtime_sl_fit</span>
 <span id="cb39-8"><a href="sl3.html#cb39-8"></a>   user  system elapsed </span>
-<span id="cb39-9"><a href="sl3.html#cb39-9"></a><span class="fl">279.897</span>   <span class="fl">5.949</span> <span class="fl">276.828</span> </span></code></pre></div>
-<p>It took 276.8 seconds
-(4.6 minutes) to fit the SL.</p>
+<span id="cb39-9"><a href="sl3.html#cb39-9"></a> <span class="fl">255.13</span>    <span class="fl">5.61</span>  <span class="fl">252.86</span> </span></code></pre></div>
+<p>It took 252.9 seconds
+(4.2 minutes) to fit the SL.</p>
 <div id="summary" class="section level4 unnumbered">
 <h4>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h4>
@@ -1107,14 +1106,14 @@ procedure.</p>
 <p>Below we visualize the observed values for <code>whz</code> and predicted <code>whz</code> values for
 SL, GLM and the mean.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># table of observed and predicted outcome values and arrange by observed values</span>
-<span class="va">df_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span>
-  Obs <span class="op">=</span> <span class="va">washb_data</span><span class="op">[[</span><span class="st">"whz"</span><span class="op">]</span><span class="op">]</span>, SL_Pred <span class="op">=</span> <span class="va">sl_preds</span>, GLM_Pred <span class="op">=</span> <span class="va">glm_preds</span>,
-  Mean_Pred <span class="op">=</span> <span class="va">sl_fit</span><span class="op">$</span><span class="va">learner_fits</span><span class="op">$</span><span class="va">Lrnr_mean</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="va">df_plot</span> <span class="op">&lt;-</span> <span class="va">df_plot</span><span class="op">[</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/setorder.html">order</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">$</span><span class="va">Obs</span><span class="op">)</span>, <span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># table of observed and predicted outcome values and arrange by observed values</span></span>
+<span><span class="va">df_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/data.table.html">data.table</a></span><span class="op">(</span></span>
+<span>  Obs <span class="op">=</span> <span class="va">washb_data</span><span class="op">[[</span><span class="st">"whz"</span><span class="op">]</span><span class="op">]</span>, SL_Pred <span class="op">=</span> <span class="va">sl_preds</span>, GLM_Pred <span class="op">=</span> <span class="va">glm_preds</span>,</span>
+<span>  Mean_Pred <span class="op">=</span> <span class="va">sl_fit</span><span class="op">$</span><span class="va">learner_fits</span><span class="op">$</span><span class="va">Lrnr_mean</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df_plot</span> <span class="op">&lt;-</span> <span class="va">df_plot</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">$</span><span class="va">Obs</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -1220,26 +1219,26 @@ Mean_Pred
 </table></div>
 </div>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># melt the table so we can plot observed and predicted values</span>
-<span class="va">df_plot</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">)</span><span class="op">)</span>
-<span class="va">df_plot_melted</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/melt.data.table.html">melt</a></span><span class="op">(</span>
-  <span class="va">df_plot</span>,
-  id.vars <span class="op">=</span> <span class="st">"id"</span>,
-  measure.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Obs"</span>, <span class="st">"SL_Pred"</span>, <span class="st">"GLM_Pred"</span>, <span class="st">"Mean_Pred"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_plot_melted</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">value</span>, color <span class="op">=</span> <span class="va">variable</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
-    x <span class="op">=</span> <span class="st">"Subjects (ordered by increasing whz)"</span>,
-    y <span class="op">=</span> <span class="st">"whz"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
-    legend.position <span class="op">=</span> <span class="st">"bottom"</span>, legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
-    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># melt the table so we can plot observed and predicted values</span></span>
+<span><span class="va">df_plot</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df_plot</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df_plot_melted</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/melt.data.table.html">melt</a></span><span class="op">(</span></span>
+<span>  <span class="va">df_plot</span>,</span>
+<span>  id.vars <span class="op">=</span> <span class="st">"id"</span>,</span>
+<span>  measure.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Obs"</span>, <span class="st">"SL_Pred"</span>, <span class="st">"GLM_Pred"</span>, <span class="st">"Mean_Pred"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_plot_melted</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">value</span>, color <span class="op">=</span> <span class="va">variable</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Subjects (ordered by increasing whz)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"whz"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>, legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>, axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>override.aes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:predobs-plot"></span>
 <img src="07-sl3_files/figure-html/predobs-plot-1.png" alt="Observed and predicted values for weight-for-height z-score (whz)" width="80%"><p class="caption">
@@ -1264,7 +1263,7 @@ learners. We can do this is a few different ways.</p>
 <span id="cb46-9"><a href="sl3.html#cb46-9"></a><span class="kw">identical</span>(cv_preds_option1, cv_preds_option2)</span>
 <span id="cb46-10"><a href="sl3.html#cb46-10"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cv_preds_option1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cv_preds_option1</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -1606,19 +1605,19 @@ As an example, let’s assume we have new covariate data <code>washb_data_new</c
 which we want to use the fitted SL to obtain predicted weight-for-height
 z-score values.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># we do not evaluate this code chunk, as `washb_data_new` does not exist</span>
-<span class="va">prediction_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">washb_data_new</span>, <span class="co"># assuming we have some new data for predictions</span>
-  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-    <span class="st">"tr"</span>, <span class="st">"fracode"</span>, <span class="st">"month"</span>, <span class="st">"aged"</span>, <span class="st">"sex"</span>, <span class="st">"momage"</span>, <span class="st">"momedu"</span>,
-    <span class="st">"momheight"</span>, <span class="st">"hfiacat"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>, <span class="st">"watmin"</span>, <span class="st">"elec"</span>,
-    <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span>, <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>,
-    <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>, <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>,
-    <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>, <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>,
-    <span class="st">"asset_mobile"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="va">sl_preds_new_task</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>task <span class="op">=</span> <span class="va">prediction_task</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># we do not evaluate this code chunk, as `washb_data_new` does not exist</span></span>
+<span><span class="va">prediction_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">washb_data_new</span>, <span class="co"># assuming we have some new data for predictions</span></span>
+<span>  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"tr"</span>, <span class="st">"fracode"</span>, <span class="st">"month"</span>, <span class="st">"aged"</span>, <span class="st">"sex"</span>, <span class="st">"momage"</span>, <span class="st">"momedu"</span>,</span>
+<span>    <span class="st">"momheight"</span>, <span class="st">"hfiacat"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>, <span class="st">"watmin"</span>, <span class="st">"elec"</span>,</span>
+<span>    <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span>, <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>,</span>
+<span>    <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>, <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>,</span>
+<span>    <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>, <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>,</span>
+<span>    <span class="st">"asset_mobile"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sl_preds_new_task</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>task <span class="op">=</span> <span class="va">prediction_task</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="counterfactual-predictions" class="section level3">
 <h3>
@@ -1679,30 +1678,30 @@ we might consider an intervention that sets the treatment to the desired
 a refridgerator, and a nutrition-omitted (water, sanitation, and handwashing)
 regime otherwise.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dynamic_tr_intervention_data</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">washb_data</span><span class="op">)</span>
-
-<span class="va">dynamic_tr_intervention</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fifelse.html">ifelse</a></span><span class="op">(</span>
-  <span class="va">washb_data</span><span class="op">[[</span><span class="st">"asset_refrig"</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Nutrition + WSH"</span>, <span class="st">"WSH"</span>
-<span class="op">)</span>
-<span class="va">dynamic_tr_intervention</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dynamic_tr_intervention</span>, levels <span class="op">=</span> <span class="va">tr_levels</span><span class="op">)</span>
-<span class="va">dynamic_tr_intervention_data</span><span class="op">[</span>, <span class="st">"tr"</span> <span class="op">:=</span> <span class="va">dynamic_tr_intervention</span>, <span class="op">]</span>
-
-<span class="va">dynamic_tr_intervention_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">dynamic_tr_intervention_data</span>,
-  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-    <span class="st">"tr"</span>, <span class="st">"fracode"</span>, <span class="st">"month"</span>, <span class="st">"aged"</span>, <span class="st">"sex"</span>, <span class="st">"momage"</span>, <span class="st">"momedu"</span>,
-    <span class="st">"momheight"</span>, <span class="st">"hfiacat"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>, <span class="st">"watmin"</span>, <span class="st">"elec"</span>,
-    <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span>, <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>,
-    <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>, <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>,
-    <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>, <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>,
-    <span class="st">"asset_mobile"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="co">### 4. Get predicted values under intervention of interest</span>
-<span class="co"># SL predictions of what "whz" would have been had every subject received "tr"</span>
-<span class="co"># equal to "Nutrition + WSH" if they had a fridge and "WSH" if they didn't have</span>
-<span class="co"># a fridge</span>
-<span class="va">counterfactual_pred</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">dynamic_tr_intervention_task</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dynamic_tr_intervention_data</span> <span class="op">&lt;-</span> <span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/copy.html">copy</a></span><span class="op">(</span><span class="va">washb_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dynamic_tr_intervention</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span></span>
+<span>  <span class="va">washb_data</span><span class="op">[[</span><span class="st">"asset_refrig"</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Nutrition + WSH"</span>, <span class="st">"WSH"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">dynamic_tr_intervention</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">dynamic_tr_intervention</span>, levels <span class="op">=</span> <span class="va">tr_levels</span><span class="op">)</span></span>
+<span><span class="va">dynamic_tr_intervention_data</span><span class="op">[</span>, <span class="st">"tr"</span> <span class="op">:=</span> <span class="va">dynamic_tr_intervention</span>, <span class="op">]</span></span>
+<span></span>
+<span><span class="va">dynamic_tr_intervention_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dynamic_tr_intervention_data</span>,</span>
+<span>  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"tr"</span>, <span class="st">"fracode"</span>, <span class="st">"month"</span>, <span class="st">"aged"</span>, <span class="st">"sex"</span>, <span class="st">"momage"</span>, <span class="st">"momedu"</span>,</span>
+<span>    <span class="st">"momheight"</span>, <span class="st">"hfiacat"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>, <span class="st">"watmin"</span>, <span class="st">"elec"</span>,</span>
+<span>    <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span>, <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>,</span>
+<span>    <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>, <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>,</span>
+<span>    <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>, <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>,</span>
+<span>    <span class="st">"asset_mobile"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">### 4. Get predicted values under intervention of interest</span></span>
+<span><span class="co"># SL predictions of what "whz" would have been had every subject received "tr"</span></span>
+<span><span class="co"># equal to "Nutrition + WSH" if they had a fridge and "WSH" if they didn't have</span></span>
+<span><span class="co"># a fridge</span></span>
+<span><span class="va">counterfactual_pred</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">dynamic_tr_intervention_task</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="summarizing-super-learner-fits" class="section level2">
@@ -1763,9 +1762,9 @@ conditional mean, which is what we’re learning the prediction function for in
 the WASH Benefits example. For more information on selecting an appropriate
 performance metric, see <span class="citation">Phillips et al. (<a href="references.html#ref-rvp2022super" role="doc-biblioref">2022</a>)</span>.</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_risk_table</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span>eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_risk_table</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span>eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_risk_table</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_risk_table</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -1999,18 +1998,18 @@ generator so the results are reproducible, and we will also time this.</p>
 taking too long).
 -->
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">569</span><span class="op">)</span>
-<span class="va">cv_sl_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/cv_sl.html">cv_sl</a></span><span class="op">(</span>lrnr_sl <span class="op">=</span> <span class="va">sl_fit</span>, task <span class="op">=</span> <span class="va">task</span>, eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span>
-
-<span class="va">runtime_cv_sl_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span>
-<span class="va">runtime_cv_sl_fit</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">569</span><span class="op">)</span></span>
+<span><span class="va">cv_sl_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/cv_sl.html">cv_sl</a></span><span class="op">(</span>lrnr_sl <span class="op">=</span> <span class="va">sl_fit</span>, task <span class="op">=</span> <span class="va">task</span>, eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">runtime_cv_sl_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">start_time</span></span>
+<span><span class="va">runtime_cv_sl_fit</span></span></code></pre></div>
 <pre><code>   user  system elapsed 
 2792.55  159.65 3051.41 </code></pre>
 <p>It took 3051.4 seconds (50.9 minutes) to fit the CV SL.</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_sl_fit</span><span class="op">$</span><span class="va">cv_risk</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_sl_fit</span><span class="op">$</span><span class="va">cv_risk</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -2166,7 +2165,7 @@ than all of the candidates’ CV risks.</p>
 <p>We can see how the SL fits varied across the folds by the coefficients for the
 SL on each fold.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cv_sl_fit</span><span class="op">$</span><span class="va">coef</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cv_sl_fit</span><span class="op">$</span><span class="va">coef</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -2606,11 +2605,11 @@ approximate lower bound on the SL’s CV risk <em>when the meta-learner is a sim
 like NNLS. We can output the revere-based CV risk estimate by setting
 <code>get_sl_revere_risk = TRUE</code> in <code>cv_risk</code>.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_risk_w_sl_revere</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span>
-  eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span>, get_sl_revere_risk <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_risk_w_sl_revere</span> <span class="op">&lt;-</span> <span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span></span>
+<span>  eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span>, get_sl_revere_risk <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_risk_w_sl_revere</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_risk_w_sl_revere</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -2852,13 +2851,13 @@ this candidate’s predictions”. The cross-validated selector is
 detail) and a dSL is instantiated in <code>sl3</code> by using <code>Lrnr_cv_selector</code> as the
 meta-learner in <code>Lrnr_sl</code>.</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_selector</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_cv_selector.html">Lrnr_cv_selector</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>eval_function <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span>
-<span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_selector</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_cv_selector.html">Lrnr_cv_selector</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>eval_function <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></span>
+<span><span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></span></code></pre></div>
 <p>Just like before, we use the learner’s <code>train</code> method to fit it to the
 prediction task.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4197</span><span class="op">)</span>
-<span class="va">dSL_fit</span> <span class="op">&lt;-</span> <span class="va">dSL</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4197</span><span class="op">)</span></span>
+<span><span class="va">dSL_fit</span> <span class="op">&lt;-</span> <span class="va">dSL</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></code></pre></div>
 <p>Following from subsection <a href="https://tlverse.org/tlverse-handbook/sl3.html#summarizing-super-learner-fits">“Summarizing Super Learner
 Fits”</a>
 above, we can see how the <code>Lrnr_cv_selector</code> meta-learner created a function of
@@ -2878,9 +2877,9 @@ the candidates.</p>
 <span id="cb67-13"><a href="sl3.html#cb67-13"></a>                                      <span class="dv">0</span> </span></code></pre></div>
 <p>We can also examine the CV risk of the candidates alongside the coefficients:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dSL_cv_risk_table</span> <span class="op">&lt;-</span> <span class="va">dSL_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span>eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dSL_cv_risk_table</span> <span class="op">&lt;-</span> <span class="va">dSL_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span>eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dSL_cv_risk_table</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dSL_cv_risk_table</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -3052,26 +3051,26 @@ predictions.” In the following, we show how to include the eSL, and multiple
 eSLs, as candidates in the dSL.</p>
 <p>Recall the SL object, <code>sl</code>, defined in section 2:</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># in the section 2 we defined Lrnr_sl as</span>
-<span class="co"># sl &lt;- Lrnr_sl$new(learners = stack, metalearner = Lrnr_nnls$new())</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># in the section 2 we defined Lrnr_sl as</span></span>
+<span><span class="co"># sl &lt;- Lrnr_sl$new(learners = stack, metalearner = Lrnr_nnls$new())</span></span></code></pre></div>
 <p><code>sl</code> is an eSL since it used NNLS as the meta-learner. We rename <code>sl</code> to
 <code>eSL_metaNNLS</code> below to clarify that this is an eSL that uses NNLS as its
 meta-learner. Note that the candidate learners in this eSL are those passed
 to the <code>learners</code> argument, i.e., <code>stack</code>.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># let's rename it to clarify that this is an eSL that uses NNLS as meta-learner</span>
-<span class="va">eSL_metaNNLS</span> <span class="op">&lt;-</span> <span class="va">sl</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># let's rename it to clarify that this is an eSL that uses NNLS as meta-learner</span></span>
+<span><span class="va">eSL_metaNNLS</span> <span class="op">&lt;-</span> <span class="va">sl</span></span></code></pre></div>
 <p>To consider the <code>eSL_metaNNLS</code> as an additional candidate in <code>stack</code>, we can
 create a new stack that includes the original candidate learners and the eSL.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stack_with_eSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">stack</span>, <span class="va">eSL_metaNNLS</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">stack_with_eSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">stack</span>, <span class="va">eSL_metaNNLS</span><span class="op">)</span></span></code></pre></div>
 <p>To instantiate the dSL that considers as its candidates <code>eSL_metaNNLS</code> and the
 individual learners from which <code>eSL_metaNNLS</code> was constructed, we define
 a new <code>Lrnr_sl</code> that considers <code>stack_with_eSL</code> as candidates and
 <code>Lrnr_cv_selector</code> as the meta-learner.</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cv_selector</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_cv_selector.html">Lrnr_cv_selector</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>eval_function <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span>
-<span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack_with_eSL</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cv_selector</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_cv_selector.html">Lrnr_cv_selector</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>eval_function <span class="op">=</span> <span class="va">loss_squared_error</span><span class="op">)</span></span>
+<span><span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack_with_eSL</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></span></code></pre></div>
 <p>When we include an eSL as a candidate in the dSL, this allows the eSL’s CV
 performance to be compared to that from the other learners from which it was
 constructed. This is similar to calling CV SL, <code>cv_sl</code>, above. The difference
@@ -3085,21 +3084,21 @@ methods (e.g., non-parametric machine learning algorithms like HAL) can be
 evaluated simultaneously.”</p>
 <p>Below, we show how multiple eSLs can be included as candidates in a dSL:</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># instantiate more eSLs</span>
-<span class="va">eSL_metaNNLSconvex</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_nnls.html">Lrnr_nnls</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>convex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="va">eSL_metaLasso</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_lasso</span><span class="op">)</span>
-<span class="va">eSL_metaEarth</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_earth</span><span class="op">)</span>
-<span class="va">eSL_metaRanger</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_ranger</span><span class="op">)</span>
-<span class="va">eSL_metaHAL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_hal</span><span class="op">)</span>
-<span class="co"># adding the eSLs to the stack that defined them</span>
-<span class="va">stack_with_eSLs</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  <span class="va">stack</span>, <span class="va">eSL_metaNNLS</span>, <span class="va">eSL_metaNNLSconvex</span>, <span class="va">eSL_metaLasso</span>, <span class="va">eSL_metaEarth</span>,
-  <span class="va">eSL_metaRanger</span>, <span class="va">eSL_metaHAL</span>
-<span class="op">)</span>
-<span class="co"># specify dSL</span>
-<span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack_with_eSLs</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># instantiate more eSLs</span></span>
+<span><span class="va">eSL_metaNNLSconvex</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_nnls.html">Lrnr_nnls</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>convex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">eSL_metaLasso</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_lasso</span><span class="op">)</span></span>
+<span><span class="va">eSL_metaEarth</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_earth</span><span class="op">)</span></span>
+<span><span class="va">eSL_metaRanger</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_ranger</span><span class="op">)</span></span>
+<span><span class="va">eSL_metaHAL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack</span>, metalearner <span class="op">=</span> <span class="va">lrn_hal</span><span class="op">)</span></span>
+<span><span class="co"># adding the eSLs to the stack that defined them</span></span>
+<span><span class="va">stack_with_eSLs</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">stack</span>, <span class="va">eSL_metaNNLS</span>, <span class="va">eSL_metaNNLSconvex</span>, <span class="va">eSL_metaLasso</span>, <span class="va">eSL_metaEarth</span>,</span>
+<span>  <span class="va">eSL_metaRanger</span>, <span class="va">eSL_metaHAL</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># specify dSL</span></span>
+<span><span class="va">dSL</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learners <span class="op">=</span> <span class="va">stack_with_eSLs</span>, metalearner <span class="op">=</span> <span class="va">cv_selector</span><span class="op">)</span></span></code></pre></div>
 <p>We included as candidates in the dSL:</p>
 <ol style="list-style-type: decimal">
 <li>the same eSL as before, <code>eSL_metaNNLS</code>;</li>
@@ -3161,7 +3160,7 @@ below.</p>
 <span id="cb76-15"><a href="sl3.html#cb76-15"></a>runtime_sl_fit_parallel &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time</span>
 <span id="cb76-16"><a href="sl3.html#cb76-16"></a>runtime_sl_fit_parallel</span>
 <span id="cb76-17"><a href="sl3.html#cb76-17"></a>   user  system elapsed </span>
-<span id="cb76-18"><a href="sl3.html#cb76-18"></a><span class="fl">273.097</span>   <span class="fl">5.557</span> <span class="fl">269.861</span> </span></code></pre></div>
+<span id="cb76-18"><a href="sl3.html#cb76-18"></a><span class="fl">245.498</span>   <span class="fl">5.095</span> <span class="fl">242.957</span> </span></code></pre></div>
 </div>
 <div id="default-data-pre-processing" class="section level2">
 <h2>
@@ -3198,8 +3197,8 @@ task in order to examine the pre-processing of <code>washb_data</code>.</p>
 <span id="cb77-11"><a href="sl3.html#cb77-11"></a>    <span class="st">"asset_mobile"</span></span>
 <span id="cb77-12"><a href="sl3.html#cb77-12"></a>  )</span>
 <span id="cb77-13"><a href="sl3.html#cb77-13"></a>)</span>
-<span id="cb77-14"><a href="sl3.html#cb77-14"></a>Warning <span class="cf">in</span> <span class="kw">process_data</span>(data, nodes, <span class="dt">column_names =</span> column_names, <span class="dt">flag =</span> flag, <span class="op">:</span></span>
-<span id="cb77-15"><a href="sl3.html#cb77-15"></a>Imputing missing values and adding missingness indicators <span class="cf">for</span> the following</span>
+<span id="cb77-14"><a href="sl3.html#cb77-14"></a>Warning <span class="cf">in</span> <span class="kw">process_data</span>(data, nodes, <span class="dt">column_names =</span> column_names, <span class="dt">flag =</span> flag,</span>
+<span id="cb77-15"><a href="sl3.html#cb77-15"></a><span class="op">:</span><span class="st"> </span>Imputing missing values and adding missingness indicators <span class="cf">for</span> the following</span>
 <span id="cb77-16"><a href="sl3.html#cb77-16"></a>covariates with missing values<span class="op">:</span><span class="st"> </span>momage, momheight. See documentation of the</span>
 <span id="cb77-17"><a href="sl3.html#cb77-17"></a>process_data <span class="cf">function</span> <span class="cf">for</span> details.</span></code></pre></div>
 <div id="imputation-and-missingness-indicators" class="section level3">
@@ -3320,7 +3319,7 @@ that does not appear explicitly in the table.</p>
 <code>X</code> for learners that use CV. Let’s check out the first six rows of our task’s
 <code>X</code> object:</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">task</span><span class="op">$</span><span class="va">X</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">task</span><span class="op">$</span><span class="va">X</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -4549,7 +4548,7 @@ R package and its <code>xgb.train</code> function.</p>
 <p>Here, we show a few different ways for the user to name learners. The first way
 to name a learner is upon instantiation, as shown below:</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrn_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GLM"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrn_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GLM"</span><span class="op">)</span></span></code></pre></div>
 <p>We can specify the <code>name</code> for any learner upon instantiating it. Above,
 we named the GLM learner “GLM”.</p>
 <p>Also, we can specify the names of the learners upon creation of the <code>Stack</code>:</p>
@@ -4634,11 +4633,11 @@ their task.</p>
 create nine XGBoost learners. If we wanted to create custom names for each of
 these learners we could do that as well:</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">xgb_learners</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-  <span class="st">"XGBoost_depth3_eta.001"</span>, <span class="st">"XGBoost_depth5_eta.001"</span>, <span class="st">"XGBoost_depth8_eta.001"</span>,
-  <span class="st">"XGBoost_depth3_eta.1"</span>, <span class="st">"XGBoost_depth5_eta.1"</span>, <span class="st">"XGBoost_depth8_eta.1"</span>,
-  <span class="st">"XGBoost_depth3_eta.3"</span>, <span class="st">"XGBoost_depth5_eta.3"</span>, <span class="st">"XGBoost_depth8_eta.3"</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">xgb_learners</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"XGBoost_depth3_eta.001"</span>, <span class="st">"XGBoost_depth5_eta.001"</span>, <span class="st">"XGBoost_depth8_eta.001"</span>,</span>
+<span>  <span class="st">"XGBoost_depth3_eta.1"</span>, <span class="st">"XGBoost_depth5_eta.1"</span>, <span class="st">"XGBoost_depth8_eta.1"</span>,</span>
+<span>  <span class="st">"XGBoost_depth3_eta.3"</span>, <span class="st">"XGBoost_depth5_eta.3"</span>, <span class="st">"XGBoost_depth8_eta.3"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="automatic-grid-and-selection-with-caret" class="section level3">
 <h3>
@@ -4650,7 +4649,7 @@ function to automatically tune a predictive model”. Below, we instantiate a
 neural network that will be automatically tuned with <code>caret</code> and we name the
 learner “NNET_autotune”.</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrnr_nnet_autotune</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_caret.html">Lrnr_caret</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"nnet"</span>, name <span class="op">=</span> <span class="st">"NNET_autotune"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrnr_nnet_autotune</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_caret.html">Lrnr_caret</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"nnet"</span>, name <span class="op">=</span> <span class="st">"NNET_autotune"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="learners-with-interactions-and-formula-interface" class="section level2">
@@ -4670,7 +4669,7 @@ learner argument, it is via this inheritance. This implementation allows
 support. Below, we show how to specify a GLM learner that considers two-way
 interactions among all covariates.</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lrnr_glm_interaction</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"~.^2"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lrnr_glm_interaction</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>formula <span class="op">=</span> <span class="st">"~.^2"</span><span class="op">)</span></span></code></pre></div>
 <p>As we can see from above, the general behavior of <code>formula</code>in R applies in
 <code>sl3</code>. See Details of <code>formula</code> in the <code>stats</code> R package for more details on
 this syntax (e.g,. in RStudio, type “?formula” in the Console and information
@@ -4730,15 +4729,15 @@ fits a model according to this reduced set of covariates. As mentioned above,
 this coupling establishes a new learner and requires defining a <code>Pipeline</code>.
 The <code>Pipeline</code> is <code>sl3</code>’s way of going from (1) to (2).</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ranger_with_importance</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>importance <span class="op">=</span> <span class="st">"impurity_corrected"</span><span class="op">)</span>
-<span class="va">RFscreen_top10</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_importance.html">Lrnr_screener_importance</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  learner <span class="op">=</span> <span class="va">ranger_with_importance</span>, num_screen <span class="op">=</span> <span class="fl">10</span>
-<span class="op">)</span>
-<span class="va">RFscreen_top10_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">RFscreen_top10</span>, <span class="va">lrn_glm</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ranger_with_importance</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>importance <span class="op">=</span> <span class="st">"impurity_corrected"</span><span class="op">)</span></span>
+<span><span class="va">RFscreen_top10</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_importance.html">Lrnr_screener_importance</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  learner <span class="op">=</span> <span class="va">ranger_with_importance</span>, num_screen <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">RFscreen_top10_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">RFscreen_top10</span>, <span class="va">lrn_glm</span><span class="op">)</span></span></code></pre></div>
 <p>We could even define the <code>Pipeline</code> for the entire <code>Stack</code>, so that every
 learner in it is fit to the screener-selected, reduced set of ten covariates.</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">RFscreen_top10_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">RFscreen_top10</span>, <span class="va">stack</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">RFscreen_top10_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">RFscreen_top10</span>, <span class="va">stack</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="coefficient-threshold-based-screeners" class="section level3">
 <h3>
@@ -4758,12 +4757,12 @@ screener-selected covariates to <code>Lrnr_glm</code>, so <code>Lrnr_glm</code> 
 according to this reduced set of covariates. The structure is very similar to
 above.</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lasso_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_coefs.html">Lrnr_screener_coefs</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learner <span class="op">=</span> <span class="va">lrn_lasso</span>, threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-<span class="va">lasso_screen_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">lasso_screen</span>, <span class="va">lrn_glm</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lasso_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_coefs.html">Lrnr_screener_coefs</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>learner <span class="op">=</span> <span class="va">lrn_lasso</span>, threshold <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">lasso_screen_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">lasso_screen</span>, <span class="va">lrn_glm</span><span class="op">)</span></span></code></pre></div>
 <p>We could even define the <code>Pipeline</code> for the entire <code>Stack</code>, so that every
 learner in it is fit to the lasso screener-selected, reduced set of covariates.</p>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lasso_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">lasso_screen</span>, <span class="va">stack</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">lasso_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">lasso_screen</span>, <span class="va">stack</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="correlation-based-screeners" class="section level3">
 <h3>
@@ -4778,17 +4777,17 @@ illustrate how to set up a pipeline with a <code>Stack</code>, which looks the s
 previous examples. The <code>Pipeline</code> with a single learner also looks the same as
 previous examples.</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># select top 10 most correlated covariates</span>
-<span class="va">corRank_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_correlation.html">Lrnr_screener_correlation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  type <span class="op">=</span> <span class="st">"rank"</span>, num_screen <span class="op">=</span> <span class="fl">10</span>
-<span class="op">)</span>
-<span class="va">corRank_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corRank_screen</span>, <span class="va">stack</span><span class="op">)</span>
-
-<span class="co"># select covariates with correlation p-value below 0.05, and a minimum of 3</span>
-<span class="va">corP_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_correlation.html">Lrnr_screener_correlation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  type <span class="op">=</span> <span class="st">"threshold"</span>, pvalue_threshold <span class="op">=</span> <span class="fl">0.05</span>, min_screen <span class="op">=</span> <span class="fl">3</span>
-<span class="op">)</span>
-<span class="va">corP_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corP_screen</span>, <span class="va">stack</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># select top 10 most correlated covariates</span></span>
+<span><span class="va">corRank_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_correlation.html">Lrnr_screener_correlation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  type <span class="op">=</span> <span class="st">"rank"</span>, num_screen <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">corRank_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corRank_screen</span>, <span class="va">stack</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># select covariates with correlation p-value below 0.05, and a minimum of 3</span></span>
+<span><span class="va">corP_screen</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_correlation.html">Lrnr_screener_correlation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  type <span class="op">=</span> <span class="st">"threshold"</span>, pvalue_threshold <span class="op">=</span> <span class="fl">0.05</span>, min_screen <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">corP_screen_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corP_screen</span>, <span class="va">stack</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="augmented-screeners" class="section level3">
 <h3>
@@ -4801,13 +4800,13 @@ always be included. That is, if a screener removes a “mandatory” covariate t
 We assume <code>aged</code> and <code>momage</code> are covariates that must be kept in learner
 fitting.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">keepme</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aged"</span>, <span class="st">"momage"</span><span class="op">)</span>
-<span class="co"># using corRank_screen as an example, but any instantiated screener can be</span>
-<span class="co"># supplied as screener.</span>
-<span class="va">corRank_screen_augmented</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_augment.html">Lrnr_screener_augment</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  screener <span class="op">=</span> <span class="va">corRank_screen</span>, default_covariates <span class="op">=</span> <span class="va">keepme</span>
-<span class="op">)</span>
-<span class="va">corRank_screen_augmented_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corRank_screen_augmented</span>, <span class="va">lrn_glm</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">keepme</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aged"</span>, <span class="st">"momage"</span><span class="op">)</span></span>
+<span><span class="co"># using corRank_screen as an example, but any instantiated screener can be</span></span>
+<span><span class="co"># supplied as screener.</span></span>
+<span><span class="va">corRank_screen_augmented</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_screener_augment.html">Lrnr_screener_augment</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  screener <span class="op">=</span> <span class="va">corRank_screen</span>, default_covariates <span class="op">=</span> <span class="va">keepme</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">corRank_screen_augmented_glm</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Pipeline.html">Pipeline</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">corRank_screen_augmented</span>, <span class="va">lrn_glm</span><span class="op">)</span></span></code></pre></div>
 <p><code>Lrnr_screener_augment</code> is useful when subject-matter experts feel strongly
 that certain covariate sets must be included, even under screening procedures.</p>
 </div>
@@ -4820,10 +4819,10 @@ diversify the library. Here we show how we can create a new <code>Stack</code> f
 learners stacks which includes learners with no screening, and learners coupled
 with various screeners.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">screeners_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  <span class="va">stack</span>, <span class="va">corP_screen_stack</span>, <span class="va">corRank_screen_stack</span>,
-  <span class="va">lasso_screen_stack</span>, <span class="va">RFscreen_top10_stack</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">screeners_stack</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Stack.html">Stack</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">stack</span>, <span class="va">corP_screen_stack</span>, <span class="va">corRank_screen_stack</span>,</span>
+<span>  <span class="va">lasso_screen_stack</span>, <span class="va">RFscreen_top10_stack</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>This <code>screeners_stack</code> could be inputted as <code>learners</code> in <code>Lrnr_sl</code> to
 define the SL that considers as candidates learners with no screening, and
 learners coupled with various screeners.</p>
@@ -4871,19 +4870,19 @@ of covariates to consider in the importance evaluation that is based on
 household assets, as this collection of variables reflects the socio-economic
 status (SES) of the study’s participants.</p>
 <div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">assets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-  <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>, <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>,
-  <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>, <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>,
-  <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>, <span class="st">"asset_mobile"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>,
-  <span class="st">"watmin"</span>, <span class="st">"elec"</span>, <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">983</span><span class="op">)</span>
-<span class="va">washb_varimp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/importance.html">importance</a></span><span class="op">(</span>
-  fit <span class="op">=</span> <span class="va">sl_fit</span>, eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span>, type <span class="op">=</span> <span class="st">"permute"</span>,
-  covariate_groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"assets"</span> <span class="op">=</span> <span class="va">assets</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">assets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"asset_wardrobe"</span>, <span class="st">"asset_table"</span>, <span class="st">"asset_chair"</span>, <span class="st">"asset_khat"</span>,</span>
+<span>  <span class="st">"asset_chouki"</span>, <span class="st">"asset_tv"</span>, <span class="st">"asset_refrig"</span>, <span class="st">"asset_bike"</span>,</span>
+<span>  <span class="st">"asset_moto"</span>, <span class="st">"asset_sewmach"</span>, <span class="st">"asset_mobile"</span>, <span class="st">"Nlt18"</span>, <span class="st">"Ncomp"</span>,</span>
+<span>  <span class="st">"watmin"</span>, <span class="st">"elec"</span>, <span class="st">"floor"</span>, <span class="st">"walls"</span>, <span class="st">"roof"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">983</span><span class="op">)</span></span>
+<span><span class="va">washb_varimp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/importance.html">importance</a></span><span class="op">(</span></span>
+<span>  fit <span class="op">=</span> <span class="va">sl_fit</span>, eval_fun <span class="op">=</span> <span class="va">loss_squared_error</span>, type <span class="op">=</span> <span class="st">"permute"</span>,</span>
+<span>  covariate_groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"assets"</span> <span class="op">=</span> <span class="va">assets</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">washb_varimp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">washb_varimp</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -4995,8 +4994,8 @@ delta_momage
 </table></div>
 </div>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># plot variable importance</span>
-<span class="fu"><a href="https://tlverse.org/sl3/reference/importance_plot.html">importance_plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">washb_varimp</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># plot variable importance</span></span>
+<span><span class="fu"><a href="https://tlverse.org/sl3/reference/importance_plot.html">importance_plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">washb_varimp</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:varimp-plot"></span>
 <img src="07-sl3_files/figure-html/varimp-plot-1.png" alt="sl3 variable importance for predicting weight-for-height z-score with WASH Benefits example dataset" width="80%"><p class="caption">
@@ -5089,21 +5088,21 @@ Both approaches have been implemented in <code>sl3</code>, in the learner
 <span class="math inline">\(f_{\mu}\)</span> and the optional <code>var_learner</code> argument specifies <span class="math inline">\(f_{\sigma}\)</span>. We
 demonstrate CDE with this approach below.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># semiparametric density estimator with homoscedastic errors (HOSE)</span>
-<span class="va">hose_hal_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_density_semiparametric.html">Lrnr_density_semiparametric</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  mean_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_hal9001.html">Lrnr_hal9001</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="co"># semiparametric density estimator with heteroscedastic errors (HESE)</span>
-<span class="va">hese_rf_glm_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_density_semiparametric.html">Lrnr_density_semiparametric</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  mean_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>,
-  var_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># SL for the conditional treatment density</span>
-<span class="va">sl_dens_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  learners <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">hose_hal_lrnr</span>, <span class="va">hese_rf_glm_lrnr</span><span class="op">)</span>,
-  metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_solnp_density.html">Lrnr_solnp_density</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># semiparametric density estimator with homoscedastic errors (HOSE)</span></span>
+<span><span class="va">hose_hal_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_density_semiparametric.html">Lrnr_density_semiparametric</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  mean_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_hal9001.html">Lrnr_hal9001</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># semiparametric density estimator with heteroscedastic errors (HESE)</span></span>
+<span><span class="va">hese_rf_glm_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_density_semiparametric.html">Lrnr_density_semiparametric</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  mean_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  var_learner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># SL for the conditional treatment density</span></span>
+<span><span class="va">sl_dens_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  learners <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">hose_hal_lrnr</span>, <span class="va">hese_rf_glm_lrnr</span><span class="op">)</span>,</span>
+<span>  metalearner <span class="op">=</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_solnp_density.html">Lrnr_solnp_density</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="pooled-hazard-regression" class="section level3">
 <h3>
@@ -5178,10 +5177,10 @@ highly adaptive lasso (HAL) algorithm <span class="citation">(Benkeser and van d
 <code>haldensify</code> is incorporated as learner <code>Lrnr_haldensify</code> in <code>sl3</code>, as we
 demonstrate below.</p>
 <div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># learners used for conditional densities for (g_n)</span>
-<span class="va">haldensify_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_haldensify.html">Lrnr_haldensify</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  n_bins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># learners used for conditional densities for (g_n)</span></span>
+<span><span class="va">haldensify_lrnr</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_haldensify.html">Lrnr_haldensify</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  n_bins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <!--
 
 ## Time series forecasting
@@ -5200,18 +5199,18 @@ demonstrate below.</p>
 Assistant Professor of Biostatistics and Bioinformatics at Emory University, for
 making this Cardiovascular Health Study (CHS) publicly data available.</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># load the data set</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
-<span class="va">db_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>
-    <span class="st">"https://raw.githubusercontent.com/benkeser/sllecture/master/"</span>,
-    <span class="st">"chspred.csv"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="va">chspred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">db_data</span>, col_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># load the data set</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="va">db_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://raw.githubusercontent.com/benkeser/sllecture/master/"</span>,</span>
+<span>    <span class="st">"chspred.csv"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">chspred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">db_data</span>, col_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s take a quick peek at the data:</p>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -5941,51 +5940,51 @@ TMLE.</p></li>
 Infarction with
 <code>sl3</code></a>.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">db_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span>
-  <span class="st">"https://raw.githubusercontent.com/benkeser/sllecture/master/chspred.csv"</span>
-<span class="op">)</span>
-<span class="va">chspred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">db_data</span>, col_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/setDT.html">setDT</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span>
-
-<span class="co"># make task</span>
-<span class="va">chspred_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">chspred</span>,
-  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>,
-  outcome <span class="op">=</span> <span class="st">"mi"</span>
-<span class="op">)</span>
-
-<span class="co"># make learners</span>
-<span class="va">glm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">lasso_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="va">ridge_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-<span class="va">enet_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
-<span class="co"># curated_glm_learner uses formula = "mi ~ smoke + beta"</span>
-<span class="va">curated_glm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm_fast.html">Lrnr_glm_fast</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"smoke"</span>, <span class="st">"beta"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">mean_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_mean.html">Lrnr_mean</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span> <span class="co"># That is one mean learner!</span>
-<span class="va">glm_fast_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm_fast.html">Lrnr_glm_fast</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">ranger_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">svm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_svm.html">Lrnr_svm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-<span class="va">xgb_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_xgboost.html">Lrnr_xgboost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># screening</span>
-<span class="va">screen_cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span><span class="va">Lrnr_screener_correlation</span><span class="op">)</span>
-<span class="va">glm_pipeline</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span><span class="va">Pipeline</span>, <span class="va">screen_cor</span>, <span class="va">glm_learner</span><span class="op">)</span>
-
-<span class="co"># stack learners together</span>
-<span class="va">stack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span>
-  <span class="va">Stack</span>,
-  <span class="va">glm_pipeline</span>, <span class="va">glm_learner</span>,
-  <span class="va">lasso_learner</span>, <span class="va">ridge_learner</span>, <span class="va">enet_learner</span>,
-  <span class="va">curated_glm_learner</span>, <span class="va">mean_learner</span>, <span class="va">glm_fast_learner</span>,
-  <span class="va">ranger_learner</span>, <span class="va">svm_learner</span>, <span class="va">xgb_learner</span>
-<span class="op">)</span>
-
-<span class="co"># make and train SL</span>
-<span class="va">sl</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  learners <span class="op">=</span> <span class="va">stack</span>
-<span class="op">)</span>
-<span class="va">sl_fit</span> <span class="op">&lt;-</span> <span class="va">sl</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">chspred_task</span><span class="op">)</span>
-<span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span><span class="va">loss_squared_error</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">db_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://raw.githubusercontent.com/benkeser/sllecture/master/chspred.csv"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">chspred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">db_data</span>, col_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">data.table</span><span class="fu">::</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/setDT.html">setDT</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># make task</span></span>
+<span><span class="va">chspred_task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/sl3_Task.html">make_sl3_Task</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">chspred</span>,</span>
+<span>  covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">chspred</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  outcome <span class="op">=</span> <span class="st">"mi"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># make learners</span></span>
+<span><span class="va">glm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm.html">Lrnr_glm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">lasso_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">ridge_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">enet_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glmnet.html">Lrnr_glmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co"># curated_glm_learner uses formula = "mi ~ smoke + beta"</span></span>
+<span><span class="va">curated_glm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm_fast.html">Lrnr_glm_fast</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>covariates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"smoke"</span>, <span class="st">"beta"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mean_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_mean.html">Lrnr_mean</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span> <span class="co"># That is one mean learner!</span></span>
+<span><span class="va">glm_fast_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_glm_fast.html">Lrnr_glm_fast</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">ranger_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_ranger.html">Lrnr_ranger</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">svm_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_svm.html">Lrnr_svm</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">xgb_learner</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_xgboost.html">Lrnr_xgboost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># screening</span></span>
+<span><span class="va">screen_cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span><span class="va">Lrnr_screener_correlation</span><span class="op">)</span></span>
+<span><span class="va">glm_pipeline</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span><span class="va">Pipeline</span>, <span class="va">screen_cor</span>, <span class="va">glm_learner</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># stack learners together</span></span>
+<span><span class="va">stack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tlverse.org/sl3/reference/Lrnr_base.html">make_learner</a></span><span class="op">(</span></span>
+<span>  <span class="va">Stack</span>,</span>
+<span>  <span class="va">glm_pipeline</span>, <span class="va">glm_learner</span>,</span>
+<span>  <span class="va">lasso_learner</span>, <span class="va">ridge_learner</span>, <span class="va">enet_learner</span>,</span>
+<span>  <span class="va">curated_glm_learner</span>, <span class="va">mean_learner</span>, <span class="va">glm_fast_learner</span>,</span>
+<span>  <span class="va">ranger_learner</span>, <span class="va">svm_learner</span>, <span class="va">xgb_learner</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># make and train SL</span></span>
+<span><span class="va">sl</span> <span class="op">&lt;-</span> <span class="va"><a href="https://tlverse.org/sl3/reference/Lrnr_sl.html">Lrnr_sl</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  learners <span class="op">=</span> <span class="va">stack</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sl_fit</span> <span class="op">&lt;-</span> <span class="va">sl</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">chspred_task</span><span class="op">)</span></span>
+<span><span class="va">sl_fit</span><span class="op">$</span><span class="fu">cv_risk</span><span class="op">(</span><span class="va">loss_squared_error</span><span class="op">)</span></span></code></pre></div>
 
 </div>
 </div>
@@ -6085,7 +6084,7 @@ Infarction with
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 05, 2023.</p>
+    <p>"<strong>[ENAR 2023 Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 07, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -6098,7 +6097,7 @@ Infarction with
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
