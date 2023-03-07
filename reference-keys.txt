@@ -144,7 +144,7 @@ targeted-estimation-2
 exercise
 real-world-data-and-tmle3mopttx
 solutions
-stochastic-treatment-regimes-optional
+stochastic-treatment-regimes
 learning-objectives-4
 introduction-5
 stochastic-interventions

@@ -1,4 +1,4 @@
-# Stochastic Treatment Regimes (optional)
+# Stochastic Treatment Regimes
 
 _Nima Hejazi_
 
