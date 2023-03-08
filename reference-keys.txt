@@ -11,6 +11,7 @@ exr:unlabeled-div-4
 exr:unlabeled-div-5
 exr:unlabeled-div-6
 exr:unlabeled-div-7
+materials
 intro
 learning-objectives
 introduction-1

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning in the tlverse</title>
+<title>Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning</title>
 <meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
 <meta name="description" content="Ivana Malenica Based on the origami R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica and Rachael Phillips. Learning Objectives By the end of this chapter you will be able to: Differentiate...">
 <meta name="generator" content="bookdown 0.32.2 with bs4_book()">
-<meta property="og:title" content="Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning in the tlverse">
+<meta property="og:title" content="Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tlverse.org/enar2023-workshop/origami.html">
 <meta property="og:description" content="Ivana Malenica Based on the origami R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica and Rachael Phillips. Learning Objectives By the end of this chapter you will be able to: Differentiate...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning in the tlverse">
+<meta name="twitter:title" content="Chapter 2 Cross-validation | [ENAR 2023 Short Course] Targeted Learning">
 <meta name="twitter:description" content="Ivana Malenica Based on the origami R package by Jeremy Coyle, Nima Hejazi, Ivana Malenica and Rachael Phillips. Learning Objectives By the end of this chapter you will be able to: Differentiate...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[ENAR 2023 Short Course] Targeted Learning in the <code>tlverse</code></a>:
+        <a href="index.html" title="Advanced Methods for Causal Machine Learning">[ENAR 2023 Short Course] Targeted Learning</a>:
         <small class="text-muted">Advanced Methods for Causal Machine Learning</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
@@ -58,12 +58,12 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="index.html">Course Information</a></li>
 <li><a class="" href="introduction.html">Introduction</a></li>
 <li class="book-part">Part 1: Preliminaries</li>
 <li><a class="" href="setting-up-r-and-rstudio.html">Setting up R and RStudio</a></li>
-<li><a class="" href="install-tlverse-software-installtlverse.html">Install tlverse software {#installtlverse}</a></li>
-<li><a class="" href="supplemental-learning-resources.html">Supplemental learning resources</a></li>
+<li><a class="" href="install-software-packages.html">Install Software Packages</a></li>
+<li><a class="" href="supplemental-learning-resources.html">Supplemental Learning Resources</a></li>
 <li class="book-part">Part 2: The tlverse</li>
 <li><a class="" href="what-is-the-tlverse.html">What is the tlverse?</a></li>
 <li><a class="" href="primer-on-the-r6-class-system.html">Primer on the R6 Class System</a></li>
@@ -376,7 +376,7 @@ distributed (i.i.d.) random draws from an unknown distribution <span class="math
 see what each cross-validation scheme is doing, we will subset the data to only
 <span class="math inline">\(n=30\)</span>. Note that each row represents an i.i.d. sampled unit, indexed by the row
 number.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tlverse.org/origami/">origami</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
@@ -1029,22 +1029,22 @@ structure of the <code>origami</code> output:</p>
 <p>The structure of the <code>origami</code> output, a <code>list</code> of fold(s), holds across all of
 the cross-validation schemes presented in this chapter. Below, we show the fold
 generated by the re-substitution method:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="origami.html#cb6-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_resubstitution</span>(<span class="kw">nrow</span>(washb_data))</span>
-<span id="cb6-2"><a href="origami.html#cb6-2"></a>folds</span>
-<span id="cb6-3"><a href="origami.html#cb6-3"></a>[[<span class="dv">1</span>]]</span>
-<span id="cb6-4"><a href="origami.html#cb6-4"></a><span class="op">$</span>v</span>
-<span id="cb6-5"><a href="origami.html#cb6-5"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb6-6"><a href="origami.html#cb6-6"></a></span>
-<span id="cb6-7"><a href="origami.html#cb6-7"></a><span class="op">$</span>training_set</span>
-<span id="cb6-8"><a href="origami.html#cb6-8"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb6-9"><a href="origami.html#cb6-9"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb6-10"><a href="origami.html#cb6-10"></a></span>
-<span id="cb6-11"><a href="origami.html#cb6-11"></a><span class="op">$</span>validation_set</span>
-<span id="cb6-12"><a href="origami.html#cb6-12"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb6-13"><a href="origami.html#cb6-13"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb6-14"><a href="origami.html#cb6-14"></a></span>
-<span id="cb6-15"><a href="origami.html#cb6-15"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb6-16"><a href="origami.html#cb6-16"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="origami.html#cb5-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_resubstitution</span>(<span class="kw">nrow</span>(washb_data))</span>
+<span id="cb5-2"><a href="origami.html#cb5-2"></a>folds</span>
+<span id="cb5-3"><a href="origami.html#cb5-3"></a>[[<span class="dv">1</span>]]</span>
+<span id="cb5-4"><a href="origami.html#cb5-4"></a><span class="op">$</span>v</span>
+<span id="cb5-5"><a href="origami.html#cb5-5"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb5-6"><a href="origami.html#cb5-6"></a></span>
+<span id="cb5-7"><a href="origami.html#cb5-7"></a><span class="op">$</span>training_set</span>
+<span id="cb5-8"><a href="origami.html#cb5-8"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb5-9"><a href="origami.html#cb5-9"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb5-10"><a href="origami.html#cb5-10"></a></span>
+<span id="cb5-11"><a href="origami.html#cb5-11"></a><span class="op">$</span>validation_set</span>
+<span id="cb5-12"><a href="origami.html#cb5-12"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb5-13"><a href="origami.html#cb5-13"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb5-14"><a href="origami.html#cb5-14"></a></span>
+<span id="cb5-15"><a href="origami.html#cb5-15"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb5-16"><a href="origami.html#cb5-16"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1114,33 +1114,33 @@ is large.</p>
 only the total number of sampled units over which the cross-validation procedure
 is to operate. We show the first two folds generated by leave-one-out
 cross-validation below.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="origami.html#cb7-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_loo</span>(<span class="kw">nrow</span>(washb_data))</span>
-<span id="cb7-2"><a href="origami.html#cb7-2"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb7-3"><a href="origami.html#cb7-3"></a><span class="op">$</span>v</span>
-<span id="cb7-4"><a href="origami.html#cb7-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb7-5"><a href="origami.html#cb7-5"></a></span>
-<span id="cb7-6"><a href="origami.html#cb7-6"></a><span class="op">$</span>training_set</span>
-<span id="cb7-7"><a href="origami.html#cb7-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span></span>
-<span id="cb7-8"><a href="origami.html#cb7-8"></a>[<span class="dv">26</span>] <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb7-9"><a href="origami.html#cb7-9"></a></span>
-<span id="cb7-10"><a href="origami.html#cb7-10"></a><span class="op">$</span>validation_set</span>
-<span id="cb7-11"><a href="origami.html#cb7-11"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb7-12"><a href="origami.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="origami.html#cb7-13"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb7-14"><a href="origami.html#cb7-14"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb7-15"><a href="origami.html#cb7-15"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb7-16"><a href="origami.html#cb7-16"></a><span class="op">$</span>v</span>
-<span id="cb7-17"><a href="origami.html#cb7-17"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb7-18"><a href="origami.html#cb7-18"></a></span>
-<span id="cb7-19"><a href="origami.html#cb7-19"></a><span class="op">$</span>training_set</span>
-<span id="cb7-20"><a href="origami.html#cb7-20"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span></span>
-<span id="cb7-21"><a href="origami.html#cb7-21"></a>[<span class="dv">26</span>] <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb7-22"><a href="origami.html#cb7-22"></a></span>
-<span id="cb7-23"><a href="origami.html#cb7-23"></a><span class="op">$</span>validation_set</span>
-<span id="cb7-24"><a href="origami.html#cb7-24"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb7-25"><a href="origami.html#cb7-25"></a></span>
-<span id="cb7-26"><a href="origami.html#cb7-26"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb7-27"><a href="origami.html#cb7-27"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="origami.html#cb6-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_loo</span>(<span class="kw">nrow</span>(washb_data))</span>
+<span id="cb6-2"><a href="origami.html#cb6-2"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb6-3"><a href="origami.html#cb6-3"></a><span class="op">$</span>v</span>
+<span id="cb6-4"><a href="origami.html#cb6-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb6-5"><a href="origami.html#cb6-5"></a></span>
+<span id="cb6-6"><a href="origami.html#cb6-6"></a><span class="op">$</span>training_set</span>
+<span id="cb6-7"><a href="origami.html#cb6-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span></span>
+<span id="cb6-8"><a href="origami.html#cb6-8"></a>[<span class="dv">26</span>] <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb6-9"><a href="origami.html#cb6-9"></a></span>
+<span id="cb6-10"><a href="origami.html#cb6-10"></a><span class="op">$</span>validation_set</span>
+<span id="cb6-11"><a href="origami.html#cb6-11"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb6-12"><a href="origami.html#cb6-12"></a></span>
+<span id="cb6-13"><a href="origami.html#cb6-13"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb6-14"><a href="origami.html#cb6-14"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb6-15"><a href="origami.html#cb6-15"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb6-16"><a href="origami.html#cb6-16"></a><span class="op">$</span>v</span>
+<span id="cb6-17"><a href="origami.html#cb6-17"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb6-18"><a href="origami.html#cb6-18"></a></span>
+<span id="cb6-19"><a href="origami.html#cb6-19"></a><span class="op">$</span>training_set</span>
+<span id="cb6-20"><a href="origami.html#cb6-20"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span></span>
+<span id="cb6-21"><a href="origami.html#cb6-21"></a>[<span class="dv">26</span>] <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb6-22"><a href="origami.html#cb6-22"></a></span>
+<span id="cb6-23"><a href="origami.html#cb6-23"></a><span class="op">$</span>validation_set</span>
+<span id="cb6-24"><a href="origami.html#cb6-24"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb6-25"><a href="origami.html#cb6-25"></a></span>
+<span id="cb6-26"><a href="origami.html#cb6-26"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb6-27"><a href="origami.html#cb6-27"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1189,31 +1189,31 @@ to call <code>origami</code>’s <code>folds_vfold(n, V)</code> function. The tw
 and the number of folds we wish to have.</p>
 <p>For example, at <span class="math inline">\(V=2\)</span>, we will get two folds, each with approximately <span class="math inline">\(n/2\)</span>
 sampled units in the training and validation sets.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="origami.html#cb8-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_vfold</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>)</span>
-<span id="cb8-2"><a href="origami.html#cb8-2"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb8-3"><a href="origami.html#cb8-3"></a><span class="op">$</span>v</span>
-<span id="cb8-4"><a href="origami.html#cb8-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb8-5"><a href="origami.html#cb8-5"></a></span>
-<span id="cb8-6"><a href="origami.html#cb8-6"></a><span class="op">$</span>training_set</span>
-<span id="cb8-7"><a href="origami.html#cb8-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">19</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">28</span></span>
-<span id="cb8-8"><a href="origami.html#cb8-8"></a></span>
-<span id="cb8-9"><a href="origami.html#cb8-9"></a><span class="op">$</span>validation_set</span>
-<span id="cb8-10"><a href="origami.html#cb8-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">13</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb8-11"><a href="origami.html#cb8-11"></a></span>
-<span id="cb8-12"><a href="origami.html#cb8-12"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb8-13"><a href="origami.html#cb8-13"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb8-14"><a href="origami.html#cb8-14"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb8-15"><a href="origami.html#cb8-15"></a><span class="op">$</span>v</span>
-<span id="cb8-16"><a href="origami.html#cb8-16"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb8-17"><a href="origami.html#cb8-17"></a></span>
-<span id="cb8-18"><a href="origami.html#cb8-18"></a><span class="op">$</span>training_set</span>
-<span id="cb8-19"><a href="origami.html#cb8-19"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">13</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">29</span> <span class="dv">30</span></span>
-<span id="cb8-20"><a href="origami.html#cb8-20"></a></span>
-<span id="cb8-21"><a href="origami.html#cb8-21"></a><span class="op">$</span>validation_set</span>
-<span id="cb8-22"><a href="origami.html#cb8-22"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">19</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">28</span></span>
-<span id="cb8-23"><a href="origami.html#cb8-23"></a></span>
-<span id="cb8-24"><a href="origami.html#cb8-24"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb8-25"><a href="origami.html#cb8-25"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="origami.html#cb7-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_vfold</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="origami.html#cb7-2"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb7-3"><a href="origami.html#cb7-3"></a><span class="op">$</span>v</span>
+<span id="cb7-4"><a href="origami.html#cb7-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb7-5"><a href="origami.html#cb7-5"></a></span>
+<span id="cb7-6"><a href="origami.html#cb7-6"></a><span class="op">$</span>training_set</span>
+<span id="cb7-7"><a href="origami.html#cb7-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">19</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">28</span></span>
+<span id="cb7-8"><a href="origami.html#cb7-8"></a></span>
+<span id="cb7-9"><a href="origami.html#cb7-9"></a><span class="op">$</span>validation_set</span>
+<span id="cb7-10"><a href="origami.html#cb7-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">13</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb7-11"><a href="origami.html#cb7-11"></a></span>
+<span id="cb7-12"><a href="origami.html#cb7-12"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb7-13"><a href="origami.html#cb7-13"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb7-14"><a href="origami.html#cb7-14"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb7-15"><a href="origami.html#cb7-15"></a><span class="op">$</span>v</span>
+<span id="cb7-16"><a href="origami.html#cb7-16"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb7-17"><a href="origami.html#cb7-17"></a></span>
+<span id="cb7-18"><a href="origami.html#cb7-18"></a><span class="op">$</span>training_set</span>
+<span id="cb7-19"><a href="origami.html#cb7-19"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">13</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">29</span> <span class="dv">30</span></span>
+<span id="cb7-20"><a href="origami.html#cb7-20"></a></span>
+<span id="cb7-21"><a href="origami.html#cb7-21"></a><span class="op">$</span>validation_set</span>
+<span id="cb7-22"><a href="origami.html#cb7-22"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">19</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">28</span></span>
+<span id="cb7-23"><a href="origami.html#cb7-23"></a></span>
+<span id="cb7-24"><a href="origami.html#cb7-24"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb7-25"><a href="origami.html#cb7-25"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1253,31 +1253,31 @@ order to set up <code>folds_montecarlo(n, V, pvalidation)</code>, we need the fo
 </ol>
 <p>For example, setting <span class="math inline">\(V=2\)</span> and <span class="math inline">\(pvalidation = 0.2\)</span>, we obtain two folds, each
 with approximately <span class="math inline">\(6\)</span> sampled units in the validation set for each fold.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="origami.html#cb9-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_montecarlo</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>, <span class="dt">pvalidation =</span> <span class="fl">0.2</span>)</span>
-<span id="cb9-2"><a href="origami.html#cb9-2"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb9-3"><a href="origami.html#cb9-3"></a><span class="op">$</span>v</span>
-<span id="cb9-4"><a href="origami.html#cb9-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb9-5"><a href="origami.html#cb9-5"></a></span>
-<span id="cb9-6"><a href="origami.html#cb9-6"></a><span class="op">$</span>training_set</span>
-<span id="cb9-7"><a href="origami.html#cb9-7"></a> [<span class="dv">1</span>] <span class="dv">19</span> <span class="dv">27</span> <span class="dv">16</span> <span class="dv">29</span> <span class="dv">23</span> <span class="dv">12</span>  <span class="dv">1</span>  <span class="dv">3</span> <span class="dv">18</span> <span class="dv">11</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">6</span>  <span class="dv">9</span> <span class="dv">22</span> <span class="dv">10</span> <span class="dv">25</span> <span class="dv">20</span> <span class="dv">28</span> <span class="dv">15</span>  <span class="dv">2</span> <span class="dv">24</span> <span class="dv">26</span></span>
-<span id="cb9-8"><a href="origami.html#cb9-8"></a></span>
-<span id="cb9-9"><a href="origami.html#cb9-9"></a><span class="op">$</span>validation_set</span>
-<span id="cb9-10"><a href="origami.html#cb9-10"></a>[<span class="dv">1</span>]  <span class="dv">4</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">17</span> <span class="dv">21</span> <span class="dv">30</span></span>
-<span id="cb9-11"><a href="origami.html#cb9-11"></a></span>
-<span id="cb9-12"><a href="origami.html#cb9-12"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb9-13"><a href="origami.html#cb9-13"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb9-14"><a href="origami.html#cb9-14"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb9-15"><a href="origami.html#cb9-15"></a><span class="op">$</span>v</span>
-<span id="cb9-16"><a href="origami.html#cb9-16"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb9-17"><a href="origami.html#cb9-17"></a></span>
-<span id="cb9-18"><a href="origami.html#cb9-18"></a><span class="op">$</span>training_set</span>
-<span id="cb9-19"><a href="origami.html#cb9-19"></a> [<span class="dv">1</span>] <span class="dv">19</span> <span class="dv">15</span> <span class="dv">28</span> <span class="dv">25</span> <span class="dv">29</span> <span class="dv">11</span> <span class="dv">20</span> <span class="dv">17</span> <span class="dv">14</span>  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">12</span> <span class="dv">30</span>  <span class="dv">8</span> <span class="dv">27</span> <span class="dv">18</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">13</span>  <span class="dv">6</span> <span class="dv">24</span>  <span class="dv">3</span> <span class="dv">26</span>  <span class="dv">1</span></span>
-<span id="cb9-20"><a href="origami.html#cb9-20"></a></span>
-<span id="cb9-21"><a href="origami.html#cb9-21"></a><span class="op">$</span>validation_set</span>
-<span id="cb9-22"><a href="origami.html#cb9-22"></a>[<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">5</span>  <span class="dv">7</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span></span>
-<span id="cb9-23"><a href="origami.html#cb9-23"></a></span>
-<span id="cb9-24"><a href="origami.html#cb9-24"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb9-25"><a href="origami.html#cb9-25"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="origami.html#cb8-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_montecarlo</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>, <span class="dt">pvalidation =</span> <span class="fl">0.2</span>)</span>
+<span id="cb8-2"><a href="origami.html#cb8-2"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb8-3"><a href="origami.html#cb8-3"></a><span class="op">$</span>v</span>
+<span id="cb8-4"><a href="origami.html#cb8-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb8-5"><a href="origami.html#cb8-5"></a></span>
+<span id="cb8-6"><a href="origami.html#cb8-6"></a><span class="op">$</span>training_set</span>
+<span id="cb8-7"><a href="origami.html#cb8-7"></a> [<span class="dv">1</span>] <span class="dv">19</span> <span class="dv">27</span> <span class="dv">16</span> <span class="dv">29</span> <span class="dv">23</span> <span class="dv">12</span>  <span class="dv">1</span>  <span class="dv">3</span> <span class="dv">18</span> <span class="dv">11</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">6</span>  <span class="dv">9</span> <span class="dv">22</span> <span class="dv">10</span> <span class="dv">25</span> <span class="dv">20</span> <span class="dv">28</span> <span class="dv">15</span>  <span class="dv">2</span> <span class="dv">24</span> <span class="dv">26</span></span>
+<span id="cb8-8"><a href="origami.html#cb8-8"></a></span>
+<span id="cb8-9"><a href="origami.html#cb8-9"></a><span class="op">$</span>validation_set</span>
+<span id="cb8-10"><a href="origami.html#cb8-10"></a>[<span class="dv">1</span>]  <span class="dv">4</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">17</span> <span class="dv">21</span> <span class="dv">30</span></span>
+<span id="cb8-11"><a href="origami.html#cb8-11"></a></span>
+<span id="cb8-12"><a href="origami.html#cb8-12"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb8-13"><a href="origami.html#cb8-13"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb8-14"><a href="origami.html#cb8-14"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb8-15"><a href="origami.html#cb8-15"></a><span class="op">$</span>v</span>
+<span id="cb8-16"><a href="origami.html#cb8-16"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb8-17"><a href="origami.html#cb8-17"></a></span>
+<span id="cb8-18"><a href="origami.html#cb8-18"></a><span class="op">$</span>training_set</span>
+<span id="cb8-19"><a href="origami.html#cb8-19"></a> [<span class="dv">1</span>] <span class="dv">19</span> <span class="dv">15</span> <span class="dv">28</span> <span class="dv">25</span> <span class="dv">29</span> <span class="dv">11</span> <span class="dv">20</span> <span class="dv">17</span> <span class="dv">14</span>  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">12</span> <span class="dv">30</span>  <span class="dv">8</span> <span class="dv">27</span> <span class="dv">18</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">13</span>  <span class="dv">6</span> <span class="dv">24</span>  <span class="dv">3</span> <span class="dv">26</span>  <span class="dv">1</span></span>
+<span id="cb8-20"><a href="origami.html#cb8-20"></a></span>
+<span id="cb8-21"><a href="origami.html#cb8-21"></a><span class="op">$</span>validation_set</span>
+<span id="cb8-22"><a href="origami.html#cb8-22"></a>[<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">5</span>  <span class="dv">7</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span></span>
+<span id="cb8-23"><a href="origami.html#cb8-23"></a></span>
+<span id="cb8-24"><a href="origami.html#cb8-24"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb8-25"><a href="origami.html#cb8-25"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1312,33 +1312,33 @@ below, using the <code>folds_bootstrap(n, V)</code> function. In order to set up
 </ol>
 <p>For example, setting <span class="math inline">\(V=2\)</span>, we obtain two folds, each with different numbers of
 sampled units in the validation sets across the folds.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="origami.html#cb10-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_bootstrap</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>)</span>
-<span id="cb10-2"><a href="origami.html#cb10-2"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb10-3"><a href="origami.html#cb10-3"></a><span class="op">$</span>v</span>
-<span id="cb10-4"><a href="origami.html#cb10-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb10-5"><a href="origami.html#cb10-5"></a></span>
-<span id="cb10-6"><a href="origami.html#cb10-6"></a><span class="op">$</span>training_set</span>
-<span id="cb10-7"><a href="origami.html#cb10-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">5</span> <span class="dv">30</span>  <span class="dv">1</span> <span class="dv">29</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">11</span>  <span class="dv">8</span> <span class="dv">25</span> <span class="dv">28</span>  <span class="dv">2</span> <span class="dv">11</span>  <span class="dv">2</span> <span class="dv">16</span> <span class="dv">28</span> <span class="dv">15</span> <span class="dv">28</span>  <span class="dv">1</span> <span class="dv">27</span>  <span class="dv">9</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">30</span> <span class="dv">18</span></span>
-<span id="cb10-8"><a href="origami.html#cb10-8"></a>[<span class="dv">26</span>] <span class="dv">11</span> <span class="dv">13</span>  <span class="dv">2</span> <span class="dv">18</span> <span class="dv">12</span></span>
-<span id="cb10-9"><a href="origami.html#cb10-9"></a></span>
-<span id="cb10-10"><a href="origami.html#cb10-10"></a><span class="op">$</span>validation_set</span>
-<span id="cb10-11"><a href="origami.html#cb10-11"></a> [<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span> <span class="dv">14</span> <span class="dv">17</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">26</span></span>
-<span id="cb10-12"><a href="origami.html#cb10-12"></a></span>
-<span id="cb10-13"><a href="origami.html#cb10-13"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb10-14"><a href="origami.html#cb10-14"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb10-15"><a href="origami.html#cb10-15"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb10-16"><a href="origami.html#cb10-16"></a><span class="op">$</span>v</span>
-<span id="cb10-17"><a href="origami.html#cb10-17"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb10-18"><a href="origami.html#cb10-18"></a></span>
-<span id="cb10-19"><a href="origami.html#cb10-19"></a><span class="op">$</span>training_set</span>
-<span id="cb10-20"><a href="origami.html#cb10-20"></a> [<span class="dv">1</span>] <span class="dv">12</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">29</span> <span class="dv">22</span> <span class="dv">15</span> <span class="dv">27</span>  <span class="dv">9</span> <span class="dv">27</span> <span class="dv">16</span> <span class="dv">12</span> <span class="dv">28</span> <span class="dv">10</span> <span class="dv">28</span> <span class="dv">26</span>  <span class="dv">1</span> <span class="dv">14</span>  <span class="dv">6</span> <span class="dv">23</span> <span class="dv">14</span> <span class="dv">21</span> <span class="dv">16</span>  <span class="dv">5</span> <span class="dv">20</span>  <span class="dv">8</span></span>
-<span id="cb10-21"><a href="origami.html#cb10-21"></a>[<span class="dv">26</span>] <span class="dv">23</span> <span class="dv">25</span>  <span class="dv">8</span> <span class="dv">27</span>  <span class="dv">5</span></span>
-<span id="cb10-22"><a href="origami.html#cb10-22"></a></span>
-<span id="cb10-23"><a href="origami.html#cb10-23"></a><span class="op">$</span>validation_set</span>
-<span id="cb10-24"><a href="origami.html#cb10-24"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">7</span> <span class="dv">11</span> <span class="dv">13</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">24</span> <span class="dv">30</span></span>
-<span id="cb10-25"><a href="origami.html#cb10-25"></a></span>
-<span id="cb10-26"><a href="origami.html#cb10-26"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb10-27"><a href="origami.html#cb10-27"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="origami.html#cb9-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_bootstrap</span>(<span class="kw">nrow</span>(washb_data), <span class="dt">V =</span> <span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="origami.html#cb9-2"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb9-3"><a href="origami.html#cb9-3"></a><span class="op">$</span>v</span>
+<span id="cb9-4"><a href="origami.html#cb9-4"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb9-5"><a href="origami.html#cb9-5"></a></span>
+<span id="cb9-6"><a href="origami.html#cb9-6"></a><span class="op">$</span>training_set</span>
+<span id="cb9-7"><a href="origami.html#cb9-7"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">5</span> <span class="dv">30</span>  <span class="dv">1</span> <span class="dv">29</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">11</span>  <span class="dv">8</span> <span class="dv">25</span> <span class="dv">28</span>  <span class="dv">2</span> <span class="dv">11</span>  <span class="dv">2</span> <span class="dv">16</span> <span class="dv">28</span> <span class="dv">15</span> <span class="dv">28</span>  <span class="dv">1</span> <span class="dv">27</span>  <span class="dv">9</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">30</span> <span class="dv">18</span></span>
+<span id="cb9-8"><a href="origami.html#cb9-8"></a>[<span class="dv">26</span>] <span class="dv">11</span> <span class="dv">13</span>  <span class="dv">2</span> <span class="dv">18</span> <span class="dv">12</span></span>
+<span id="cb9-9"><a href="origami.html#cb9-9"></a></span>
+<span id="cb9-10"><a href="origami.html#cb9-10"></a><span class="op">$</span>validation_set</span>
+<span id="cb9-11"><a href="origami.html#cb9-11"></a> [<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">7</span> <span class="dv">14</span> <span class="dv">17</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">26</span></span>
+<span id="cb9-12"><a href="origami.html#cb9-12"></a></span>
+<span id="cb9-13"><a href="origami.html#cb9-13"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb9-14"><a href="origami.html#cb9-14"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb9-15"><a href="origami.html#cb9-15"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb9-16"><a href="origami.html#cb9-16"></a><span class="op">$</span>v</span>
+<span id="cb9-17"><a href="origami.html#cb9-17"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb9-18"><a href="origami.html#cb9-18"></a></span>
+<span id="cb9-19"><a href="origami.html#cb9-19"></a><span class="op">$</span>training_set</span>
+<span id="cb9-20"><a href="origami.html#cb9-20"></a> [<span class="dv">1</span>] <span class="dv">12</span> <span class="dv">16</span> <span class="dv">10</span> <span class="dv">29</span> <span class="dv">22</span> <span class="dv">15</span> <span class="dv">27</span>  <span class="dv">9</span> <span class="dv">27</span> <span class="dv">16</span> <span class="dv">12</span> <span class="dv">28</span> <span class="dv">10</span> <span class="dv">28</span> <span class="dv">26</span>  <span class="dv">1</span> <span class="dv">14</span>  <span class="dv">6</span> <span class="dv">23</span> <span class="dv">14</span> <span class="dv">21</span> <span class="dv">16</span>  <span class="dv">5</span> <span class="dv">20</span>  <span class="dv">8</span></span>
+<span id="cb9-21"><a href="origami.html#cb9-21"></a>[<span class="dv">26</span>] <span class="dv">23</span> <span class="dv">25</span>  <span class="dv">8</span> <span class="dv">27</span>  <span class="dv">5</span></span>
+<span id="cb9-22"><a href="origami.html#cb9-22"></a></span>
+<span id="cb9-23"><a href="origami.html#cb9-23"></a><span class="op">$</span>validation_set</span>
+<span id="cb9-24"><a href="origami.html#cb9-24"></a> [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">7</span> <span class="dv">11</span> <span class="dv">13</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">24</span> <span class="dv">30</span></span>
+<span id="cb9-25"><a href="origami.html#cb9-25"></a></span>
+<span id="cb9-26"><a href="origami.html#cb9-26"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb9-27"><a href="origami.html#cb9-27"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1369,7 +1369,7 @@ dataset. The <em>AirPassenger</em> dataset, included in <code>R</code>, provides
 international airline passengers between the years 1949 and 1960.</p>
 <p><strong>Goal:</strong> we want to forecast the number of airline passengers at time <span class="math inline">\(h\)</span>
 horizon using the historical data from 1949 to 1960.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sinhrks/ggfortify">ggfortify</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span></span>
@@ -1427,37 +1427,37 @@ the following,</p>
 <p>Our time-series has <span class="math inline">\(t=144\)</span> time points. Setting <code>first_window</code> to <span class="math inline">\(50\)</span>,
 <code>validation_size</code> to 10, <code>gap</code> to 5, and <code>batch</code> to 20 yields four time-series
 folds; we show the first two below.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="origami.html#cb12-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_rolling_origin</span>(</span>
-<span id="cb12-2"><a href="origami.html#cb12-2"></a>  <span class="dt">n =</span> t,</span>
-<span id="cb12-3"><a href="origami.html#cb12-3"></a>  <span class="dt">first_window =</span> <span class="dv">50</span>, <span class="dt">validation_size =</span> <span class="dv">10</span>, <span class="dt">gap =</span> <span class="dv">5</span>, <span class="dt">batch =</span> <span class="dv">20</span></span>
-<span id="cb12-4"><a href="origami.html#cb12-4"></a>)</span>
-<span id="cb12-5"><a href="origami.html#cb12-5"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb12-6"><a href="origami.html#cb12-6"></a><span class="op">$</span>v</span>
-<span id="cb12-7"><a href="origami.html#cb12-7"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb12-8"><a href="origami.html#cb12-8"></a></span>
-<span id="cb12-9"><a href="origami.html#cb12-9"></a><span class="op">$</span>training_set</span>
-<span id="cb12-10"><a href="origami.html#cb12-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb12-11"><a href="origami.html#cb12-11"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
-<span id="cb12-12"><a href="origami.html#cb12-12"></a></span>
-<span id="cb12-13"><a href="origami.html#cb12-13"></a><span class="op">$</span>validation_set</span>
-<span id="cb12-14"><a href="origami.html#cb12-14"></a> [<span class="dv">1</span>] <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span></span>
-<span id="cb12-15"><a href="origami.html#cb12-15"></a></span>
-<span id="cb12-16"><a href="origami.html#cb12-16"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb12-17"><a href="origami.html#cb12-17"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb12-18"><a href="origami.html#cb12-18"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb12-19"><a href="origami.html#cb12-19"></a><span class="op">$</span>v</span>
-<span id="cb12-20"><a href="origami.html#cb12-20"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb12-21"><a href="origami.html#cb12-21"></a></span>
-<span id="cb12-22"><a href="origami.html#cb12-22"></a><span class="op">$</span>training_set</span>
-<span id="cb12-23"><a href="origami.html#cb12-23"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb12-24"><a href="origami.html#cb12-24"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
-<span id="cb12-25"><a href="origami.html#cb12-25"></a>[<span class="dv">51</span>] <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
-<span id="cb12-26"><a href="origami.html#cb12-26"></a></span>
-<span id="cb12-27"><a href="origami.html#cb12-27"></a><span class="op">$</span>validation_set</span>
-<span id="cb12-28"><a href="origami.html#cb12-28"></a> [<span class="dv">1</span>] <span class="dv">76</span> <span class="dv">77</span> <span class="dv">78</span> <span class="dv">79</span> <span class="dv">80</span> <span class="dv">81</span> <span class="dv">82</span> <span class="dv">83</span> <span class="dv">84</span> <span class="dv">85</span></span>
-<span id="cb12-29"><a href="origami.html#cb12-29"></a></span>
-<span id="cb12-30"><a href="origami.html#cb12-30"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb12-31"><a href="origami.html#cb12-31"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="origami.html#cb11-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_rolling_origin</span>(</span>
+<span id="cb11-2"><a href="origami.html#cb11-2"></a>  <span class="dt">n =</span> t,</span>
+<span id="cb11-3"><a href="origami.html#cb11-3"></a>  <span class="dt">first_window =</span> <span class="dv">50</span>, <span class="dt">validation_size =</span> <span class="dv">10</span>, <span class="dt">gap =</span> <span class="dv">5</span>, <span class="dt">batch =</span> <span class="dv">20</span></span>
+<span id="cb11-4"><a href="origami.html#cb11-4"></a>)</span>
+<span id="cb11-5"><a href="origami.html#cb11-5"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb11-6"><a href="origami.html#cb11-6"></a><span class="op">$</span>v</span>
+<span id="cb11-7"><a href="origami.html#cb11-7"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb11-8"><a href="origami.html#cb11-8"></a></span>
+<span id="cb11-9"><a href="origami.html#cb11-9"></a><span class="op">$</span>training_set</span>
+<span id="cb11-10"><a href="origami.html#cb11-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb11-11"><a href="origami.html#cb11-11"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
+<span id="cb11-12"><a href="origami.html#cb11-12"></a></span>
+<span id="cb11-13"><a href="origami.html#cb11-13"></a><span class="op">$</span>validation_set</span>
+<span id="cb11-14"><a href="origami.html#cb11-14"></a> [<span class="dv">1</span>] <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span></span>
+<span id="cb11-15"><a href="origami.html#cb11-15"></a></span>
+<span id="cb11-16"><a href="origami.html#cb11-16"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb11-17"><a href="origami.html#cb11-17"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb11-18"><a href="origami.html#cb11-18"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb11-19"><a href="origami.html#cb11-19"></a><span class="op">$</span>v</span>
+<span id="cb11-20"><a href="origami.html#cb11-20"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb11-21"><a href="origami.html#cb11-21"></a></span>
+<span id="cb11-22"><a href="origami.html#cb11-22"></a><span class="op">$</span>training_set</span>
+<span id="cb11-23"><a href="origami.html#cb11-23"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb11-24"><a href="origami.html#cb11-24"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
+<span id="cb11-25"><a href="origami.html#cb11-25"></a>[<span class="dv">51</span>] <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
+<span id="cb11-26"><a href="origami.html#cb11-26"></a></span>
+<span id="cb11-27"><a href="origami.html#cb11-27"></a><span class="op">$</span>validation_set</span>
+<span id="cb11-28"><a href="origami.html#cb11-28"></a> [<span class="dv">1</span>] <span class="dv">76</span> <span class="dv">77</span> <span class="dv">78</span> <span class="dv">79</span> <span class="dv">80</span> <span class="dv">81</span> <span class="dv">82</span> <span class="dv">83</span> <span class="dv">84</span> <span class="dv">85</span></span>
+<span id="cb11-29"><a href="origami.html#cb11-29"></a></span>
+<span id="cb11-30"><a href="origami.html#cb11-30"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb11-31"><a href="origami.html#cb11-31"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1509,36 +1509,36 @@ specify the following arguments:</p>
 </ol>
 <p>Setting the <code>window_size</code> to <span class="math inline">\(50\)</span>, <code>validation_size</code> to 10, <code>gap</code> to 5 and
 <code>batch</code> to 20, we also get 4 time-series folds; we show the first two below.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="origami.html#cb13-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_rolling_window</span>(</span>
-<span id="cb13-2"><a href="origami.html#cb13-2"></a>  <span class="dt">n =</span> t,</span>
-<span id="cb13-3"><a href="origami.html#cb13-3"></a>  <span class="dt">window_size =</span> <span class="dv">50</span>, <span class="dt">validation_size =</span> <span class="dv">10</span>, <span class="dt">gap =</span> <span class="dv">5</span>, <span class="dt">batch =</span> <span class="dv">20</span></span>
-<span id="cb13-4"><a href="origami.html#cb13-4"></a>)</span>
-<span id="cb13-5"><a href="origami.html#cb13-5"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb13-6"><a href="origami.html#cb13-6"></a><span class="op">$</span>v</span>
-<span id="cb13-7"><a href="origami.html#cb13-7"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb13-8"><a href="origami.html#cb13-8"></a></span>
-<span id="cb13-9"><a href="origami.html#cb13-9"></a><span class="op">$</span>training_set</span>
-<span id="cb13-10"><a href="origami.html#cb13-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb13-11"><a href="origami.html#cb13-11"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
-<span id="cb13-12"><a href="origami.html#cb13-12"></a></span>
-<span id="cb13-13"><a href="origami.html#cb13-13"></a><span class="op">$</span>validation_set</span>
-<span id="cb13-14"><a href="origami.html#cb13-14"></a> [<span class="dv">1</span>] <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span></span>
-<span id="cb13-15"><a href="origami.html#cb13-15"></a></span>
-<span id="cb13-16"><a href="origami.html#cb13-16"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb13-17"><a href="origami.html#cb13-17"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb13-18"><a href="origami.html#cb13-18"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb13-19"><a href="origami.html#cb13-19"></a><span class="op">$</span>v</span>
-<span id="cb13-20"><a href="origami.html#cb13-20"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb13-21"><a href="origami.html#cb13-21"></a></span>
-<span id="cb13-22"><a href="origami.html#cb13-22"></a><span class="op">$</span>training_set</span>
-<span id="cb13-23"><a href="origami.html#cb13-23"></a> [<span class="dv">1</span>] <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span></span>
-<span id="cb13-24"><a href="origami.html#cb13-24"></a>[<span class="dv">26</span>] <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
-<span id="cb13-25"><a href="origami.html#cb13-25"></a></span>
-<span id="cb13-26"><a href="origami.html#cb13-26"></a><span class="op">$</span>validation_set</span>
-<span id="cb13-27"><a href="origami.html#cb13-27"></a> [<span class="dv">1</span>] <span class="dv">76</span> <span class="dv">77</span> <span class="dv">78</span> <span class="dv">79</span> <span class="dv">80</span> <span class="dv">81</span> <span class="dv">82</span> <span class="dv">83</span> <span class="dv">84</span> <span class="dv">85</span></span>
-<span id="cb13-28"><a href="origami.html#cb13-28"></a></span>
-<span id="cb13-29"><a href="origami.html#cb13-29"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb13-30"><a href="origami.html#cb13-30"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="origami.html#cb12-1"></a>folds &lt;-<span class="st"> </span><span class="kw">folds_rolling_window</span>(</span>
+<span id="cb12-2"><a href="origami.html#cb12-2"></a>  <span class="dt">n =</span> t,</span>
+<span id="cb12-3"><a href="origami.html#cb12-3"></a>  <span class="dt">window_size =</span> <span class="dv">50</span>, <span class="dt">validation_size =</span> <span class="dv">10</span>, <span class="dt">gap =</span> <span class="dv">5</span>, <span class="dt">batch =</span> <span class="dv">20</span></span>
+<span id="cb12-4"><a href="origami.html#cb12-4"></a>)</span>
+<span id="cb12-5"><a href="origami.html#cb12-5"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb12-6"><a href="origami.html#cb12-6"></a><span class="op">$</span>v</span>
+<span id="cb12-7"><a href="origami.html#cb12-7"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb12-8"><a href="origami.html#cb12-8"></a></span>
+<span id="cb12-9"><a href="origami.html#cb12-9"></a><span class="op">$</span>training_set</span>
+<span id="cb12-10"><a href="origami.html#cb12-10"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb12-11"><a href="origami.html#cb12-11"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span></span>
+<span id="cb12-12"><a href="origami.html#cb12-12"></a></span>
+<span id="cb12-13"><a href="origami.html#cb12-13"></a><span class="op">$</span>validation_set</span>
+<span id="cb12-14"><a href="origami.html#cb12-14"></a> [<span class="dv">1</span>] <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span></span>
+<span id="cb12-15"><a href="origami.html#cb12-15"></a></span>
+<span id="cb12-16"><a href="origami.html#cb12-16"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb12-17"><a href="origami.html#cb12-17"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb12-18"><a href="origami.html#cb12-18"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb12-19"><a href="origami.html#cb12-19"></a><span class="op">$</span>v</span>
+<span id="cb12-20"><a href="origami.html#cb12-20"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb12-21"><a href="origami.html#cb12-21"></a></span>
+<span id="cb12-22"><a href="origami.html#cb12-22"></a><span class="op">$</span>training_set</span>
+<span id="cb12-23"><a href="origami.html#cb12-23"></a> [<span class="dv">1</span>] <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span></span>
+<span id="cb12-24"><a href="origami.html#cb12-24"></a>[<span class="dv">26</span>] <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
+<span id="cb12-25"><a href="origami.html#cb12-25"></a></span>
+<span id="cb12-26"><a href="origami.html#cb12-26"></a><span class="op">$</span>validation_set</span>
+<span id="cb12-27"><a href="origami.html#cb12-27"></a> [<span class="dv">1</span>] <span class="dv">76</span> <span class="dv">77</span> <span class="dv">78</span> <span class="dv">79</span> <span class="dv">80</span> <span class="dv">81</span> <span class="dv">82</span> <span class="dv">83</span> <span class="dv">84</span> <span class="dv">85</span></span>
+<span id="cb12-28"><a href="origami.html#cb12-28"></a></span>
+<span id="cb12-29"><a href="origami.html#cb12-29"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb12-30"><a href="origami.html#cb12-30"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <!--
 nh: should we comment briefly on the displayed structure of the training
 and validation folds?
@@ -1687,7 +1687,7 @@ design. For the sake of illustration, we will work with only a subset of the
 data, removing all observational units with missing covariate data from the
 analysis-ready dataset. In the prior chapter, we discussed how to deal with
 missingness.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
@@ -2319,96 +2319,96 @@ Severely Food Insecure
 </table></div>
 </div>
 <p>Let’s remind ourselves of the covariates to be used in the prediction step:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="origami.html#cb15-1"></a>covars</span>
-<span id="cb15-2"><a href="origami.html#cb15-2"></a> [<span class="dv">1</span>] <span class="st">"tr"</span>             <span class="st">"fracode"</span>        <span class="st">"month"</span>          <span class="st">"aged"</span>          </span>
-<span id="cb15-3"><a href="origami.html#cb15-3"></a> [<span class="dv">5</span>] <span class="st">"sex"</span>            <span class="st">"momage"</span>         <span class="st">"momedu"</span>         <span class="st">"momheight"</span>     </span>
-<span id="cb15-4"><a href="origami.html#cb15-4"></a> [<span class="dv">9</span>] <span class="st">"hfiacat"</span>        <span class="st">"Nlt18"</span>          <span class="st">"Ncomp"</span>          <span class="st">"watmin"</span>        </span>
-<span id="cb15-5"><a href="origami.html#cb15-5"></a>[<span class="dv">13</span>] <span class="st">"elec"</span>           <span class="st">"floor"</span>          <span class="st">"walls"</span>          <span class="st">"roof"</span>          </span>
-<span id="cb15-6"><a href="origami.html#cb15-6"></a>[<span class="dv">17</span>] <span class="st">"asset_wardrobe"</span> <span class="st">"asset_table"</span>    <span class="st">"asset_chair"</span>    <span class="st">"asset_khat"</span>    </span>
-<span id="cb15-7"><a href="origami.html#cb15-7"></a>[<span class="dv">21</span>] <span class="st">"asset_chouki"</span>   <span class="st">"asset_tv"</span>       <span class="st">"asset_refrig"</span>   <span class="st">"asset_bike"</span>    </span>
-<span id="cb15-8"><a href="origami.html#cb15-8"></a>[<span class="dv">25</span>] <span class="st">"asset_moto"</span>     <span class="st">"asset_sewmach"</span>  <span class="st">"asset_mobile"</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="origami.html#cb14-1"></a>covars</span>
+<span id="cb14-2"><a href="origami.html#cb14-2"></a> [<span class="dv">1</span>] <span class="st">"tr"</span>             <span class="st">"fracode"</span>        <span class="st">"month"</span>          <span class="st">"aged"</span>          </span>
+<span id="cb14-3"><a href="origami.html#cb14-3"></a> [<span class="dv">5</span>] <span class="st">"sex"</span>            <span class="st">"momage"</span>         <span class="st">"momedu"</span>         <span class="st">"momheight"</span>     </span>
+<span id="cb14-4"><a href="origami.html#cb14-4"></a> [<span class="dv">9</span>] <span class="st">"hfiacat"</span>        <span class="st">"Nlt18"</span>          <span class="st">"Ncomp"</span>          <span class="st">"watmin"</span>        </span>
+<span id="cb14-5"><a href="origami.html#cb14-5"></a>[<span class="dv">13</span>] <span class="st">"elec"</span>           <span class="st">"floor"</span>          <span class="st">"walls"</span>          <span class="st">"roof"</span>          </span>
+<span id="cb14-6"><a href="origami.html#cb14-6"></a>[<span class="dv">17</span>] <span class="st">"asset_wardrobe"</span> <span class="st">"asset_table"</span>    <span class="st">"asset_chair"</span>    <span class="st">"asset_khat"</span>    </span>
+<span id="cb14-7"><a href="origami.html#cb14-7"></a>[<span class="dv">21</span>] <span class="st">"asset_chouki"</span>   <span class="st">"asset_tv"</span>       <span class="st">"asset_refrig"</span>   <span class="st">"asset_bike"</span>    </span>
+<span id="cb14-8"><a href="origami.html#cb14-8"></a>[<span class="dv">25</span>] <span class="st">"asset_moto"</span>     <span class="st">"asset_sewmach"</span>  <span class="st">"asset_mobile"</span>  </span></code></pre></div>
 <p>Next, let’s fit a simple main-terms linear regression model to the
 analysis-ready dataset. Here, our goal is to predict the weight-for-height
 Z-score (<code>"whz"</code>, which we assigned to the variable <code>outcome</code>) using all of the
 available covariate data. Let’s try it out:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="origami.html#cb16-1"></a>lm_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(whz <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> washb_data)</span>
-<span id="cb16-2"><a href="origami.html#cb16-2"></a><span class="kw">summary</span>(lm_mod)</span>
-<span id="cb16-3"><a href="origami.html#cb16-3"></a></span>
-<span id="cb16-4"><a href="origami.html#cb16-4"></a>Call<span class="op">:</span></span>
-<span id="cb16-5"><a href="origami.html#cb16-5"></a><span class="kw">lm</span>(<span class="dt">formula =</span> whz <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> washb_data)</span>
-<span id="cb16-6"><a href="origami.html#cb16-6"></a></span>
-<span id="cb16-7"><a href="origami.html#cb16-7"></a>Residuals<span class="op">:</span></span>
-<span id="cb16-8"><a href="origami.html#cb16-8"></a><span class="st">    </span>Min      1Q  Median      3Q     Max </span>
-<span id="cb16-9"><a href="origami.html#cb16-9"></a><span class="fl">-2.8890</span> <span class="fl">-0.6799</span> <span class="fl">-0.0169</span>  <span class="fl">0.6595</span>  <span class="fl">3.1005</span> </span>
-<span id="cb16-10"><a href="origami.html#cb16-10"></a></span>
-<span id="cb16-11"><a href="origami.html#cb16-11"></a>Coefficients<span class="op">:</span></span>
-<span id="cb16-12"><a href="origami.html#cb16-12"></a><span class="st">                                </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)   </span>
-<span id="cb16-13"><a href="origami.html#cb16-13"></a>(Intercept)                     <span class="fl">-1.89006</span>    <span class="fl">1.72022</span>   <span class="fl">-1.10</span>   <span class="fl">0.2725</span>   </span>
-<span id="cb16-14"><a href="origami.html#cb16-14"></a>trHandwashing                   <span class="fl">-0.25276</span>    <span class="fl">0.17032</span>   <span class="fl">-1.48</span>   <span class="fl">0.1385</span>   </span>
-<span id="cb16-15"><a href="origami.html#cb16-15"></a>trNutrition                     <span class="fl">-0.09695</span>    <span class="fl">0.15696</span>   <span class="fl">-0.62</span>   <span class="fl">0.5371</span>   </span>
-<span id="cb16-16"><a href="origami.html#cb16-16"></a>trNutrition <span class="op">+</span><span class="st"> </span>WSH               <span class="fl">-0.09587</span>    <span class="fl">0.16528</span>   <span class="fl">-0.58</span>   <span class="fl">0.5622</span>   </span>
-<span id="cb16-17"><a href="origami.html#cb16-17"></a>trSanitation                    <span class="fl">-0.27702</span>    <span class="fl">0.15846</span>   <span class="fl">-1.75</span>   <span class="fl">0.0811</span> . </span>
-<span id="cb16-18"><a href="origami.html#cb16-18"></a>trWSH                           <span class="fl">-0.02846</span>    <span class="fl">0.15967</span>   <span class="fl">-0.18</span>   <span class="fl">0.8586</span>   </span>
-<span id="cb16-19"><a href="origami.html#cb16-19"></a>trWater                         <span class="fl">-0.07148</span>    <span class="fl">0.15813</span>   <span class="fl">-0.45</span>   <span class="fl">0.6515</span>   </span>
-<span id="cb16-20"><a href="origami.html#cb16-20"></a>fracodeN05160                    <span class="fl">0.62355</span>    <span class="fl">0.30719</span>    <span class="fl">2.03</span>   <span class="fl">0.0430</span> <span class="op">*</span><span class="st"> </span></span>
-<span id="cb16-21"><a href="origami.html#cb16-21"></a>fracodeN05265                    <span class="fl">0.38762</span>    <span class="fl">0.31011</span>    <span class="fl">1.25</span>   <span class="fl">0.2120</span>   </span>
-<span id="cb16-22"><a href="origami.html#cb16-22"></a>fracodeN05359                    <span class="fl">0.10187</span>    <span class="fl">0.31329</span>    <span class="fl">0.33</span>   <span class="fl">0.7452</span>   </span>
-<span id="cb16-23"><a href="origami.html#cb16-23"></a>fracodeN06229                    <span class="fl">0.30933</span>    <span class="fl">0.29766</span>    <span class="fl">1.04</span>   <span class="fl">0.2993</span>   </span>
-<span id="cb16-24"><a href="origami.html#cb16-24"></a>fracodeN06453                    <span class="fl">0.08066</span>    <span class="fl">0.30006</span>    <span class="fl">0.27</span>   <span class="fl">0.7882</span>   </span>
-<span id="cb16-25"><a href="origami.html#cb16-25"></a>fracodeN06458                    <span class="fl">0.43707</span>    <span class="fl">0.29970</span>    <span class="fl">1.46</span>   <span class="fl">0.1454</span>   </span>
-<span id="cb16-26"><a href="origami.html#cb16-26"></a>fracodeN06473                    <span class="fl">0.45406</span>    <span class="fl">0.30912</span>    <span class="fl">1.47</span>   <span class="fl">0.1426</span>   </span>
-<span id="cb16-27"><a href="origami.html#cb16-27"></a>fracodeN06479                    <span class="fl">0.60994</span>    <span class="fl">0.31463</span>    <span class="fl">1.94</span>   <span class="fl">0.0532</span> . </span>
-<span id="cb16-28"><a href="origami.html#cb16-28"></a>fracodeN06489                    <span class="fl">0.25923</span>    <span class="fl">0.31901</span>    <span class="fl">0.81</span>   <span class="fl">0.4169</span>   </span>
-<span id="cb16-29"><a href="origami.html#cb16-29"></a>fracodeN06500                    <span class="fl">0.07539</span>    <span class="fl">0.35794</span>    <span class="fl">0.21</span>   <span class="fl">0.8333</span>   </span>
-<span id="cb16-30"><a href="origami.html#cb16-30"></a>fracodeN06502                    <span class="fl">0.36748</span>    <span class="fl">0.30504</span>    <span class="fl">1.20</span>   <span class="fl">0.2290</span>   </span>
-<span id="cb16-31"><a href="origami.html#cb16-31"></a>fracodeN06505                    <span class="fl">0.20038</span>    <span class="fl">0.31560</span>    <span class="fl">0.63</span>   <span class="fl">0.5258</span>   </span>
-<span id="cb16-32"><a href="origami.html#cb16-32"></a>fracodeN06516                    <span class="fl">0.55455</span>    <span class="fl">0.29807</span>    <span class="fl">1.86</span>   <span class="fl">0.0635</span> . </span>
-<span id="cb16-33"><a href="origami.html#cb16-33"></a>fracodeN06524                    <span class="fl">0.49429</span>    <span class="fl">0.31423</span>    <span class="fl">1.57</span>   <span class="fl">0.1164</span>   </span>
-<span id="cb16-34"><a href="origami.html#cb16-34"></a>fracodeN06528                    <span class="fl">0.75966</span>    <span class="fl">0.31060</span>    <span class="fl">2.45</span>   <span class="fl">0.0148</span> <span class="op">*</span><span class="st"> </span></span>
-<span id="cb16-35"><a href="origami.html#cb16-35"></a>fracodeN06531                    <span class="fl">0.36856</span>    <span class="fl">0.30155</span>    <span class="fl">1.22</span>   <span class="fl">0.2223</span>   </span>
-<span id="cb16-36"><a href="origami.html#cb16-36"></a>fracodeN06862                    <span class="fl">0.56932</span>    <span class="fl">0.29293</span>    <span class="fl">1.94</span>   <span class="fl">0.0526</span> . </span>
-<span id="cb16-37"><a href="origami.html#cb16-37"></a>fracodeN08002                    <span class="fl">0.36779</span>    <span class="fl">0.26846</span>    <span class="fl">1.37</span>   <span class="fl">0.1714</span>   </span>
-<span id="cb16-38"><a href="origami.html#cb16-38"></a>month                            <span class="fl">0.17161</span>    <span class="fl">0.10865</span>    <span class="fl">1.58</span>   <span class="fl">0.1149</span>   </span>
-<span id="cb16-39"><a href="origami.html#cb16-39"></a>aged                            <span class="fl">-0.00336</span>    <span class="fl">0.00112</span>   <span class="fl">-3.00</span>   <span class="fl">0.0029</span> <span class="op">**</span></span>
-<span id="cb16-40"><a href="origami.html#cb16-40"></a>sexmale                          <span class="fl">0.12352</span>    <span class="fl">0.09203</span>    <span class="fl">1.34</span>   <span class="fl">0.1802</span>   </span>
-<span id="cb16-41"><a href="origami.html#cb16-41"></a>momage                          <span class="fl">-0.01379</span>    <span class="fl">0.00973</span>   <span class="fl">-1.42</span>   <span class="fl">0.1570</span>   </span>
-<span id="cb16-42"><a href="origami.html#cb16-42"></a><span class="kw">momeduPrimary</span> (<span class="dv">1</span><span class="op">-</span>5y)            <span class="fl">-0.13214</span>    <span class="fl">0.15225</span>   <span class="fl">-0.87</span>   <span class="fl">0.3859</span>   </span>
-<span id="cb16-43"><a href="origami.html#cb16-43"></a><span class="kw">momeduSecondary</span> (<span class="op">&gt;</span>5y)            <span class="fl">0.12632</span>    <span class="fl">0.16041</span>    <span class="fl">0.79</span>   <span class="fl">0.4314</span>   </span>
-<span id="cb16-44"><a href="origami.html#cb16-44"></a>momheight                        <span class="fl">0.00512</span>    <span class="fl">0.00919</span>    <span class="fl">0.56</span>   <span class="fl">0.5776</span>   </span>
-<span id="cb16-45"><a href="origami.html#cb16-45"></a>hfiacatMildly Food Insecure      <span class="fl">0.05804</span>    <span class="fl">0.19341</span>    <span class="fl">0.30</span>   <span class="fl">0.7643</span>   </span>
-<span id="cb16-46"><a href="origami.html#cb16-46"></a>hfiacatModerately Food Insecure <span class="fl">-0.01362</span>    <span class="fl">0.12887</span>   <span class="fl">-0.11</span>   <span class="fl">0.9159</span>   </span>
-<span id="cb16-47"><a href="origami.html#cb16-47"></a>hfiacatSeverely Food Insecure   <span class="fl">-0.13447</span>    <span class="fl">0.25418</span>   <span class="fl">-0.53</span>   <span class="fl">0.5970</span>   </span>
-<span id="cb16-48"><a href="origami.html#cb16-48"></a>Nlt18                           <span class="fl">-0.02557</span>    <span class="fl">0.04060</span>   <span class="fl">-0.63</span>   <span class="fl">0.5291</span>   </span>
-<span id="cb16-49"><a href="origami.html#cb16-49"></a>Ncomp                            <span class="fl">0.00179</span>    <span class="fl">0.00762</span>    <span class="fl">0.23</span>   <span class="fl">0.8145</span>   </span>
-<span id="cb16-50"><a href="origami.html#cb16-50"></a>watmin                           <span class="fl">0.01347</span>    <span class="fl">0.00861</span>    <span class="fl">1.57</span>   <span class="fl">0.1182</span>   </span>
-<span id="cb16-51"><a href="origami.html#cb16-51"></a>elec                             <span class="fl">0.08906</span>    <span class="fl">0.10700</span>    <span class="fl">0.83</span>   <span class="fl">0.4057</span>   </span>
-<span id="cb16-52"><a href="origami.html#cb16-52"></a>floor                           <span class="fl">-0.17763</span>    <span class="fl">0.17734</span>   <span class="fl">-1.00</span>   <span class="fl">0.3171</span>   </span>
-<span id="cb16-53"><a href="origami.html#cb16-53"></a>walls                           <span class="fl">-0.03001</span>    <span class="fl">0.21445</span>   <span class="fl">-0.14</span>   <span class="fl">0.8888</span>   </span>
-<span id="cb16-54"><a href="origami.html#cb16-54"></a>roof                            <span class="fl">-0.03716</span>    <span class="fl">0.49214</span>   <span class="fl">-0.08</span>   <span class="fl">0.9399</span>   </span>
-<span id="cb16-55"><a href="origami.html#cb16-55"></a>asset_wardrobe                  <span class="fl">-0.05754</span>    <span class="fl">0.13736</span>   <span class="fl">-0.42</span>   <span class="fl">0.6755</span>   </span>
-<span id="cb16-56"><a href="origami.html#cb16-56"></a>asset_table                     <span class="fl">-0.22079</span>    <span class="fl">0.12276</span>   <span class="fl">-1.80</span>   <span class="fl">0.0728</span> . </span>
-<span id="cb16-57"><a href="origami.html#cb16-57"></a>asset_chair                      <span class="fl">0.28012</span>    <span class="fl">0.13750</span>    <span class="fl">2.04</span>   <span class="fl">0.0422</span> <span class="op">*</span><span class="st"> </span></span>
-<span id="cb16-58"><a href="origami.html#cb16-58"></a>asset_khat                       <span class="fl">0.02306</span>    <span class="fl">0.11766</span>    <span class="fl">0.20</span>   <span class="fl">0.8447</span>   </span>
-<span id="cb16-59"><a href="origami.html#cb16-59"></a>asset_chouki                    <span class="fl">-0.13943</span>    <span class="fl">0.14084</span>   <span class="fl">-0.99</span>   <span class="fl">0.3227</span>   </span>
-<span id="cb16-60"><a href="origami.html#cb16-60"></a>asset_tv                         <span class="fl">0.17723</span>    <span class="fl">0.12972</span>    <span class="fl">1.37</span>   <span class="fl">0.1726</span>   </span>
-<span id="cb16-61"><a href="origami.html#cb16-61"></a>asset_refrig                     <span class="fl">0.12613</span>    <span class="fl">0.23162</span>    <span class="fl">0.54</span>   <span class="fl">0.5863</span>   </span>
-<span id="cb16-62"><a href="origami.html#cb16-62"></a>asset_bike                      <span class="fl">-0.02568</span>    <span class="fl">0.10083</span>   <span class="fl">-0.25</span>   <span class="fl">0.7990</span>   </span>
-<span id="cb16-63"><a href="origami.html#cb16-63"></a>asset_moto                      <span class="fl">-0.32094</span>    <span class="fl">0.19944</span>   <span class="fl">-1.61</span>   <span class="fl">0.1083</span>   </span>
-<span id="cb16-64"><a href="origami.html#cb16-64"></a>asset_sewmach                    <span class="fl">0.05090</span>    <span class="fl">0.17795</span>    <span class="fl">0.29</span>   <span class="fl">0.7750</span>   </span>
-<span id="cb16-65"><a href="origami.html#cb16-65"></a>asset_mobile                     <span class="fl">0.01420</span>    <span class="fl">0.14972</span>    <span class="fl">0.09</span>   <span class="fl">0.9245</span>   </span>
-<span id="cb16-66"><a href="origami.html#cb16-66"></a><span class="op">---</span></span>
-<span id="cb16-67"><a href="origami.html#cb16-67"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">'***'</span> <span class="fl">0.001</span> <span class="st">'**'</span> <span class="fl">0.01</span> <span class="st">'*'</span> <span class="fl">0.05</span> <span class="st">'.'</span> <span class="fl">0.1</span> <span class="st">' '</span> <span class="dv">1</span></span>
-<span id="cb16-68"><a href="origami.html#cb16-68"></a></span>
-<span id="cb16-69"><a href="origami.html#cb16-69"></a>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">0.984</span> on <span class="dv">447</span> degrees of freedom</span>
-<span id="cb16-70"><a href="origami.html#cb16-70"></a>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.129</span>, Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.0277</span> </span>
-<span id="cb16-71"><a href="origami.html#cb16-71"></a>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">1.27</span> on <span class="dv">52</span> and <span class="dv">447</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">0.104</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="origami.html#cb15-1"></a>lm_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(whz <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> washb_data)</span>
+<span id="cb15-2"><a href="origami.html#cb15-2"></a><span class="kw">summary</span>(lm_mod)</span>
+<span id="cb15-3"><a href="origami.html#cb15-3"></a></span>
+<span id="cb15-4"><a href="origami.html#cb15-4"></a>Call<span class="op">:</span></span>
+<span id="cb15-5"><a href="origami.html#cb15-5"></a><span class="kw">lm</span>(<span class="dt">formula =</span> whz <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> washb_data)</span>
+<span id="cb15-6"><a href="origami.html#cb15-6"></a></span>
+<span id="cb15-7"><a href="origami.html#cb15-7"></a>Residuals<span class="op">:</span></span>
+<span id="cb15-8"><a href="origami.html#cb15-8"></a><span class="st">    </span>Min      1Q  Median      3Q     Max </span>
+<span id="cb15-9"><a href="origami.html#cb15-9"></a><span class="fl">-2.8890</span> <span class="fl">-0.6799</span> <span class="fl">-0.0169</span>  <span class="fl">0.6595</span>  <span class="fl">3.1005</span> </span>
+<span id="cb15-10"><a href="origami.html#cb15-10"></a></span>
+<span id="cb15-11"><a href="origami.html#cb15-11"></a>Coefficients<span class="op">:</span></span>
+<span id="cb15-12"><a href="origami.html#cb15-12"></a><span class="st">                                </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)   </span>
+<span id="cb15-13"><a href="origami.html#cb15-13"></a>(Intercept)                     <span class="fl">-1.89006</span>    <span class="fl">1.72022</span>   <span class="fl">-1.10</span>   <span class="fl">0.2725</span>   </span>
+<span id="cb15-14"><a href="origami.html#cb15-14"></a>trHandwashing                   <span class="fl">-0.25276</span>    <span class="fl">0.17032</span>   <span class="fl">-1.48</span>   <span class="fl">0.1385</span>   </span>
+<span id="cb15-15"><a href="origami.html#cb15-15"></a>trNutrition                     <span class="fl">-0.09695</span>    <span class="fl">0.15696</span>   <span class="fl">-0.62</span>   <span class="fl">0.5371</span>   </span>
+<span id="cb15-16"><a href="origami.html#cb15-16"></a>trNutrition <span class="op">+</span><span class="st"> </span>WSH               <span class="fl">-0.09587</span>    <span class="fl">0.16528</span>   <span class="fl">-0.58</span>   <span class="fl">0.5622</span>   </span>
+<span id="cb15-17"><a href="origami.html#cb15-17"></a>trSanitation                    <span class="fl">-0.27702</span>    <span class="fl">0.15846</span>   <span class="fl">-1.75</span>   <span class="fl">0.0811</span> . </span>
+<span id="cb15-18"><a href="origami.html#cb15-18"></a>trWSH                           <span class="fl">-0.02846</span>    <span class="fl">0.15967</span>   <span class="fl">-0.18</span>   <span class="fl">0.8586</span>   </span>
+<span id="cb15-19"><a href="origami.html#cb15-19"></a>trWater                         <span class="fl">-0.07148</span>    <span class="fl">0.15813</span>   <span class="fl">-0.45</span>   <span class="fl">0.6515</span>   </span>
+<span id="cb15-20"><a href="origami.html#cb15-20"></a>fracodeN05160                    <span class="fl">0.62355</span>    <span class="fl">0.30719</span>    <span class="fl">2.03</span>   <span class="fl">0.0430</span> <span class="op">*</span><span class="st"> </span></span>
+<span id="cb15-21"><a href="origami.html#cb15-21"></a>fracodeN05265                    <span class="fl">0.38762</span>    <span class="fl">0.31011</span>    <span class="fl">1.25</span>   <span class="fl">0.2120</span>   </span>
+<span id="cb15-22"><a href="origami.html#cb15-22"></a>fracodeN05359                    <span class="fl">0.10187</span>    <span class="fl">0.31329</span>    <span class="fl">0.33</span>   <span class="fl">0.7452</span>   </span>
+<span id="cb15-23"><a href="origami.html#cb15-23"></a>fracodeN06229                    <span class="fl">0.30933</span>    <span class="fl">0.29766</span>    <span class="fl">1.04</span>   <span class="fl">0.2993</span>   </span>
+<span id="cb15-24"><a href="origami.html#cb15-24"></a>fracodeN06453                    <span class="fl">0.08066</span>    <span class="fl">0.30006</span>    <span class="fl">0.27</span>   <span class="fl">0.7882</span>   </span>
+<span id="cb15-25"><a href="origami.html#cb15-25"></a>fracodeN06458                    <span class="fl">0.43707</span>    <span class="fl">0.29970</span>    <span class="fl">1.46</span>   <span class="fl">0.1454</span>   </span>
+<span id="cb15-26"><a href="origami.html#cb15-26"></a>fracodeN06473                    <span class="fl">0.45406</span>    <span class="fl">0.30912</span>    <span class="fl">1.47</span>   <span class="fl">0.1426</span>   </span>
+<span id="cb15-27"><a href="origami.html#cb15-27"></a>fracodeN06479                    <span class="fl">0.60994</span>    <span class="fl">0.31463</span>    <span class="fl">1.94</span>   <span class="fl">0.0532</span> . </span>
+<span id="cb15-28"><a href="origami.html#cb15-28"></a>fracodeN06489                    <span class="fl">0.25923</span>    <span class="fl">0.31901</span>    <span class="fl">0.81</span>   <span class="fl">0.4169</span>   </span>
+<span id="cb15-29"><a href="origami.html#cb15-29"></a>fracodeN06500                    <span class="fl">0.07539</span>    <span class="fl">0.35794</span>    <span class="fl">0.21</span>   <span class="fl">0.8333</span>   </span>
+<span id="cb15-30"><a href="origami.html#cb15-30"></a>fracodeN06502                    <span class="fl">0.36748</span>    <span class="fl">0.30504</span>    <span class="fl">1.20</span>   <span class="fl">0.2290</span>   </span>
+<span id="cb15-31"><a href="origami.html#cb15-31"></a>fracodeN06505                    <span class="fl">0.20038</span>    <span class="fl">0.31560</span>    <span class="fl">0.63</span>   <span class="fl">0.5258</span>   </span>
+<span id="cb15-32"><a href="origami.html#cb15-32"></a>fracodeN06516                    <span class="fl">0.55455</span>    <span class="fl">0.29807</span>    <span class="fl">1.86</span>   <span class="fl">0.0635</span> . </span>
+<span id="cb15-33"><a href="origami.html#cb15-33"></a>fracodeN06524                    <span class="fl">0.49429</span>    <span class="fl">0.31423</span>    <span class="fl">1.57</span>   <span class="fl">0.1164</span>   </span>
+<span id="cb15-34"><a href="origami.html#cb15-34"></a>fracodeN06528                    <span class="fl">0.75966</span>    <span class="fl">0.31060</span>    <span class="fl">2.45</span>   <span class="fl">0.0148</span> <span class="op">*</span><span class="st"> </span></span>
+<span id="cb15-35"><a href="origami.html#cb15-35"></a>fracodeN06531                    <span class="fl">0.36856</span>    <span class="fl">0.30155</span>    <span class="fl">1.22</span>   <span class="fl">0.2223</span>   </span>
+<span id="cb15-36"><a href="origami.html#cb15-36"></a>fracodeN06862                    <span class="fl">0.56932</span>    <span class="fl">0.29293</span>    <span class="fl">1.94</span>   <span class="fl">0.0526</span> . </span>
+<span id="cb15-37"><a href="origami.html#cb15-37"></a>fracodeN08002                    <span class="fl">0.36779</span>    <span class="fl">0.26846</span>    <span class="fl">1.37</span>   <span class="fl">0.1714</span>   </span>
+<span id="cb15-38"><a href="origami.html#cb15-38"></a>month                            <span class="fl">0.17161</span>    <span class="fl">0.10865</span>    <span class="fl">1.58</span>   <span class="fl">0.1149</span>   </span>
+<span id="cb15-39"><a href="origami.html#cb15-39"></a>aged                            <span class="fl">-0.00336</span>    <span class="fl">0.00112</span>   <span class="fl">-3.00</span>   <span class="fl">0.0029</span> <span class="op">**</span></span>
+<span id="cb15-40"><a href="origami.html#cb15-40"></a>sexmale                          <span class="fl">0.12352</span>    <span class="fl">0.09203</span>    <span class="fl">1.34</span>   <span class="fl">0.1802</span>   </span>
+<span id="cb15-41"><a href="origami.html#cb15-41"></a>momage                          <span class="fl">-0.01379</span>    <span class="fl">0.00973</span>   <span class="fl">-1.42</span>   <span class="fl">0.1570</span>   </span>
+<span id="cb15-42"><a href="origami.html#cb15-42"></a><span class="kw">momeduPrimary</span> (<span class="dv">1</span><span class="op">-</span>5y)            <span class="fl">-0.13214</span>    <span class="fl">0.15225</span>   <span class="fl">-0.87</span>   <span class="fl">0.3859</span>   </span>
+<span id="cb15-43"><a href="origami.html#cb15-43"></a><span class="kw">momeduSecondary</span> (<span class="op">&gt;</span>5y)            <span class="fl">0.12632</span>    <span class="fl">0.16041</span>    <span class="fl">0.79</span>   <span class="fl">0.4314</span>   </span>
+<span id="cb15-44"><a href="origami.html#cb15-44"></a>momheight                        <span class="fl">0.00512</span>    <span class="fl">0.00919</span>    <span class="fl">0.56</span>   <span class="fl">0.5776</span>   </span>
+<span id="cb15-45"><a href="origami.html#cb15-45"></a>hfiacatMildly Food Insecure      <span class="fl">0.05804</span>    <span class="fl">0.19341</span>    <span class="fl">0.30</span>   <span class="fl">0.7643</span>   </span>
+<span id="cb15-46"><a href="origami.html#cb15-46"></a>hfiacatModerately Food Insecure <span class="fl">-0.01362</span>    <span class="fl">0.12887</span>   <span class="fl">-0.11</span>   <span class="fl">0.9159</span>   </span>
+<span id="cb15-47"><a href="origami.html#cb15-47"></a>hfiacatSeverely Food Insecure   <span class="fl">-0.13447</span>    <span class="fl">0.25418</span>   <span class="fl">-0.53</span>   <span class="fl">0.5970</span>   </span>
+<span id="cb15-48"><a href="origami.html#cb15-48"></a>Nlt18                           <span class="fl">-0.02557</span>    <span class="fl">0.04060</span>   <span class="fl">-0.63</span>   <span class="fl">0.5291</span>   </span>
+<span id="cb15-49"><a href="origami.html#cb15-49"></a>Ncomp                            <span class="fl">0.00179</span>    <span class="fl">0.00762</span>    <span class="fl">0.23</span>   <span class="fl">0.8145</span>   </span>
+<span id="cb15-50"><a href="origami.html#cb15-50"></a>watmin                           <span class="fl">0.01347</span>    <span class="fl">0.00861</span>    <span class="fl">1.57</span>   <span class="fl">0.1182</span>   </span>
+<span id="cb15-51"><a href="origami.html#cb15-51"></a>elec                             <span class="fl">0.08906</span>    <span class="fl">0.10700</span>    <span class="fl">0.83</span>   <span class="fl">0.4057</span>   </span>
+<span id="cb15-52"><a href="origami.html#cb15-52"></a>floor                           <span class="fl">-0.17763</span>    <span class="fl">0.17734</span>   <span class="fl">-1.00</span>   <span class="fl">0.3171</span>   </span>
+<span id="cb15-53"><a href="origami.html#cb15-53"></a>walls                           <span class="fl">-0.03001</span>    <span class="fl">0.21445</span>   <span class="fl">-0.14</span>   <span class="fl">0.8888</span>   </span>
+<span id="cb15-54"><a href="origami.html#cb15-54"></a>roof                            <span class="fl">-0.03716</span>    <span class="fl">0.49214</span>   <span class="fl">-0.08</span>   <span class="fl">0.9399</span>   </span>
+<span id="cb15-55"><a href="origami.html#cb15-55"></a>asset_wardrobe                  <span class="fl">-0.05754</span>    <span class="fl">0.13736</span>   <span class="fl">-0.42</span>   <span class="fl">0.6755</span>   </span>
+<span id="cb15-56"><a href="origami.html#cb15-56"></a>asset_table                     <span class="fl">-0.22079</span>    <span class="fl">0.12276</span>   <span class="fl">-1.80</span>   <span class="fl">0.0728</span> . </span>
+<span id="cb15-57"><a href="origami.html#cb15-57"></a>asset_chair                      <span class="fl">0.28012</span>    <span class="fl">0.13750</span>    <span class="fl">2.04</span>   <span class="fl">0.0422</span> <span class="op">*</span><span class="st"> </span></span>
+<span id="cb15-58"><a href="origami.html#cb15-58"></a>asset_khat                       <span class="fl">0.02306</span>    <span class="fl">0.11766</span>    <span class="fl">0.20</span>   <span class="fl">0.8447</span>   </span>
+<span id="cb15-59"><a href="origami.html#cb15-59"></a>asset_chouki                    <span class="fl">-0.13943</span>    <span class="fl">0.14084</span>   <span class="fl">-0.99</span>   <span class="fl">0.3227</span>   </span>
+<span id="cb15-60"><a href="origami.html#cb15-60"></a>asset_tv                         <span class="fl">0.17723</span>    <span class="fl">0.12972</span>    <span class="fl">1.37</span>   <span class="fl">0.1726</span>   </span>
+<span id="cb15-61"><a href="origami.html#cb15-61"></a>asset_refrig                     <span class="fl">0.12613</span>    <span class="fl">0.23162</span>    <span class="fl">0.54</span>   <span class="fl">0.5863</span>   </span>
+<span id="cb15-62"><a href="origami.html#cb15-62"></a>asset_bike                      <span class="fl">-0.02568</span>    <span class="fl">0.10083</span>   <span class="fl">-0.25</span>   <span class="fl">0.7990</span>   </span>
+<span id="cb15-63"><a href="origami.html#cb15-63"></a>asset_moto                      <span class="fl">-0.32094</span>    <span class="fl">0.19944</span>   <span class="fl">-1.61</span>   <span class="fl">0.1083</span>   </span>
+<span id="cb15-64"><a href="origami.html#cb15-64"></a>asset_sewmach                    <span class="fl">0.05090</span>    <span class="fl">0.17795</span>    <span class="fl">0.29</span>   <span class="fl">0.7750</span>   </span>
+<span id="cb15-65"><a href="origami.html#cb15-65"></a>asset_mobile                     <span class="fl">0.01420</span>    <span class="fl">0.14972</span>    <span class="fl">0.09</span>   <span class="fl">0.9245</span>   </span>
+<span id="cb15-66"><a href="origami.html#cb15-66"></a><span class="op">---</span></span>
+<span id="cb15-67"><a href="origami.html#cb15-67"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">'***'</span> <span class="fl">0.001</span> <span class="st">'**'</span> <span class="fl">0.01</span> <span class="st">'*'</span> <span class="fl">0.05</span> <span class="st">'.'</span> <span class="fl">0.1</span> <span class="st">' '</span> <span class="dv">1</span></span>
+<span id="cb15-68"><a href="origami.html#cb15-68"></a></span>
+<span id="cb15-69"><a href="origami.html#cb15-69"></a>Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">0.984</span> on <span class="dv">447</span> degrees of freedom</span>
+<span id="cb15-70"><a href="origami.html#cb15-70"></a>Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.129</span>, Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.0277</span> </span>
+<span id="cb15-71"><a href="origami.html#cb15-71"></a>F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">1.27</span> on <span class="dv">52</span> and <span class="dv">447</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="fl">0.104</span></span></code></pre></div>
 <p>We can assess the quality of the model fit on the dataset by comparing the
 linear model’s predictions of the weight-for-height Z-score against the
 observations of the same in the dataset. This is the well-known, and standard,
 mean squared error (MSE). We can extract this summary measure from the <code>lm</code>
 model object like so</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="origami.html#cb17-1"></a>(err &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">resid</span>(lm_mod)<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb17-2"><a href="origami.html#cb17-2"></a>[<span class="dv">1</span>] <span class="fl">0.86568</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="origami.html#cb16-1"></a>(err &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">resid</span>(lm_mod)<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb16-2"><a href="origami.html#cb16-2"></a>[<span class="dv">1</span>] <span class="fl">0.86568</span></span></code></pre></div>
 <p>The MSE estimate is 0.86568, which, from examination of the above, is merely the
 mean of the squared residuals of the model fit. An important problem arises
 when we assess the learning algorithm’s quality in this way — that is, because
@@ -2438,7 +2438,7 @@ generalization error.</p>
 <p>We can easily incorporate cross-validation into our linear regression procedure
 using <code>origami</code>. First, let’s define a new function to perform linear regression
 on a specific partition of the dataset (i.e., a fold):</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cv_lm</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fold</span>, <span class="va">data</span>, <span class="va">reg_form</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># get name and index of outcome variable from regression formula</span></span>
 <span>  <span class="va">out_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">reg_form</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
@@ -2471,11 +2471,11 @@ a particular routine over an input dataset in cross-validated manner.</p>
 resultant <code>folds</code> object using <code><a href="http://tlverse.org/origami/reference/cross_validate.html">cross_validate()</a></code>. Below, we replicate the
 re-substitution estimate of the error — we did this “by hand” above — using the
 functions <code><a href="http://tlverse.org/origami/reference/make_folds.html">make_folds()</a></code> and <code>cv_lm()</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="origami.html#cb19-1"></a><span class="co"># re-substitution estimate</span></span>
-<span id="cb19-2"><a href="origami.html#cb19-2"></a>resub &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data, <span class="dt">fold_fun =</span> folds_resubstitution)[[<span class="dv">1</span>]]</span>
-<span id="cb19-3"><a href="origami.html#cb19-3"></a>resub_results &lt;-<span class="st"> </span><span class="kw">cv_lm</span>(<span class="dt">fold =</span> resub, <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>)</span>
-<span id="cb19-4"><a href="origami.html#cb19-4"></a><span class="kw">mean</span>(resub_results<span class="op">$</span>SE, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb19-5"><a href="origami.html#cb19-5"></a>[<span class="dv">1</span>] <span class="fl">0.86568</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="origami.html#cb18-1"></a><span class="co"># re-substitution estimate</span></span>
+<span id="cb18-2"><a href="origami.html#cb18-2"></a>resub &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data, <span class="dt">fold_fun =</span> folds_resubstitution)[[<span class="dv">1</span>]]</span>
+<span id="cb18-3"><a href="origami.html#cb18-3"></a>resub_results &lt;-<span class="st"> </span><span class="kw">cv_lm</span>(<span class="dt">fold =</span> resub, <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>)</span>
+<span id="cb18-4"><a href="origami.html#cb18-4"></a><span class="kw">mean</span>(resub_results<span class="op">$</span>SE, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb18-5"><a href="origami.html#cb18-5"></a>[<span class="dv">1</span>] <span class="fl">0.86568</span></span></code></pre></div>
 <p>This (nearly) matches the estimate of the error that we obtained above.</p>
 <p>We can more honestly evaluate the error by <span class="math inline">\(V\)</span>-fold cross-validation, which
 partitions the dataset into <span class="math inline">\(V\)</span> subsets, fitting the algorithm on <span class="math inline">\(V - 1\)</span> of the
@@ -2484,14 +2484,14 @@ fitting (validation). This is repeated such that each holdout subset
 takes a turn being used for validation. We can easily apply our <code>cv_lm()</code>
 function in this way using <code>origami</code>’s <code><a href="http://tlverse.org/origami/reference/cross_validate.html">cross_validate()</a></code> (note that by default
 this function performs <span class="math inline">\(10\)</span>-fold cross-validation):</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="origami.html#cb20-1"></a><span class="co"># cross-validated estimate</span></span>
-<span id="cb20-2"><a href="origami.html#cb20-2"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data)</span>
-<span id="cb20-3"><a href="origami.html#cb20-3"></a>cvlm_results &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
-<span id="cb20-4"><a href="origami.html#cb20-4"></a>  <span class="dt">cv_fun =</span> cv_lm, <span class="dt">folds =</span> folds, <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>,</span>
-<span id="cb20-5"><a href="origami.html#cb20-5"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
-<span id="cb20-6"><a href="origami.html#cb20-6"></a>)</span>
-<span id="cb20-7"><a href="origami.html#cb20-7"></a><span class="kw">mean</span>(cvlm_results<span class="op">$</span>SE, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb20-8"><a href="origami.html#cb20-8"></a>[<span class="dv">1</span>] <span class="fl">1.35</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="origami.html#cb19-1"></a><span class="co"># cross-validated estimate</span></span>
+<span id="cb19-2"><a href="origami.html#cb19-2"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data)</span>
+<span id="cb19-3"><a href="origami.html#cb19-3"></a>cvlm_results &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
+<span id="cb19-4"><a href="origami.html#cb19-4"></a>  <span class="dt">cv_fun =</span> cv_lm, <span class="dt">folds =</span> folds, <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>,</span>
+<span id="cb19-5"><a href="origami.html#cb19-5"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
+<span id="cb19-6"><a href="origami.html#cb19-6"></a>)</span>
+<span id="cb19-7"><a href="origami.html#cb19-7"></a><span class="kw">mean</span>(cvlm_results<span class="op">$</span>SE, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb19-8"><a href="origami.html#cb19-8"></a>[<span class="dv">1</span>] <span class="fl">1.35</span></span></code></pre></div>
 <p>Having performed <span class="math inline">\(V\)</span>-fold cross-validation with 10 folds (the default), we
 quickly notice that our previous
 estimate of the model error (by re-substitution) was a bit optimistic. The honest
@@ -2505,7 +2505,7 @@ estimate of the linear regression model’s error is larger!</p>
 WASH Benefits dataset. Here, we will write a new <code>cv_fun()</code> function. As an
 example, we will use Breiman’s random forest algorithm <span class="citation">(Breiman <a href="references.html#ref-breiman2001random" role="doc-biblioref">2001</a>)</span>,
 implemented in the <code><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest()</a></code> function (from the <code>randomForest</code> package):</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># make sure to load the package!</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span>
 <span></span>
@@ -2537,15 +2537,15 @@ releases of the package, a wrapper may be made available to support
 auto-generating <code>cv_fun</code>s for use with <code>origami</code>.</p>
 <p>Below, we use <code><a href="http://tlverse.org/origami/reference/cross_validate.html">cross_validate()</a></code> to apply our custom <code>cv_rf()</code> function over the
 <code>folds</code> object generated by <code><a href="http://tlverse.org/origami/reference/make_folds.html">make_folds()</a></code>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="origami.html#cb22-1"></a><span class="co"># now, let's cross-validate...</span></span>
-<span id="cb22-2"><a href="origami.html#cb22-2"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data)</span>
-<span id="cb22-3"><a href="origami.html#cb22-3"></a>cvrf_results &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
-<span id="cb22-4"><a href="origami.html#cb22-4"></a>  <span class="dt">cv_fun =</span> cv_rf, <span class="dt">folds =</span> folds,</span>
-<span id="cb22-5"><a href="origami.html#cb22-5"></a>  <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>,</span>
-<span id="cb22-6"><a href="origami.html#cb22-6"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
-<span id="cb22-7"><a href="origami.html#cb22-7"></a>)</span>
-<span id="cb22-8"><a href="origami.html#cb22-8"></a><span class="kw">mean</span>(cvrf_results<span class="op">$</span>SE)</span>
-<span id="cb22-9"><a href="origami.html#cb22-9"></a>[<span class="dv">1</span>] <span class="fl">1.0271</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="origami.html#cb21-1"></a><span class="co"># now, let's cross-validate...</span></span>
+<span id="cb21-2"><a href="origami.html#cb21-2"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(washb_data)</span>
+<span id="cb21-3"><a href="origami.html#cb21-3"></a>cvrf_results &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
+<span id="cb21-4"><a href="origami.html#cb21-4"></a>  <span class="dt">cv_fun =</span> cv_rf, <span class="dt">folds =</span> folds,</span>
+<span id="cb21-5"><a href="origami.html#cb21-5"></a>  <span class="dt">data =</span> washb_data, <span class="dt">reg_form =</span> <span class="st">"whz ~ ."</span>,</span>
+<span id="cb21-6"><a href="origami.html#cb21-6"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
+<span id="cb21-7"><a href="origami.html#cb21-7"></a>)</span>
+<span id="cb21-8"><a href="origami.html#cb21-8"></a><span class="kw">mean</span>(cvrf_results<span class="op">$</span>SE)</span>
+<span id="cb21-9"><a href="origami.html#cb21-9"></a>[<span class="dv">1</span>] <span class="fl">1.0271</span></span></code></pre></div>
 <p>Using <span class="math inline">\(V\)</span>-fold cross-validation with 10 folds, we obtain an honest estimate of
 the prediction error of this random forest. This is one example of how
 <code>origami</code>’s <code><a href="http://tlverse.org/origami/reference/cross_validate.html">cross_validate()</a></code> procedure can be generalized to arbitrary
@@ -2563,62 +2563,62 @@ observations (either all available or a recent, in time, subset), and then use
 the fitted model to predict the next (again, in time) few observations. To
 demonstrate this, we return to the <code>AirPassengers</code> dataset, a monthly
 time-series of passenger air traffic for thousands of travelers.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="origami.html#cb23-1"></a><span class="kw">data</span>(AirPassengers)</span>
-<span id="cb23-2"><a href="origami.html#cb23-2"></a><span class="kw">print</span>(AirPassengers)</span>
-<span id="cb23-3"><a href="origami.html#cb23-3"></a>     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
-<span id="cb23-4"><a href="origami.html#cb23-4"></a><span class="dv">1949</span> <span class="dv">112</span> <span class="dv">118</span> <span class="dv">132</span> <span class="dv">129</span> <span class="dv">121</span> <span class="dv">135</span> <span class="dv">148</span> <span class="dv">148</span> <span class="dv">136</span> <span class="dv">119</span> <span class="dv">104</span> <span class="dv">118</span></span>
-<span id="cb23-5"><a href="origami.html#cb23-5"></a><span class="dv">1950</span> <span class="dv">115</span> <span class="dv">126</span> <span class="dv">141</span> <span class="dv">135</span> <span class="dv">125</span> <span class="dv">149</span> <span class="dv">170</span> <span class="dv">170</span> <span class="dv">158</span> <span class="dv">133</span> <span class="dv">114</span> <span class="dv">140</span></span>
-<span id="cb23-6"><a href="origami.html#cb23-6"></a><span class="dv">1951</span> <span class="dv">145</span> <span class="dv">150</span> <span class="dv">178</span> <span class="dv">163</span> <span class="dv">172</span> <span class="dv">178</span> <span class="dv">199</span> <span class="dv">199</span> <span class="dv">184</span> <span class="dv">162</span> <span class="dv">146</span> <span class="dv">166</span></span>
-<span id="cb23-7"><a href="origami.html#cb23-7"></a><span class="dv">1952</span> <span class="dv">171</span> <span class="dv">180</span> <span class="dv">193</span> <span class="dv">181</span> <span class="dv">183</span> <span class="dv">218</span> <span class="dv">230</span> <span class="dv">242</span> <span class="dv">209</span> <span class="dv">191</span> <span class="dv">172</span> <span class="dv">194</span></span>
-<span id="cb23-8"><a href="origami.html#cb23-8"></a><span class="dv">1953</span> <span class="dv">196</span> <span class="dv">196</span> <span class="dv">236</span> <span class="dv">235</span> <span class="dv">229</span> <span class="dv">243</span> <span class="dv">264</span> <span class="dv">272</span> <span class="dv">237</span> <span class="dv">211</span> <span class="dv">180</span> <span class="dv">201</span></span>
-<span id="cb23-9"><a href="origami.html#cb23-9"></a><span class="dv">1954</span> <span class="dv">204</span> <span class="dv">188</span> <span class="dv">235</span> <span class="dv">227</span> <span class="dv">234</span> <span class="dv">264</span> <span class="dv">302</span> <span class="dv">293</span> <span class="dv">259</span> <span class="dv">229</span> <span class="dv">203</span> <span class="dv">229</span></span>
-<span id="cb23-10"><a href="origami.html#cb23-10"></a><span class="dv">1955</span> <span class="dv">242</span> <span class="dv">233</span> <span class="dv">267</span> <span class="dv">269</span> <span class="dv">270</span> <span class="dv">315</span> <span class="dv">364</span> <span class="dv">347</span> <span class="dv">312</span> <span class="dv">274</span> <span class="dv">237</span> <span class="dv">278</span></span>
-<span id="cb23-11"><a href="origami.html#cb23-11"></a><span class="dv">1956</span> <span class="dv">284</span> <span class="dv">277</span> <span class="dv">317</span> <span class="dv">313</span> <span class="dv">318</span> <span class="dv">374</span> <span class="dv">413</span> <span class="dv">405</span> <span class="dv">355</span> <span class="dv">306</span> <span class="dv">271</span> <span class="dv">306</span></span>
-<span id="cb23-12"><a href="origami.html#cb23-12"></a><span class="dv">1957</span> <span class="dv">315</span> <span class="dv">301</span> <span class="dv">356</span> <span class="dv">348</span> <span class="dv">355</span> <span class="dv">422</span> <span class="dv">465</span> <span class="dv">467</span> <span class="dv">404</span> <span class="dv">347</span> <span class="dv">305</span> <span class="dv">336</span></span>
-<span id="cb23-13"><a href="origami.html#cb23-13"></a><span class="dv">1958</span> <span class="dv">340</span> <span class="dv">318</span> <span class="dv">362</span> <span class="dv">348</span> <span class="dv">363</span> <span class="dv">435</span> <span class="dv">491</span> <span class="dv">505</span> <span class="dv">404</span> <span class="dv">359</span> <span class="dv">310</span> <span class="dv">337</span></span>
-<span id="cb23-14"><a href="origami.html#cb23-14"></a><span class="dv">1959</span> <span class="dv">360</span> <span class="dv">342</span> <span class="dv">406</span> <span class="dv">396</span> <span class="dv">420</span> <span class="dv">472</span> <span class="dv">548</span> <span class="dv">559</span> <span class="dv">463</span> <span class="dv">407</span> <span class="dv">362</span> <span class="dv">405</span></span>
-<span id="cb23-15"><a href="origami.html#cb23-15"></a><span class="dv">1960</span> <span class="dv">417</span> <span class="dv">391</span> <span class="dv">419</span> <span class="dv">461</span> <span class="dv">472</span> <span class="dv">535</span> <span class="dv">622</span> <span class="dv">606</span> <span class="dv">508</span> <span class="dv">461</span> <span class="dv">390</span> <span class="dv">432</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="origami.html#cb22-1"></a><span class="kw">data</span>(AirPassengers)</span>
+<span id="cb22-2"><a href="origami.html#cb22-2"></a><span class="kw">print</span>(AirPassengers)</span>
+<span id="cb22-3"><a href="origami.html#cb22-3"></a>     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</span>
+<span id="cb22-4"><a href="origami.html#cb22-4"></a><span class="dv">1949</span> <span class="dv">112</span> <span class="dv">118</span> <span class="dv">132</span> <span class="dv">129</span> <span class="dv">121</span> <span class="dv">135</span> <span class="dv">148</span> <span class="dv">148</span> <span class="dv">136</span> <span class="dv">119</span> <span class="dv">104</span> <span class="dv">118</span></span>
+<span id="cb22-5"><a href="origami.html#cb22-5"></a><span class="dv">1950</span> <span class="dv">115</span> <span class="dv">126</span> <span class="dv">141</span> <span class="dv">135</span> <span class="dv">125</span> <span class="dv">149</span> <span class="dv">170</span> <span class="dv">170</span> <span class="dv">158</span> <span class="dv">133</span> <span class="dv">114</span> <span class="dv">140</span></span>
+<span id="cb22-6"><a href="origami.html#cb22-6"></a><span class="dv">1951</span> <span class="dv">145</span> <span class="dv">150</span> <span class="dv">178</span> <span class="dv">163</span> <span class="dv">172</span> <span class="dv">178</span> <span class="dv">199</span> <span class="dv">199</span> <span class="dv">184</span> <span class="dv">162</span> <span class="dv">146</span> <span class="dv">166</span></span>
+<span id="cb22-7"><a href="origami.html#cb22-7"></a><span class="dv">1952</span> <span class="dv">171</span> <span class="dv">180</span> <span class="dv">193</span> <span class="dv">181</span> <span class="dv">183</span> <span class="dv">218</span> <span class="dv">230</span> <span class="dv">242</span> <span class="dv">209</span> <span class="dv">191</span> <span class="dv">172</span> <span class="dv">194</span></span>
+<span id="cb22-8"><a href="origami.html#cb22-8"></a><span class="dv">1953</span> <span class="dv">196</span> <span class="dv">196</span> <span class="dv">236</span> <span class="dv">235</span> <span class="dv">229</span> <span class="dv">243</span> <span class="dv">264</span> <span class="dv">272</span> <span class="dv">237</span> <span class="dv">211</span> <span class="dv">180</span> <span class="dv">201</span></span>
+<span id="cb22-9"><a href="origami.html#cb22-9"></a><span class="dv">1954</span> <span class="dv">204</span> <span class="dv">188</span> <span class="dv">235</span> <span class="dv">227</span> <span class="dv">234</span> <span class="dv">264</span> <span class="dv">302</span> <span class="dv">293</span> <span class="dv">259</span> <span class="dv">229</span> <span class="dv">203</span> <span class="dv">229</span></span>
+<span id="cb22-10"><a href="origami.html#cb22-10"></a><span class="dv">1955</span> <span class="dv">242</span> <span class="dv">233</span> <span class="dv">267</span> <span class="dv">269</span> <span class="dv">270</span> <span class="dv">315</span> <span class="dv">364</span> <span class="dv">347</span> <span class="dv">312</span> <span class="dv">274</span> <span class="dv">237</span> <span class="dv">278</span></span>
+<span id="cb22-11"><a href="origami.html#cb22-11"></a><span class="dv">1956</span> <span class="dv">284</span> <span class="dv">277</span> <span class="dv">317</span> <span class="dv">313</span> <span class="dv">318</span> <span class="dv">374</span> <span class="dv">413</span> <span class="dv">405</span> <span class="dv">355</span> <span class="dv">306</span> <span class="dv">271</span> <span class="dv">306</span></span>
+<span id="cb22-12"><a href="origami.html#cb22-12"></a><span class="dv">1957</span> <span class="dv">315</span> <span class="dv">301</span> <span class="dv">356</span> <span class="dv">348</span> <span class="dv">355</span> <span class="dv">422</span> <span class="dv">465</span> <span class="dv">467</span> <span class="dv">404</span> <span class="dv">347</span> <span class="dv">305</span> <span class="dv">336</span></span>
+<span id="cb22-13"><a href="origami.html#cb22-13"></a><span class="dv">1958</span> <span class="dv">340</span> <span class="dv">318</span> <span class="dv">362</span> <span class="dv">348</span> <span class="dv">363</span> <span class="dv">435</span> <span class="dv">491</span> <span class="dv">505</span> <span class="dv">404</span> <span class="dv">359</span> <span class="dv">310</span> <span class="dv">337</span></span>
+<span id="cb22-14"><a href="origami.html#cb22-14"></a><span class="dv">1959</span> <span class="dv">360</span> <span class="dv">342</span> <span class="dv">406</span> <span class="dv">396</span> <span class="dv">420</span> <span class="dv">472</span> <span class="dv">548</span> <span class="dv">559</span> <span class="dv">463</span> <span class="dv">407</span> <span class="dv">362</span> <span class="dv">405</span></span>
+<span id="cb22-15"><a href="origami.html#cb22-15"></a><span class="dv">1960</span> <span class="dv">417</span> <span class="dv">391</span> <span class="dv">419</span> <span class="dv">461</span> <span class="dv">472</span> <span class="dv">535</span> <span class="dv">622</span> <span class="dv">606</span> <span class="dv">508</span> <span class="dv">461</span> <span class="dv">390</span> <span class="dv">432</span></span></code></pre></div>
 <p>Suppose we want to pick between two forecasting models with different ARIMA
 (AutoRegressive Integrated Moving Average) model configurations. We can choose
 among such models by evaluating their forecasting performance. First, we set up
 an appropriate cross-validation scheme for use with time-series data. Here, we
 pick the rolling origin cross-validation scheme described above.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="origami.html#cb24-1"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(AirPassengers,</span>
-<span id="cb24-2"><a href="origami.html#cb24-2"></a>  <span class="dt">fold_fun =</span> folds_rolling_origin,</span>
-<span id="cb24-3"><a href="origami.html#cb24-3"></a>  <span class="dt">first_window =</span> <span class="dv">36</span>, <span class="dt">validation_size =</span> <span class="dv">24</span>, <span class="dt">batch =</span> <span class="dv">10</span></span>
-<span id="cb24-4"><a href="origami.html#cb24-4"></a>)</span>
-<span id="cb24-5"><a href="origami.html#cb24-5"></a></span>
-<span id="cb24-6"><a href="origami.html#cb24-6"></a><span class="co"># How many folds where generated?</span></span>
-<span id="cb24-7"><a href="origami.html#cb24-7"></a><span class="kw">length</span>(folds)</span>
-<span id="cb24-8"><a href="origami.html#cb24-8"></a>[<span class="dv">1</span>] <span class="dv">9</span></span>
-<span id="cb24-9"><a href="origami.html#cb24-9"></a></span>
-<span id="cb24-10"><a href="origami.html#cb24-10"></a><span class="co"># Examine the first 2 folds.</span></span>
-<span id="cb24-11"><a href="origami.html#cb24-11"></a>folds[[<span class="dv">1</span>]]</span>
-<span id="cb24-12"><a href="origami.html#cb24-12"></a><span class="op">$</span>v</span>
-<span id="cb24-13"><a href="origami.html#cb24-13"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb24-14"><a href="origami.html#cb24-14"></a></span>
-<span id="cb24-15"><a href="origami.html#cb24-15"></a><span class="op">$</span>training_set</span>
-<span id="cb24-16"><a href="origami.html#cb24-16"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb24-17"><a href="origami.html#cb24-17"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span></span>
-<span id="cb24-18"><a href="origami.html#cb24-18"></a></span>
-<span id="cb24-19"><a href="origami.html#cb24-19"></a><span class="op">$</span>validation_set</span>
-<span id="cb24-20"><a href="origami.html#cb24-20"></a> [<span class="dv">1</span>] <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span></span>
-<span id="cb24-21"><a href="origami.html#cb24-21"></a></span>
-<span id="cb24-22"><a href="origami.html#cb24-22"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb24-23"><a href="origami.html#cb24-23"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
-<span id="cb24-24"><a href="origami.html#cb24-24"></a>folds[[<span class="dv">2</span>]]</span>
-<span id="cb24-25"><a href="origami.html#cb24-25"></a><span class="op">$</span>v</span>
-<span id="cb24-26"><a href="origami.html#cb24-26"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb24-27"><a href="origami.html#cb24-27"></a></span>
-<span id="cb24-28"><a href="origami.html#cb24-28"></a><span class="op">$</span>training_set</span>
-<span id="cb24-29"><a href="origami.html#cb24-29"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
-<span id="cb24-30"><a href="origami.html#cb24-30"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span></span>
-<span id="cb24-31"><a href="origami.html#cb24-31"></a></span>
-<span id="cb24-32"><a href="origami.html#cb24-32"></a><span class="op">$</span>validation_set</span>
-<span id="cb24-33"><a href="origami.html#cb24-33"></a> [<span class="dv">1</span>] <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
-<span id="cb24-34"><a href="origami.html#cb24-34"></a></span>
-<span id="cb24-35"><a href="origami.html#cb24-35"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb24-36"><a href="origami.html#cb24-36"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="origami.html#cb23-1"></a>folds &lt;-<span class="st"> </span><span class="kw">make_folds</span>(AirPassengers,</span>
+<span id="cb23-2"><a href="origami.html#cb23-2"></a>  <span class="dt">fold_fun =</span> folds_rolling_origin,</span>
+<span id="cb23-3"><a href="origami.html#cb23-3"></a>  <span class="dt">first_window =</span> <span class="dv">36</span>, <span class="dt">validation_size =</span> <span class="dv">24</span>, <span class="dt">batch =</span> <span class="dv">10</span></span>
+<span id="cb23-4"><a href="origami.html#cb23-4"></a>)</span>
+<span id="cb23-5"><a href="origami.html#cb23-5"></a></span>
+<span id="cb23-6"><a href="origami.html#cb23-6"></a><span class="co"># How many folds where generated?</span></span>
+<span id="cb23-7"><a href="origami.html#cb23-7"></a><span class="kw">length</span>(folds)</span>
+<span id="cb23-8"><a href="origami.html#cb23-8"></a>[<span class="dv">1</span>] <span class="dv">9</span></span>
+<span id="cb23-9"><a href="origami.html#cb23-9"></a></span>
+<span id="cb23-10"><a href="origami.html#cb23-10"></a><span class="co"># Examine the first 2 folds.</span></span>
+<span id="cb23-11"><a href="origami.html#cb23-11"></a>folds[[<span class="dv">1</span>]]</span>
+<span id="cb23-12"><a href="origami.html#cb23-12"></a><span class="op">$</span>v</span>
+<span id="cb23-13"><a href="origami.html#cb23-13"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb23-14"><a href="origami.html#cb23-14"></a></span>
+<span id="cb23-15"><a href="origami.html#cb23-15"></a><span class="op">$</span>training_set</span>
+<span id="cb23-16"><a href="origami.html#cb23-16"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb23-17"><a href="origami.html#cb23-17"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span></span>
+<span id="cb23-18"><a href="origami.html#cb23-18"></a></span>
+<span id="cb23-19"><a href="origami.html#cb23-19"></a><span class="op">$</span>validation_set</span>
+<span id="cb23-20"><a href="origami.html#cb23-20"></a> [<span class="dv">1</span>] <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span> <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span></span>
+<span id="cb23-21"><a href="origami.html#cb23-21"></a></span>
+<span id="cb23-22"><a href="origami.html#cb23-22"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb23-23"><a href="origami.html#cb23-23"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span>
+<span id="cb23-24"><a href="origami.html#cb23-24"></a>folds[[<span class="dv">2</span>]]</span>
+<span id="cb23-25"><a href="origami.html#cb23-25"></a><span class="op">$</span>v</span>
+<span id="cb23-26"><a href="origami.html#cb23-26"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb23-27"><a href="origami.html#cb23-27"></a></span>
+<span id="cb23-28"><a href="origami.html#cb23-28"></a><span class="op">$</span>training_set</span>
+<span id="cb23-29"><a href="origami.html#cb23-29"></a> [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">11</span> <span class="dv">12</span> <span class="dv">13</span> <span class="dv">14</span> <span class="dv">15</span> <span class="dv">16</span> <span class="dv">17</span> <span class="dv">18</span> <span class="dv">19</span> <span class="dv">20</span> <span class="dv">21</span> <span class="dv">22</span> <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span></span>
+<span id="cb23-30"><a href="origami.html#cb23-30"></a>[<span class="dv">26</span>] <span class="dv">26</span> <span class="dv">27</span> <span class="dv">28</span> <span class="dv">29</span> <span class="dv">30</span> <span class="dv">31</span> <span class="dv">32</span> <span class="dv">33</span> <span class="dv">34</span> <span class="dv">35</span> <span class="dv">36</span> <span class="dv">37</span> <span class="dv">38</span> <span class="dv">39</span> <span class="dv">40</span> <span class="dv">41</span> <span class="dv">42</span> <span class="dv">43</span> <span class="dv">44</span> <span class="dv">45</span> <span class="dv">46</span></span>
+<span id="cb23-31"><a href="origami.html#cb23-31"></a></span>
+<span id="cb23-32"><a href="origami.html#cb23-32"></a><span class="op">$</span>validation_set</span>
+<span id="cb23-33"><a href="origami.html#cb23-33"></a> [<span class="dv">1</span>] <span class="dv">47</span> <span class="dv">48</span> <span class="dv">49</span> <span class="dv">50</span> <span class="dv">51</span> <span class="dv">52</span> <span class="dv">53</span> <span class="dv">54</span> <span class="dv">55</span> <span class="dv">56</span> <span class="dv">57</span> <span class="dv">58</span> <span class="dv">59</span> <span class="dv">60</span> <span class="dv">61</span> <span class="dv">62</span> <span class="dv">63</span> <span class="dv">64</span> <span class="dv">65</span> <span class="dv">66</span> <span class="dv">67</span> <span class="dv">68</span> <span class="dv">69</span> <span class="dv">70</span></span>
+<span id="cb23-34"><a href="origami.html#cb23-34"></a></span>
+<span id="cb23-35"><a href="origami.html#cb23-35"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb23-36"><a href="origami.html#cb23-36"></a>[<span class="dv">1</span>] <span class="st">"fold"</span></span></code></pre></div>
 <p>By default, <code>folds_rolling_origin</code> will increase the size of the training set by
 one time point in each training fold. Had we followed the default option, we
 would have 85 folds to train! Luckily, we can pass the <code>batch</code> as an option to
@@ -2626,65 +2626,65 @@ would have 85 folds to train! Luckily, we can pass the <code>batch</code> as an 
 10 points in each iteration (so that we don’t have so many training folds).
 Since we want to forecast the immediately following time point, the <code>gap</code>
 argument remains at its default of zero.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="origami.html#cb25-1"></a><span class="co"># make sure to load the package!</span></span>
-<span id="cb25-2"><a href="origami.html#cb25-2"></a><span class="kw">library</span>(forecast)</span>
-<span id="cb25-3"><a href="origami.html#cb25-3"></a></span>
-<span id="cb25-4"><a href="origami.html#cb25-4"></a><span class="co"># function to calculate cross-validated squared error</span></span>
-<span id="cb25-5"><a href="origami.html#cb25-5"></a>cv_forecasts &lt;-<span class="st"> </span><span class="cf">function</span>(fold, data) {</span>
-<span id="cb25-6"><a href="origami.html#cb25-6"></a>  <span class="co"># Get training and validation data</span></span>
-<span id="cb25-7"><a href="origami.html#cb25-7"></a>  train_data &lt;-<span class="st"> </span><span class="kw">training</span>(data)</span>
-<span id="cb25-8"><a href="origami.html#cb25-8"></a>  valid_data &lt;-<span class="st"> </span><span class="kw">validation</span>(data)</span>
-<span id="cb25-9"><a href="origami.html#cb25-9"></a>  valid_size &lt;-<span class="st"> </span><span class="kw">length</span>(valid_data)</span>
-<span id="cb25-10"><a href="origami.html#cb25-10"></a></span>
-<span id="cb25-11"><a href="origami.html#cb25-11"></a>  train_ts &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">log10</span>(train_data), <span class="dt">frequency =</span> <span class="dv">12</span>)</span>
-<span id="cb25-12"><a href="origami.html#cb25-12"></a></span>
-<span id="cb25-13"><a href="origami.html#cb25-13"></a>  <span class="co"># First arima model</span></span>
-<span id="cb25-14"><a href="origami.html#cb25-14"></a>  arima_fit &lt;-<span class="st"> </span><span class="kw">arima</span>(train_ts, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb25-15"><a href="origami.html#cb25-15"></a>    <span class="dt">seasonal =</span> <span class="kw">list</span>(</span>
-<span id="cb25-16"><a href="origami.html#cb25-16"></a>      <span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb25-17"><a href="origami.html#cb25-17"></a>      <span class="dt">period =</span> <span class="dv">12</span></span>
-<span id="cb25-18"><a href="origami.html#cb25-18"></a>    )</span>
-<span id="cb25-19"><a href="origami.html#cb25-19"></a>  )</span>
-<span id="cb25-20"><a href="origami.html#cb25-20"></a>  raw_arima_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(arima_fit, <span class="dt">n.ahead =</span> valid_size)</span>
-<span id="cb25-21"><a href="origami.html#cb25-21"></a>  arima_pred &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>raw_arima_pred<span class="op">$</span>pred</span>
-<span id="cb25-22"><a href="origami.html#cb25-22"></a>  arima_MSE &lt;-<span class="st"> </span><span class="kw">mean</span>((arima_pred <span class="op">-</span><span class="st"> </span>valid_data)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb25-23"><a href="origami.html#cb25-23"></a></span>
-<span id="cb25-24"><a href="origami.html#cb25-24"></a>  <span class="co"># Second arima model</span></span>
-<span id="cb25-25"><a href="origami.html#cb25-25"></a>  arima_fit2 &lt;-<span class="st"> </span><span class="kw">arima</span>(train_ts, <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb25-26"><a href="origami.html#cb25-26"></a>    <span class="dt">seasonal =</span> <span class="kw">list</span>(</span>
-<span id="cb25-27"><a href="origami.html#cb25-27"></a>      <span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb25-28"><a href="origami.html#cb25-28"></a>      <span class="dt">period =</span> <span class="dv">12</span></span>
-<span id="cb25-29"><a href="origami.html#cb25-29"></a>    )</span>
-<span id="cb25-30"><a href="origami.html#cb25-30"></a>  )</span>
-<span id="cb25-31"><a href="origami.html#cb25-31"></a>  raw_arima_pred2 &lt;-<span class="st"> </span><span class="kw">predict</span>(arima_fit2, <span class="dt">n.ahead =</span> valid_size)</span>
-<span id="cb25-32"><a href="origami.html#cb25-32"></a>  arima_pred2 &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>raw_arima_pred2<span class="op">$</span>pred</span>
-<span id="cb25-33"><a href="origami.html#cb25-33"></a>  arima_MSE2 &lt;-<span class="st"> </span><span class="kw">mean</span>((arima_pred2 <span class="op">-</span><span class="st"> </span>valid_data)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb25-34"><a href="origami.html#cb25-34"></a></span>
-<span id="cb25-35"><a href="origami.html#cb25-35"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">mse =</span> <span class="kw">data.frame</span>(</span>
-<span id="cb25-36"><a href="origami.html#cb25-36"></a>    <span class="dt">fold =</span> <span class="kw">fold_index</span>(),</span>
-<span id="cb25-37"><a href="origami.html#cb25-37"></a>    <span class="dt">arima =</span> arima_MSE, <span class="dt">arima2 =</span> arima_MSE2</span>
-<span id="cb25-38"><a href="origami.html#cb25-38"></a>  ))</span>
-<span id="cb25-39"><a href="origami.html#cb25-39"></a>  <span class="kw">return</span>(out)</span>
-<span id="cb25-40"><a href="origami.html#cb25-40"></a>}</span>
-<span id="cb25-41"><a href="origami.html#cb25-41"></a></span>
-<span id="cb25-42"><a href="origami.html#cb25-42"></a>mses &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
-<span id="cb25-43"><a href="origami.html#cb25-43"></a>  <span class="dt">cv_fun =</span> cv_forecasts, <span class="dt">folds =</span> folds, <span class="dt">data =</span> AirPassengers,</span>
-<span id="cb25-44"><a href="origami.html#cb25-44"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
-<span id="cb25-45"><a href="origami.html#cb25-45"></a>)</span>
-<span id="cb25-46"><a href="origami.html#cb25-46"></a>mses<span class="op">$</span>mse</span>
-<span id="cb25-47"><a href="origami.html#cb25-47"></a>  fold   arima  arima2</span>
-<span id="cb25-48"><a href="origami.html#cb25-48"></a><span class="dv">1</span>    <span class="dv">1</span>   <span class="fl">68.21</span>  <span class="fl">137.28</span></span>
-<span id="cb25-49"><a href="origami.html#cb25-49"></a><span class="dv">2</span>    <span class="dv">2</span>  <span class="fl">319.68</span>  <span class="fl">313.15</span></span>
-<span id="cb25-50"><a href="origami.html#cb25-50"></a><span class="dv">3</span>    <span class="dv">3</span>  <span class="fl">578.35</span>  <span class="fl">713.36</span></span>
-<span id="cb25-51"><a href="origami.html#cb25-51"></a><span class="dv">4</span>    <span class="dv">4</span>  <span class="fl">428.69</span>  <span class="fl">505.31</span></span>
-<span id="cb25-52"><a href="origami.html#cb25-52"></a><span class="dv">5</span>    <span class="dv">5</span>  <span class="fl">407.33</span>  <span class="fl">371.27</span></span>
-<span id="cb25-53"><a href="origami.html#cb25-53"></a><span class="dv">6</span>    <span class="dv">6</span>  <span class="fl">281.82</span>  <span class="fl">250.99</span></span>
-<span id="cb25-54"><a href="origami.html#cb25-54"></a><span class="dv">7</span>    <span class="dv">7</span>  <span class="fl">827.56</span>  <span class="fl">910.12</span></span>
-<span id="cb25-55"><a href="origami.html#cb25-55"></a><span class="dv">8</span>    <span class="dv">8</span> <span class="fl">2099.59</span> <span class="fl">2213.15</span></span>
-<span id="cb25-56"><a href="origami.html#cb25-56"></a><span class="dv">9</span>    <span class="dv">9</span>  <span class="fl">398.37</span>  <span class="fl">293.38</span></span>
-<span id="cb25-57"><a href="origami.html#cb25-57"></a><span class="kw">colMeans</span>(mses<span class="op">$</span>mse[, <span class="kw">c</span>(<span class="st">"arima"</span>, <span class="st">"arima2"</span>)])</span>
-<span id="cb25-58"><a href="origami.html#cb25-58"></a> arima arima2 </span>
-<span id="cb25-59"><a href="origami.html#cb25-59"></a><span class="fl">601.07</span> <span class="fl">634.22</span> </span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="origami.html#cb24-1"></a><span class="co"># make sure to load the package!</span></span>
+<span id="cb24-2"><a href="origami.html#cb24-2"></a><span class="kw">library</span>(forecast)</span>
+<span id="cb24-3"><a href="origami.html#cb24-3"></a></span>
+<span id="cb24-4"><a href="origami.html#cb24-4"></a><span class="co"># function to calculate cross-validated squared error</span></span>
+<span id="cb24-5"><a href="origami.html#cb24-5"></a>cv_forecasts &lt;-<span class="st"> </span><span class="cf">function</span>(fold, data) {</span>
+<span id="cb24-6"><a href="origami.html#cb24-6"></a>  <span class="co"># Get training and validation data</span></span>
+<span id="cb24-7"><a href="origami.html#cb24-7"></a>  train_data &lt;-<span class="st"> </span><span class="kw">training</span>(data)</span>
+<span id="cb24-8"><a href="origami.html#cb24-8"></a>  valid_data &lt;-<span class="st"> </span><span class="kw">validation</span>(data)</span>
+<span id="cb24-9"><a href="origami.html#cb24-9"></a>  valid_size &lt;-<span class="st"> </span><span class="kw">length</span>(valid_data)</span>
+<span id="cb24-10"><a href="origami.html#cb24-10"></a></span>
+<span id="cb24-11"><a href="origami.html#cb24-11"></a>  train_ts &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">log10</span>(train_data), <span class="dt">frequency =</span> <span class="dv">12</span>)</span>
+<span id="cb24-12"><a href="origami.html#cb24-12"></a></span>
+<span id="cb24-13"><a href="origami.html#cb24-13"></a>  <span class="co"># First arima model</span></span>
+<span id="cb24-14"><a href="origami.html#cb24-14"></a>  arima_fit &lt;-<span class="st"> </span><span class="kw">arima</span>(train_ts, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb24-15"><a href="origami.html#cb24-15"></a>    <span class="dt">seasonal =</span> <span class="kw">list</span>(</span>
+<span id="cb24-16"><a href="origami.html#cb24-16"></a>      <span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb24-17"><a href="origami.html#cb24-17"></a>      <span class="dt">period =</span> <span class="dv">12</span></span>
+<span id="cb24-18"><a href="origami.html#cb24-18"></a>    )</span>
+<span id="cb24-19"><a href="origami.html#cb24-19"></a>  )</span>
+<span id="cb24-20"><a href="origami.html#cb24-20"></a>  raw_arima_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(arima_fit, <span class="dt">n.ahead =</span> valid_size)</span>
+<span id="cb24-21"><a href="origami.html#cb24-21"></a>  arima_pred &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>raw_arima_pred<span class="op">$</span>pred</span>
+<span id="cb24-22"><a href="origami.html#cb24-22"></a>  arima_MSE &lt;-<span class="st"> </span><span class="kw">mean</span>((arima_pred <span class="op">-</span><span class="st"> </span>valid_data)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb24-23"><a href="origami.html#cb24-23"></a></span>
+<span id="cb24-24"><a href="origami.html#cb24-24"></a>  <span class="co"># Second arima model</span></span>
+<span id="cb24-25"><a href="origami.html#cb24-25"></a>  arima_fit2 &lt;-<span class="st"> </span><span class="kw">arima</span>(train_ts, <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb24-26"><a href="origami.html#cb24-26"></a>    <span class="dt">seasonal =</span> <span class="kw">list</span>(</span>
+<span id="cb24-27"><a href="origami.html#cb24-27"></a>      <span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb24-28"><a href="origami.html#cb24-28"></a>      <span class="dt">period =</span> <span class="dv">12</span></span>
+<span id="cb24-29"><a href="origami.html#cb24-29"></a>    )</span>
+<span id="cb24-30"><a href="origami.html#cb24-30"></a>  )</span>
+<span id="cb24-31"><a href="origami.html#cb24-31"></a>  raw_arima_pred2 &lt;-<span class="st"> </span><span class="kw">predict</span>(arima_fit2, <span class="dt">n.ahead =</span> valid_size)</span>
+<span id="cb24-32"><a href="origami.html#cb24-32"></a>  arima_pred2 &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span>raw_arima_pred2<span class="op">$</span>pred</span>
+<span id="cb24-33"><a href="origami.html#cb24-33"></a>  arima_MSE2 &lt;-<span class="st"> </span><span class="kw">mean</span>((arima_pred2 <span class="op">-</span><span class="st"> </span>valid_data)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb24-34"><a href="origami.html#cb24-34"></a></span>
+<span id="cb24-35"><a href="origami.html#cb24-35"></a>  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">mse =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb24-36"><a href="origami.html#cb24-36"></a>    <span class="dt">fold =</span> <span class="kw">fold_index</span>(),</span>
+<span id="cb24-37"><a href="origami.html#cb24-37"></a>    <span class="dt">arima =</span> arima_MSE, <span class="dt">arima2 =</span> arima_MSE2</span>
+<span id="cb24-38"><a href="origami.html#cb24-38"></a>  ))</span>
+<span id="cb24-39"><a href="origami.html#cb24-39"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb24-40"><a href="origami.html#cb24-40"></a>}</span>
+<span id="cb24-41"><a href="origami.html#cb24-41"></a></span>
+<span id="cb24-42"><a href="origami.html#cb24-42"></a>mses &lt;-<span class="st"> </span><span class="kw">cross_validate</span>(</span>
+<span id="cb24-43"><a href="origami.html#cb24-43"></a>  <span class="dt">cv_fun =</span> cv_forecasts, <span class="dt">folds =</span> folds, <span class="dt">data =</span> AirPassengers,</span>
+<span id="cb24-44"><a href="origami.html#cb24-44"></a>  <span class="dt">use_future =</span> <span class="ot">FALSE</span></span>
+<span id="cb24-45"><a href="origami.html#cb24-45"></a>)</span>
+<span id="cb24-46"><a href="origami.html#cb24-46"></a>mses<span class="op">$</span>mse</span>
+<span id="cb24-47"><a href="origami.html#cb24-47"></a>  fold   arima  arima2</span>
+<span id="cb24-48"><a href="origami.html#cb24-48"></a><span class="dv">1</span>    <span class="dv">1</span>   <span class="fl">68.21</span>  <span class="fl">137.28</span></span>
+<span id="cb24-49"><a href="origami.html#cb24-49"></a><span class="dv">2</span>    <span class="dv">2</span>  <span class="fl">319.68</span>  <span class="fl">313.15</span></span>
+<span id="cb24-50"><a href="origami.html#cb24-50"></a><span class="dv">3</span>    <span class="dv">3</span>  <span class="fl">578.35</span>  <span class="fl">713.36</span></span>
+<span id="cb24-51"><a href="origami.html#cb24-51"></a><span class="dv">4</span>    <span class="dv">4</span>  <span class="fl">428.69</span>  <span class="fl">505.31</span></span>
+<span id="cb24-52"><a href="origami.html#cb24-52"></a><span class="dv">5</span>    <span class="dv">5</span>  <span class="fl">407.33</span>  <span class="fl">371.27</span></span>
+<span id="cb24-53"><a href="origami.html#cb24-53"></a><span class="dv">6</span>    <span class="dv">6</span>  <span class="fl">281.82</span>  <span class="fl">250.99</span></span>
+<span id="cb24-54"><a href="origami.html#cb24-54"></a><span class="dv">7</span>    <span class="dv">7</span>  <span class="fl">827.56</span>  <span class="fl">910.12</span></span>
+<span id="cb24-55"><a href="origami.html#cb24-55"></a><span class="dv">8</span>    <span class="dv">8</span> <span class="fl">2099.59</span> <span class="fl">2213.15</span></span>
+<span id="cb24-56"><a href="origami.html#cb24-56"></a><span class="dv">9</span>    <span class="dv">9</span>  <span class="fl">398.37</span>  <span class="fl">293.38</span></span>
+<span id="cb24-57"><a href="origami.html#cb24-57"></a><span class="kw">colMeans</span>(mses<span class="op">$</span>mse[, <span class="kw">c</span>(<span class="st">"arima"</span>, <span class="st">"arima2"</span>)])</span>
+<span id="cb24-58"><a href="origami.html#cb24-58"></a> arima arima2 </span>
+<span id="cb24-59"><a href="origami.html#cb24-59"></a><span class="fl">601.07</span> <span class="fl">634.22</span> </span></code></pre></div>
 <p>By applying <code><a href="http://tlverse.org/origami/reference/cross_validate.html">cross_validate()</a></code> with this <code>cv_forecasts()</code> custom function, we
 find that the ARIMA model with no AR (autoregressive) component seems to be a
 better fit for this dataset.</p>
@@ -2831,7 +2831,7 @@ performance of the learning algorithm.</li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[ENAR 2023 Short Course] Targeted Learning in the <code>tlverse</code></strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 07, 2023.</p>
+    <p>"<strong>[ENAR 2023 Short Course] Targeted Learning</strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 08, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
