@@ -1,6 +1,6 @@
 ---
 knit: "bookdown::render_book"
-title: "[ENAR 2023 Short Course] Targeted Learning in the `tlverse`"
+title: "[ENAR 2023 Short Course] Targeted Learning"
 subtitle: "Advanced Methods for Causal Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
@@ -24,61 +24,27 @@ description: "Open source, reproducible teaching materials accompanying a
   ecosystem](https://github.com/tlverse)."
 ---
 
-# Welcome! {-}
+# Course Information {-}
 
-This open source, reproducible vignette is for a full-day short course at the 
-2023 International Biometric Society Eastern North American Region (ENAR) 
-Conference in Nashville, Tennessee. Beyond introducing the Targeted Learning 
-framework for causal and statistical inference with machine learning, this 
-course focuses on applying the methodology in practice using the [`tlverse` 
-software ecosystem](https://github.com/tlverse). The materials are based on a 
-working draft of the book, [*Targeted Learning in `R`: Causal Data Science with 
-the `tlverse` Software Ecosystem*](https://tlverse.org/tlverse-handbook/), which
-includes in-depth discussion of these topics and much more, and may serve as a
-useful reference to accompany these workshop materials.
+This open source, reproducible vignette is for a full-day short course on March 
+19, 2023 at the International Biometric Society Eastern North American Region 
+(ENAR) Conference in Nashville, Tennessee. Entitled "Targeted Learning: 
+Advanced Methods for Causal Machine Learning", this workshop provides a 
+comprehensive introduction to the field of Targeted Learning, at the 
+intersection of causal inference and machine learning, and its accompanying 
+[`tlverse` software ecosystem](https://github.com/tlverse). Focus will be on 
+targeted minimum loss-based estimation (TMLE) of causal effects of 
+sophisticated interventions, including dynamic, optimal dynamic, 
+stochastic regimes. The robust and efficient plug-in estimators that will be 
+introduced leverage state-of-the-art machine learning via the super learner in 
+order to flexibly adjust for confounding while yielding valid statistical 
+inference. 
 
-<img style="float: center; margin-right: 1%; margin-bottom: 0.01em"
-     src="img/logos/tlverse-logo.svg" width="30%" height="30%">
-<img style="float: center; margin-right: 1%; margin-bottom: 0.01em"
-     src="img/logos/Rlogo.svg" width="35%" height="35%">
-<img style="float: center; margin-right: 1%; margin-bottom: 0.01em"
-     src="img/logos/vdl-logo-transparent.svg" width="30%" height="30%">
-<p style="clear: both;">
-<br>
-
-## Important links {-}
-
-* __Load R environment__: Please set up the `R` virtual environment using the
-  [instructions](https://github.com/tlverse/enar2023-workshop/blob/master/install.md).
-  If you experiencing issues with the `R` environment, you may install the 
-  relevant software packages before the workshop using the [installation
-  script](https://github.com/tlverse/enar2023-workshop/blob/master/install.R).
-
-* You will probably exceed the GitHub API rate limit during this installation,
-  which will throw an error. This issue and the solution are addressed
-  [here](#installtlverse).
-
-* __Code__: `R` script files for each section of the workshop are available via
-  the GitHub repository for the workshop at
-  https://github.com/tlverse/enar2023-workshop/tree/master/R_code
-
-## About this workshop {-}
-
-This full-day workshop provides a comprehensive introduction to the field of 
-Targeted Learning, at the intersection of causal inference and machine learning, 
-and its accompanying [`tlverse` software ecosystem](https://github.com/tlverse). 
-Focus will be on targeted minimum loss estimators of causal effects, in 
-particular of sophisticated intervention regimes (dynamic, optimal dynamic, 
-stochastic), heterogeneous treatment effects, and ensemble machine learning of 
-complex functionals (multinomial probabilities, conditional densities). The 
-robust, efficient plug-in estimators that will be introduced leverage 
-state-of-the-art, ensemble machine learning tools in order to flexibly adjust 
-for confounding while yielding valid statistical inference. This course will 
-be of interest to both statistical and applied scientists engaged in 
-biomedical/health studies, whether experimental or observational, who wish to 
-apply cutting-edge statistical and causal inference methodology to rigorously 
-formalizing and answering substantive questions. This workshop incorporates 
-interactive discussions and hands-on, guided R programming exercises, allowing 
+This course will be of interest to both statistical and applied scientists 
+engaged in biomedical/health studies, whether experimental or observational, 
+who wish to apply cutting-edge statistical and causal inference methodology to 
+rigorously formalize and answer research questions. This workshop incorporates 
+interactive discussions and hands-on, guided `R` programming exercises, allowing 
 participants to familiarize themselves with methodology and tools that 
 translate to real-world data analysis.
 
@@ -88,14 +54,16 @@ testing and confidence intervals, regression). Advanced knowledge of
 mathematical statistics is useful but not necessary. Familiarity with the `R` 
 programming language is essential.
 
-## Tentative schedule {-}
+## Schedule {-}
 
-* _Optional pre-workshop reading_: The Roadmap of Targeted Learning and [Why We 
+* _Pre-workshop software installation_: Please see "Part 1: Preliminaries" of 
+  this website to set up `R`, RStudio, and the `tlverse`.
+* _Pre-workshop reading_: The Roadmap of Targeted Learning and [Why We 
   Need A Statistical Revolution](https://senseaboutscienceusa.org/super-learning-and-the-revolution-in-knowledge/)
 * 08:00-10:00: Introduction to Targeted Learning
 * 10:00-10:20: Coffee break
 * 10:20-10:45: Introduction to the `tlverse`
-* 10:45-12:00: Super learning with the [`sl3` `R`
+* 10:45-12:00: Super learning with the [`sl3` `R` 
   package](https://github.com/tlverse/sl3)
 * 12:00-01:00: Lunch break
 * 01:00-01:30: Brief intro to the [`tmle3` `R`
@@ -106,6 +74,21 @@ programming language is essential.
 * 03:20-05:00: Stochastic treatment regimes with the [`tmle3shift` `R`
   package](https://github.com/tlverse/tmle3shift)
 
+## Materials
+
+* The course materials on this website are based on a working draft of the book, 
+  [*Targeted Learning in `R`: Causal Data Science with the `tlverse` Software Ecosystem*](https://tlverse.org/tlverse-handbook/), which includes in-depth 
+  discussion of these topics and much more, and may serve as a useful reference 
+  to accompany these workshop materials.
+* The GitHub repository for this short course is available at 
+  https://github.com/tlverse/enar2023-workshop/. The GitHub repository 
+  contains the files for generating this website and additional learning 
+  resources, including
+
+    * `R` script files (for each section of the website that contains `R` code): 
+      https://github.com/tlverse/enar2023-workshop/tree/master/R_code, and
+    * Slide decks for various presentations that will be given: 
+      https://github.com/tlverse/enar2023-workshop/tree/master/slides. 
 
 ## About the instructors {-}
 
