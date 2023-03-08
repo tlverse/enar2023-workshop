@@ -86,26 +86,13 @@ These setup instructions are adapted from those written for [Data Carpentry: R
 for Data Analysis and Visualization of Ecological
 Data](http://www.datacarpentry.org/R-ecology-lesson/).
 
-# Install `tlverse` software {#installtlverse} {-}
+# Install Software Packages {-}
 
-The `tlverse` ecosystem of packages are currently hosted at
-https://github.com/tlverse, not fully on [CRAN](https://CRAN.R-project.org/) yet. 
-You can use the [`usethis` package](https://usethis.r-lib.org/) to install all 
-tlverse packages or specific packages:
-
-```{r installation, eval=FALSE}
-install.packages("devtools")
-
-# install all tlverse packages
-devtools::install_github("tlverse/tlverse")
-
-# install a specific package (example is sl3)
-devtools::install_github("tlverse/sl3")
-
-# install a specific branch of package (example is devel branch of sl3)
-# (first clear workspace and restart R)
-devtools::install_github("tlverse/sl3@devel")
-```
+Please set up the `R` virtual environment using the 
+[instructions](https://github.com/tlverse/enar2023-workshop/blob/master/install.md). 
+If you experiencing issues with the `R` environment, you may install the relevant 
+software packages before the workshop using the [installation 
+script](https://github.com/tlverse/enar2023-workshop/blob/master/install.R).
 
 The `tlverse` packages depend on other packages that are also hosted on GitHub. 
 Because of this, you may see the following error:
@@ -148,7 +135,7 @@ user (you'll need a GitHub user account). Follow these two steps:
    look.
 
   ```{r renviron-example, results="asis", eval=FALSE}
-GITHUB_PAT <- yourPAT
+GITHUB_PAT=yourPAT
   ```
 
 8. Restart R. You can restart `R` via the drop-down menu on RStudio's "Session"
@@ -158,7 +145,7 @@ GITHUB_PAT <- yourPAT
 After following these steps, you should be able to successfully install the
 package which threw the error above.
 
-# Supplemental learning resources {-}
+# Supplemental Learning Resources {-}
 
 To effectively utilize these materials, the reader need not be a fully trained
 statistician. However, it is highly recommended for the reader to have an 
