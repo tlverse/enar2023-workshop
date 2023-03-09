@@ -506,7 +506,6 @@ training).
 ##### CV predictions "by hand" #####
 # for each fold, i, we obtain validation set predictions:
 cv_preds_list <- lapply(seq_along(task$folds), function(i) {
-
   # get validation dataset for fold i:
   v_data <- task$data[task$folds[[i]]$validation_set, ]
 
@@ -729,7 +728,6 @@ helpful for understanding the CV risk and how it is calculated.
 ##### CV risk "by hand" #####
 # for each fold, i, we obtain predictive performance/risk for each candidate:
 cv_risks_list <- lapply(seq_along(task$folds), function(i) {
-
   # get validation dataset for fold i:
   v_data <- task$data[task$folds[[i]]$validation_set, ]
 
@@ -768,7 +766,6 @@ identical(
 <!--
 We can plot the CV risks as well. 
 ```{r sl-summary-plot, eval = F}
-
 # Column "se" in the CV risk table is the standard error across all losses for
 # a learner, i.e., se = sd(loss)/sqrt(n), where loss is an n length vector of
 # validation set predictions across all folds, and n is the number of
