@@ -1048,9 +1048,9 @@ so the results are reproducible, and we will also time it.</p>
 <span id="cb38-6"><a href="sl3.html#cb38-6"></a>runtime_sl_fit &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time <span class="co"># end time - start time = run time</span></span>
 <span id="cb38-7"><a href="sl3.html#cb38-7"></a>runtime_sl_fit</span>
 <span id="cb38-8"><a href="sl3.html#cb38-8"></a>   user  system elapsed </span>
-<span id="cb38-9"><a href="sl3.html#cb38-9"></a> <span class="fl">253.17</span>    <span class="fl">4.62</span>  <span class="fl">250.56</span> </span></code></pre></div>
-<p>It took 250.6 seconds
-(4.2 minutes) to fit the SL.</p>
+<span id="cb38-9"><a href="sl3.html#cb38-9"></a> <span class="fl">291.84</span>    <span class="fl">6.45</span>  <span class="fl">288.81</span> </span></code></pre></div>
+<p>It took 288.8 seconds
+(4.8 minutes) to fit the SL.</p>
 <div id="summary" class="section level4 unnumbered">
 <h4>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h4>
@@ -1549,49 +1549,48 @@ training).</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="sl3.html#cb48-1"></a><span class="co">##### CV predictions "by hand" #####</span></span>
 <span id="cb48-2"><a href="sl3.html#cb48-2"></a><span class="co"># for each fold, i, we obtain validation set predictions:</span></span>
 <span id="cb48-3"><a href="sl3.html#cb48-3"></a>cv_preds_list &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">seq_along</span>(task<span class="op">$</span>folds), <span class="cf">function</span>(i) {</span>
-<span id="cb48-4"><a href="sl3.html#cb48-4"></a></span>
-<span id="cb48-5"><a href="sl3.html#cb48-5"></a>  <span class="co"># get validation dataset for fold i:</span></span>
-<span id="cb48-6"><a href="sl3.html#cb48-6"></a>  v_data &lt;-<span class="st"> </span>task<span class="op">$</span>data[task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set, ]</span>
-<span id="cb48-7"><a href="sl3.html#cb48-7"></a></span>
-<span id="cb48-8"><a href="sl3.html#cb48-8"></a>  <span class="co"># get observed outcomes in fold i's validation dataset:</span></span>
-<span id="cb48-9"><a href="sl3.html#cb48-9"></a>  v_outcomes &lt;-<span class="st"> </span>v_data[[<span class="st">"whz"</span>]]</span>
-<span id="cb48-10"><a href="sl3.html#cb48-10"></a></span>
-<span id="cb48-11"><a href="sl3.html#cb48-11"></a>  <span class="co"># make task (for prediction) using fold i's validation dataset as data,</span></span>
-<span id="cb48-12"><a href="sl3.html#cb48-12"></a>  <span class="co"># and keeping all else the same:</span></span>
-<span id="cb48-13"><a href="sl3.html#cb48-13"></a>  v_task &lt;-<span class="st"> </span><span class="kw">make_sl3_Task</span>(<span class="dt">covariates =</span> task<span class="op">$</span>nodes<span class="op">$</span>covariates, <span class="dt">data =</span> v_data)</span>
-<span id="cb48-14"><a href="sl3.html#cb48-14"></a></span>
-<span id="cb48-15"><a href="sl3.html#cb48-15"></a>  <span class="co"># get predicted outcomes for fold i's validation dataset, using candidates</span></span>
-<span id="cb48-16"><a href="sl3.html#cb48-16"></a>  <span class="co"># trained to fold i's training dataset</span></span>
-<span id="cb48-17"><a href="sl3.html#cb48-17"></a>  v_preds &lt;-<span class="st"> </span>sl_fit<span class="op">$</span>fit_object<span class="op">$</span>cv_fit<span class="op">$</span><span class="kw">predict_fold</span>(</span>
-<span id="cb48-18"><a href="sl3.html#cb48-18"></a>    <span class="dt">task =</span> v_task, <span class="dt">fold_number =</span> i</span>
-<span id="cb48-19"><a href="sl3.html#cb48-19"></a>  )</span>
-<span id="cb48-20"><a href="sl3.html#cb48-20"></a>  <span class="co"># note: v_preds is a matrix of candidate learner predictions, where the</span></span>
-<span id="cb48-21"><a href="sl3.html#cb48-21"></a>  <span class="co"># number of rows is the number of observations in fold i's validation dataset</span></span>
-<span id="cb48-22"><a href="sl3.html#cb48-22"></a>  <span class="co"># and the number of columns is the number of candidate learners (excluding</span></span>
-<span id="cb48-23"><a href="sl3.html#cb48-23"></a>  <span class="co"># any that might have failed)</span></span>
-<span id="cb48-24"><a href="sl3.html#cb48-24"></a></span>
-<span id="cb48-25"><a href="sl3.html#cb48-25"></a>  <span class="co"># an identical way to get v_preds, which is used when we calculate the</span></span>
-<span id="cb48-26"><a href="sl3.html#cb48-26"></a>  <span class="co"># cv risk by hand in a later part of this chapter:</span></span>
-<span id="cb48-27"><a href="sl3.html#cb48-27"></a>  <span class="co"># v_preds &lt;- sl_fit$fit_object$cv_fit$fit_object$fold_fits[[i]]$predict(</span></span>
-<span id="cb48-28"><a href="sl3.html#cb48-28"></a>  <span class="co">#   task = v_task</span></span>
-<span id="cb48-29"><a href="sl3.html#cb48-29"></a>  <span class="co"># )</span></span>
-<span id="cb48-30"><a href="sl3.html#cb48-30"></a></span>
-<span id="cb48-31"><a href="sl3.html#cb48-31"></a>  <span class="co"># we will also return the row indices for fold i's validation set, so we</span></span>
-<span id="cb48-32"><a href="sl3.html#cb48-32"></a>  <span class="co"># can later reorder the CV predictions and make sure they are equal to what</span></span>
-<span id="cb48-33"><a href="sl3.html#cb48-33"></a>  <span class="co"># we obtained above</span></span>
-<span id="cb48-34"><a href="sl3.html#cb48-34"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">"v_preds"</span> =<span class="st"> </span>v_preds, <span class="st">"v_index"</span> =<span class="st"> </span>task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set))</span>
-<span id="cb48-35"><a href="sl3.html#cb48-35"></a>})</span>
-<span id="cb48-36"><a href="sl3.html#cb48-36"></a></span>
-<span id="cb48-37"><a href="sl3.html#cb48-37"></a><span class="co"># extract the validation set predictions across all folds</span></span>
-<span id="cb48-38"><a href="sl3.html#cb48-38"></a>cv_preds_byhand &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, <span class="kw">lapply</span>(cv_preds_list, <span class="st">"[["</span>, <span class="st">"v_preds"</span>))</span>
-<span id="cb48-39"><a href="sl3.html#cb48-39"></a></span>
-<span id="cb48-40"><a href="sl3.html#cb48-40"></a><span class="co"># extract the indices of validation set observations across all folds</span></span>
-<span id="cb48-41"><a href="sl3.html#cb48-41"></a><span class="co"># then reorder cv_preds_byhand to correspond to the ordering in the data</span></span>
-<span id="cb48-42"><a href="sl3.html#cb48-42"></a>row_index_in_data &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(cv_preds_list, <span class="st">"[["</span>, <span class="st">"v_index"</span>))</span>
-<span id="cb48-43"><a href="sl3.html#cb48-43"></a>cv_preds_byhand_ordered &lt;-<span class="st"> </span>cv_preds_byhand[<span class="kw">order</span>(row_index_in_data), ]</span>
-<span id="cb48-44"><a href="sl3.html#cb48-44"></a><span class="co"># now we can check that they are identical</span></span>
-<span id="cb48-45"><a href="sl3.html#cb48-45"></a><span class="kw">identical</span>(cv_preds_option1, cv_preds_byhand_ordered)</span>
-<span id="cb48-46"><a href="sl3.html#cb48-46"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<span id="cb48-4"><a href="sl3.html#cb48-4"></a>  <span class="co"># get validation dataset for fold i:</span></span>
+<span id="cb48-5"><a href="sl3.html#cb48-5"></a>  v_data &lt;-<span class="st"> </span>task<span class="op">$</span>data[task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set, ]</span>
+<span id="cb48-6"><a href="sl3.html#cb48-6"></a></span>
+<span id="cb48-7"><a href="sl3.html#cb48-7"></a>  <span class="co"># get observed outcomes in fold i's validation dataset:</span></span>
+<span id="cb48-8"><a href="sl3.html#cb48-8"></a>  v_outcomes &lt;-<span class="st"> </span>v_data[[<span class="st">"whz"</span>]]</span>
+<span id="cb48-9"><a href="sl3.html#cb48-9"></a></span>
+<span id="cb48-10"><a href="sl3.html#cb48-10"></a>  <span class="co"># make task (for prediction) using fold i's validation dataset as data,</span></span>
+<span id="cb48-11"><a href="sl3.html#cb48-11"></a>  <span class="co"># and keeping all else the same:</span></span>
+<span id="cb48-12"><a href="sl3.html#cb48-12"></a>  v_task &lt;-<span class="st"> </span><span class="kw">make_sl3_Task</span>(<span class="dt">covariates =</span> task<span class="op">$</span>nodes<span class="op">$</span>covariates, <span class="dt">data =</span> v_data)</span>
+<span id="cb48-13"><a href="sl3.html#cb48-13"></a></span>
+<span id="cb48-14"><a href="sl3.html#cb48-14"></a>  <span class="co"># get predicted outcomes for fold i's validation dataset, using candidates</span></span>
+<span id="cb48-15"><a href="sl3.html#cb48-15"></a>  <span class="co"># trained to fold i's training dataset</span></span>
+<span id="cb48-16"><a href="sl3.html#cb48-16"></a>  v_preds &lt;-<span class="st"> </span>sl_fit<span class="op">$</span>fit_object<span class="op">$</span>cv_fit<span class="op">$</span><span class="kw">predict_fold</span>(</span>
+<span id="cb48-17"><a href="sl3.html#cb48-17"></a>    <span class="dt">task =</span> v_task, <span class="dt">fold_number =</span> i</span>
+<span id="cb48-18"><a href="sl3.html#cb48-18"></a>  )</span>
+<span id="cb48-19"><a href="sl3.html#cb48-19"></a>  <span class="co"># note: v_preds is a matrix of candidate learner predictions, where the</span></span>
+<span id="cb48-20"><a href="sl3.html#cb48-20"></a>  <span class="co"># number of rows is the number of observations in fold i's validation dataset</span></span>
+<span id="cb48-21"><a href="sl3.html#cb48-21"></a>  <span class="co"># and the number of columns is the number of candidate learners (excluding</span></span>
+<span id="cb48-22"><a href="sl3.html#cb48-22"></a>  <span class="co"># any that might have failed)</span></span>
+<span id="cb48-23"><a href="sl3.html#cb48-23"></a></span>
+<span id="cb48-24"><a href="sl3.html#cb48-24"></a>  <span class="co"># an identical way to get v_preds, which is used when we calculate the</span></span>
+<span id="cb48-25"><a href="sl3.html#cb48-25"></a>  <span class="co"># cv risk by hand in a later part of this chapter:</span></span>
+<span id="cb48-26"><a href="sl3.html#cb48-26"></a>  <span class="co"># v_preds &lt;- sl_fit$fit_object$cv_fit$fit_object$fold_fits[[i]]$predict(</span></span>
+<span id="cb48-27"><a href="sl3.html#cb48-27"></a>  <span class="co">#   task = v_task</span></span>
+<span id="cb48-28"><a href="sl3.html#cb48-28"></a>  <span class="co"># )</span></span>
+<span id="cb48-29"><a href="sl3.html#cb48-29"></a></span>
+<span id="cb48-30"><a href="sl3.html#cb48-30"></a>  <span class="co"># we will also return the row indices for fold i's validation set, so we</span></span>
+<span id="cb48-31"><a href="sl3.html#cb48-31"></a>  <span class="co"># can later reorder the CV predictions and make sure they are equal to what</span></span>
+<span id="cb48-32"><a href="sl3.html#cb48-32"></a>  <span class="co"># we obtained above</span></span>
+<span id="cb48-33"><a href="sl3.html#cb48-33"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="st">"v_preds"</span> =<span class="st"> </span>v_preds, <span class="st">"v_index"</span> =<span class="st"> </span>task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set))</span>
+<span id="cb48-34"><a href="sl3.html#cb48-34"></a>})</span>
+<span id="cb48-35"><a href="sl3.html#cb48-35"></a></span>
+<span id="cb48-36"><a href="sl3.html#cb48-36"></a><span class="co"># extract the validation set predictions across all folds</span></span>
+<span id="cb48-37"><a href="sl3.html#cb48-37"></a>cv_preds_byhand &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, <span class="kw">lapply</span>(cv_preds_list, <span class="st">"[["</span>, <span class="st">"v_preds"</span>))</span>
+<span id="cb48-38"><a href="sl3.html#cb48-38"></a></span>
+<span id="cb48-39"><a href="sl3.html#cb48-39"></a><span class="co"># extract the indices of validation set observations across all folds</span></span>
+<span id="cb48-40"><a href="sl3.html#cb48-40"></a><span class="co"># then reorder cv_preds_byhand to correspond to the ordering in the data</span></span>
+<span id="cb48-41"><a href="sl3.html#cb48-41"></a>row_index_in_data &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(cv_preds_list, <span class="st">"[["</span>, <span class="st">"v_index"</span>))</span>
+<span id="cb48-42"><a href="sl3.html#cb48-42"></a>cv_preds_byhand_ordered &lt;-<span class="st"> </span>cv_preds_byhand[<span class="kw">order</span>(row_index_in_data), ]</span>
+<span id="cb48-43"><a href="sl3.html#cb48-43"></a><span class="co"># now we can check that they are identical</span></span>
+<span id="cb48-44"><a href="sl3.html#cb48-44"></a><span class="kw">identical</span>(cv_preds_option1, cv_preds_byhand_ordered)</span>
+<span id="cb48-45"><a href="sl3.html#cb48-45"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
 </div>
 </div>
 <div id="predictions-with-new-data" class="section level3">
@@ -1918,47 +1917,45 @@ helpful for understanding the CV risk and how it is calculated.</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="sl3.html#cb56-1"></a><span class="co">##### CV risk "by hand" #####</span></span>
 <span id="cb56-2"><a href="sl3.html#cb56-2"></a><span class="co"># for each fold, i, we obtain predictive performance/risk for each candidate:</span></span>
 <span id="cb56-3"><a href="sl3.html#cb56-3"></a>cv_risks_list &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">seq_along</span>(task<span class="op">$</span>folds), <span class="cf">function</span>(i) {</span>
-<span id="cb56-4"><a href="sl3.html#cb56-4"></a></span>
-<span id="cb56-5"><a href="sl3.html#cb56-5"></a>  <span class="co"># get validation dataset for fold i:</span></span>
-<span id="cb56-6"><a href="sl3.html#cb56-6"></a>  v_data &lt;-<span class="st"> </span>task<span class="op">$</span>data[task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set, ]</span>
-<span id="cb56-7"><a href="sl3.html#cb56-7"></a></span>
-<span id="cb56-8"><a href="sl3.html#cb56-8"></a>  <span class="co"># get observed outcomes in fold i's validation dataset:</span></span>
-<span id="cb56-9"><a href="sl3.html#cb56-9"></a>  v_outcomes &lt;-<span class="st"> </span>v_data[[<span class="st">"whz"</span>]]</span>
-<span id="cb56-10"><a href="sl3.html#cb56-10"></a></span>
-<span id="cb56-11"><a href="sl3.html#cb56-11"></a>  <span class="co"># make task (for prediction) using fold i's validation dataset as data,</span></span>
-<span id="cb56-12"><a href="sl3.html#cb56-12"></a>  <span class="co"># and keeping all else the same:</span></span>
-<span id="cb56-13"><a href="sl3.html#cb56-13"></a>  v_task &lt;-<span class="st"> </span><span class="kw">make_sl3_Task</span>(<span class="dt">covariates =</span> task<span class="op">$</span>nodes<span class="op">$</span>covariates, <span class="dt">data =</span> v_data)</span>
-<span id="cb56-14"><a href="sl3.html#cb56-14"></a></span>
-<span id="cb56-15"><a href="sl3.html#cb56-15"></a>  <span class="co"># get predicted outcomes for fold i's validation dataset, using candidates</span></span>
-<span id="cb56-16"><a href="sl3.html#cb56-16"></a>  <span class="co"># trained to fold i's training dataset</span></span>
-<span id="cb56-17"><a href="sl3.html#cb56-17"></a>  v_preds &lt;-<span class="st"> </span>sl_fit<span class="op">$</span>fit_object<span class="op">$</span>cv_fit<span class="op">$</span>fit_object<span class="op">$</span>fold_fits[[i]]<span class="op">$</span><span class="kw">predict</span>(v_task)</span>
-<span id="cb56-18"><a href="sl3.html#cb56-18"></a>  <span class="co"># note: v_preds is a matrix of candidate learner predictions, where the</span></span>
-<span id="cb56-19"><a href="sl3.html#cb56-19"></a>  <span class="co"># number of rows is the number of observations in fold i's validation dataset</span></span>
-<span id="cb56-20"><a href="sl3.html#cb56-20"></a>  <span class="co"># and the number of columns is the number of candidate learners (excluding</span></span>
-<span id="cb56-21"><a href="sl3.html#cb56-21"></a>  <span class="co"># any that might have failed)</span></span>
-<span id="cb56-22"><a href="sl3.html#cb56-22"></a></span>
-<span id="cb56-23"><a href="sl3.html#cb56-23"></a>  <span class="co"># calculate predictive performance for fold i for each candidate</span></span>
-<span id="cb56-24"><a href="sl3.html#cb56-24"></a>  eval_function &lt;-<span class="st"> </span>loss_squared_error <span class="co"># valid for estimation of conditional mean</span></span>
-<span id="cb56-25"><a href="sl3.html#cb56-25"></a>  v_losses &lt;-<span class="st"> </span><span class="kw">apply</span>(v_preds, <span class="dv">2</span>, eval_function, v_outcomes)</span>
-<span id="cb56-26"><a href="sl3.html#cb56-26"></a>  cv_risks &lt;-<span class="st"> </span><span class="kw">colMeans</span>(v_losses)</span>
-<span id="cb56-27"><a href="sl3.html#cb56-27"></a>  <span class="kw">return</span>(cv_risks)</span>
-<span id="cb56-28"><a href="sl3.html#cb56-28"></a>})</span>
-<span id="cb56-29"><a href="sl3.html#cb56-29"></a><span class="co"># average the predictive performance across all folds for each candidate</span></span>
-<span id="cb56-30"><a href="sl3.html#cb56-30"></a>cv_risks_byhand &lt;-<span class="st"> </span><span class="kw">colMeans</span>(<span class="kw">do.call</span>(rbind, cv_risks_list))</span>
-<span id="cb56-31"><a href="sl3.html#cb56-31"></a>cv_risk_table_byhand &lt;-<span class="st"> </span><span class="kw">data.table</span>(</span>
-<span id="cb56-32"><a href="sl3.html#cb56-32"></a>  <span class="dt">learner =</span> <span class="kw">names</span>(cv_risks_byhand), <span class="dt">MSE =</span> cv_risks_byhand</span>
-<span id="cb56-33"><a href="sl3.html#cb56-33"></a>)</span>
-<span id="cb56-34"><a href="sl3.html#cb56-34"></a><span class="co"># check that the CV risks are identical when calculated by hand and function</span></span>
-<span id="cb56-35"><a href="sl3.html#cb56-35"></a><span class="co"># (ignoring small differences by rounding to the fourth decimal place)</span></span>
-<span id="cb56-36"><a href="sl3.html#cb56-36"></a><span class="kw">identical</span>(</span>
-<span id="cb56-37"><a href="sl3.html#cb56-37"></a>  <span class="kw">round</span>(cv_risk_table_byhand<span class="op">$</span>MSE, <span class="dv">4</span>), <span class="kw">round</span>(<span class="kw">as.numeric</span>(cv_risk_table<span class="op">$</span>MSE), <span class="dv">4</span>)</span>
-<span id="cb56-38"><a href="sl3.html#cb56-38"></a>)</span>
-<span id="cb56-39"><a href="sl3.html#cb56-39"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
+<span id="cb56-4"><a href="sl3.html#cb56-4"></a>  <span class="co"># get validation dataset for fold i:</span></span>
+<span id="cb56-5"><a href="sl3.html#cb56-5"></a>  v_data &lt;-<span class="st"> </span>task<span class="op">$</span>data[task<span class="op">$</span>folds[[i]]<span class="op">$</span>validation_set, ]</span>
+<span id="cb56-6"><a href="sl3.html#cb56-6"></a></span>
+<span id="cb56-7"><a href="sl3.html#cb56-7"></a>  <span class="co"># get observed outcomes in fold i's validation dataset:</span></span>
+<span id="cb56-8"><a href="sl3.html#cb56-8"></a>  v_outcomes &lt;-<span class="st"> </span>v_data[[<span class="st">"whz"</span>]]</span>
+<span id="cb56-9"><a href="sl3.html#cb56-9"></a></span>
+<span id="cb56-10"><a href="sl3.html#cb56-10"></a>  <span class="co"># make task (for prediction) using fold i's validation dataset as data,</span></span>
+<span id="cb56-11"><a href="sl3.html#cb56-11"></a>  <span class="co"># and keeping all else the same:</span></span>
+<span id="cb56-12"><a href="sl3.html#cb56-12"></a>  v_task &lt;-<span class="st"> </span><span class="kw">make_sl3_Task</span>(<span class="dt">covariates =</span> task<span class="op">$</span>nodes<span class="op">$</span>covariates, <span class="dt">data =</span> v_data)</span>
+<span id="cb56-13"><a href="sl3.html#cb56-13"></a></span>
+<span id="cb56-14"><a href="sl3.html#cb56-14"></a>  <span class="co"># get predicted outcomes for fold i's validation dataset, using candidates</span></span>
+<span id="cb56-15"><a href="sl3.html#cb56-15"></a>  <span class="co"># trained to fold i's training dataset</span></span>
+<span id="cb56-16"><a href="sl3.html#cb56-16"></a>  v_preds &lt;-<span class="st"> </span>sl_fit<span class="op">$</span>fit_object<span class="op">$</span>cv_fit<span class="op">$</span>fit_object<span class="op">$</span>fold_fits[[i]]<span class="op">$</span><span class="kw">predict</span>(v_task)</span>
+<span id="cb56-17"><a href="sl3.html#cb56-17"></a>  <span class="co"># note: v_preds is a matrix of candidate learner predictions, where the</span></span>
+<span id="cb56-18"><a href="sl3.html#cb56-18"></a>  <span class="co"># number of rows is the number of observations in fold i's validation dataset</span></span>
+<span id="cb56-19"><a href="sl3.html#cb56-19"></a>  <span class="co"># and the number of columns is the number of candidate learners (excluding</span></span>
+<span id="cb56-20"><a href="sl3.html#cb56-20"></a>  <span class="co"># any that might have failed)</span></span>
+<span id="cb56-21"><a href="sl3.html#cb56-21"></a></span>
+<span id="cb56-22"><a href="sl3.html#cb56-22"></a>  <span class="co"># calculate predictive performance for fold i for each candidate</span></span>
+<span id="cb56-23"><a href="sl3.html#cb56-23"></a>  eval_function &lt;-<span class="st"> </span>loss_squared_error <span class="co"># valid for estimation of conditional mean</span></span>
+<span id="cb56-24"><a href="sl3.html#cb56-24"></a>  v_losses &lt;-<span class="st"> </span><span class="kw">apply</span>(v_preds, <span class="dv">2</span>, eval_function, v_outcomes)</span>
+<span id="cb56-25"><a href="sl3.html#cb56-25"></a>  cv_risks &lt;-<span class="st"> </span><span class="kw">colMeans</span>(v_losses)</span>
+<span id="cb56-26"><a href="sl3.html#cb56-26"></a>  <span class="kw">return</span>(cv_risks)</span>
+<span id="cb56-27"><a href="sl3.html#cb56-27"></a>})</span>
+<span id="cb56-28"><a href="sl3.html#cb56-28"></a><span class="co"># average the predictive performance across all folds for each candidate</span></span>
+<span id="cb56-29"><a href="sl3.html#cb56-29"></a>cv_risks_byhand &lt;-<span class="st"> </span><span class="kw">colMeans</span>(<span class="kw">do.call</span>(rbind, cv_risks_list))</span>
+<span id="cb56-30"><a href="sl3.html#cb56-30"></a>cv_risk_table_byhand &lt;-<span class="st"> </span><span class="kw">data.table</span>(</span>
+<span id="cb56-31"><a href="sl3.html#cb56-31"></a>  <span class="dt">learner =</span> <span class="kw">names</span>(cv_risks_byhand), <span class="dt">MSE =</span> cv_risks_byhand</span>
+<span id="cb56-32"><a href="sl3.html#cb56-32"></a>)</span>
+<span id="cb56-33"><a href="sl3.html#cb56-33"></a><span class="co"># check that the CV risks are identical when calculated by hand and function</span></span>
+<span id="cb56-34"><a href="sl3.html#cb56-34"></a><span class="co"># (ignoring small differences by rounding to the fourth decimal place)</span></span>
+<span id="cb56-35"><a href="sl3.html#cb56-35"></a><span class="kw">identical</span>(</span>
+<span id="cb56-36"><a href="sl3.html#cb56-36"></a>  <span class="kw">round</span>(cv_risk_table_byhand<span class="op">$</span>MSE, <span class="dv">4</span>), <span class="kw">round</span>(<span class="kw">as.numeric</span>(cv_risk_table<span class="op">$</span>MSE), <span class="dv">4</span>)</span>
+<span id="cb56-37"><a href="sl3.html#cb56-37"></a>)</span>
+<span id="cb56-38"><a href="sl3.html#cb56-38"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span></code></pre></div>
 <!--
 We can plot the CV risks as well. 
 
 ```r
-
 # Column "se" in the CV risk table is the standard error across all losses for
 # a learner, i.e., se = sd(loss)/sqrt(n), where loss is an n length vector of
 # validation set predictions across all folds, and n is the number of
@@ -3160,7 +3157,7 @@ below.</p>
 <span id="cb75-15"><a href="sl3.html#cb75-15"></a>runtime_sl_fit_parallel &lt;-<span class="st"> </span><span class="kw">proc.time</span>() <span class="op">-</span><span class="st"> </span>start_time</span>
 <span id="cb75-16"><a href="sl3.html#cb75-16"></a>runtime_sl_fit_parallel</span>
 <span id="cb75-17"><a href="sl3.html#cb75-17"></a>   user  system elapsed </span>
-<span id="cb75-18"><a href="sl3.html#cb75-18"></a><span class="fl">248.754</span>   <span class="fl">4.427</span> <span class="fl">246.089</span> </span></code></pre></div>
+<span id="cb75-18"><a href="sl3.html#cb75-18"></a><span class="fl">286.043</span>   <span class="fl">5.913</span> <span class="fl">282.495</span> </span></code></pre></div>
 </div>
 <div id="default-data-pre-processing" class="section level2">
 <h2>
@@ -6084,7 +6081,7 @@ Infarction with
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[ENAR 2023 Short Course] Targeted Learning</strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 08, 2023.</p>
+    <p>"<strong>[ENAR 2023 Short Course] Targeted Learning</strong>: Advanced Methods for Causal Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 09, 2023.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
