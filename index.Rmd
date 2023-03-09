@@ -74,7 +74,7 @@ programming language is essential.
 * 03:20-05:00: Stochastic treatment regimes with the [`tmle3shift` `R`
   package](https://github.com/tlverse/tmle3shift)
 
-## Materials
+## Materials {-}
 
 * The course materials on this website are based on a working draft of the book, 
   [*Targeted Learning in `R`: Causal Data Science with the `tlverse` Software Ecosystem*](https://tlverse.org/tlverse-handbook/), which includes in-depth 
@@ -90,7 +90,7 @@ programming language is essential.
     * Slide decks for various presentations that will be given: 
       https://github.com/tlverse/enar2023-workshop/tree/master/slides. 
 
-## About the instructors {-}
+## Instructors {-}
 
 ### Mark van der Laan {-}
 
